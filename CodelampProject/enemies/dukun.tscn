@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bn0kw583vuid"]
+
+[ext_resource type="PackedScene" uid="uid://cg72vgq1uckne" path="res://enemies/enemy_base.tscn" id="1_h7wct"]
+[ext_resource type="Script" uid="uid://daj242yusdf0h" path="res://enemies/dukun.gd" id="2_h7wct"]
+
+[node name="Dukun" unique_id=1748458864 instance=ExtResource("1_h7wct")]
+script = ExtResource("2_h7wct")
+max_fear_bar = 150
+speed = 7.0
+terror_energy = 50

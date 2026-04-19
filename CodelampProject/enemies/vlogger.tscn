@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://efog20aku1nm"]
+
+[ext_resource type="PackedScene" uid="uid://cg72vgq1uckne" path="res://enemies/enemy_base.tscn" id="1_lqq0b"]
+[ext_resource type="Script" uid="uid://bfhusnax8c1ps" path="res://enemies/vlogger.gd" id="2_lqq0b"]
+
+[node name="Vlogger" unique_id=1748458864 instance=ExtResource("1_lqq0b")]
+script = ExtResource("2_lqq0b")
