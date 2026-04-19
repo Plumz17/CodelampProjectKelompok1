@@ -1,7 +1,25 @@
 [gd_scene format=3 uid="uid://du2ylgr56qy8q"]
 
+[ext_resource type="Script" uid="uid://dtojvdkhpdgfy" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://blbggmac62i3w" path="res://enemies/normal_enemy.tscn" id="1_ig7tw"]
 
 [node name="Main" type="Node2D" unique_id=1858161533]
+script = ExtResource("1_0xm2m")
 
-[node name="NormalEnemy" parent="." unique_id=1748458864 instance=ExtResource("1_ig7tw")]
+[node name="Waypoints" type="Node2D" parent="." unique_id=571092845]
+
+[node name="Marker2D" type="Marker2D" parent="Waypoints" unique_id=1804730378]
+position = Vector2(91, 545)
+
+[node name="Marker2D2" type="Marker2D" parent="Waypoints" unique_id=187985708]
+position = Vector2(572, 540)
+
+[node name="Marker2D3" type="Marker2D" parent="Waypoints" unique_id=28755775]
+position = Vector2(568, 267)
+
+[node name="Marker2D4" type="Marker2D" parent="Waypoints" unique_id=997863993]
+position = Vector2(1126, 259)
+
+[node name="NormalEnemy" parent="." unique_id=1748458864 node_paths=PackedStringArray("waypoints_node") instance=ExtResource("1_ig7tw")]
+position = Vector2(-147, 541)
+waypoints_node = NodePath("../Waypoints")
