@@ -21,5 +21,5 @@ position = Vector2(568, 267)
 position = Vector2(1126, 259)
 
 [node name="NormalEnemy" parent="." unique_id=1748458864 node_paths=PackedStringArray("waypoints_node") instance=ExtResource("1_ig7tw")]
-position = Vector2(-147, 541)
+position = Vector2(107, 868)
 waypoints_node = NodePath("../Waypoints")

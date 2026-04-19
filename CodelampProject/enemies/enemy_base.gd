@@ -32,7 +32,7 @@ func _physics_process(_delta: float) -> void:
 	#Go to next waypoint
 	var next_waypoint: Vector2 = waypoints[current_waypoint_index]
 	var direction: Vector2 = (next_waypoint - global_position).normalized()
-	velocity = direction * speed * 20 #the 20 here is an arbitrary value, change speed manually later
+	velocity = direction * speed
 	move_and_slide()
 	
 	#Update waypoint index if enemy is near the target waypoint
