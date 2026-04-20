@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://d4bpo58y615ua"]
+
+[ext_resource type="PackedScene" uid="uid://ejfan6r0hrg4" path="res://ghosts/ghost_base.tscn" id="1_oehfi"]
+[ext_resource type="Script" uid="uid://jm6akn88aj34" path="res://ghosts/pocong.gd" id="2_anpga"]
+
+[node name="Pocong" unique_id=14323756 instance=ExtResource("1_oehfi")]
+script = ExtResource("2_anpga")
+fear_damage = 10.0
+attack_rate = 1.0
+cost = 40
+cost_upgrade = 50
+cost_move = 20
