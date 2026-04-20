@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtojvdkhpdgfy" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://blbggmac62i3w" path="res://enemies/normal_enemy.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://8it24v61hwp2" path="res://core/PlayerCore.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node2D" unique_id=1858161533]
 script = ExtResource("1_0xm2m")
@@ -21,5 +22,8 @@ position = Vector2(568, 267)
 position = Vector2(1126, 259)
 
 [node name="NormalEnemy" parent="." unique_id=1748458864 node_paths=PackedStringArray("waypoints_node") instance=ExtResource("1_ig7tw")]
-position = Vector2(184, 247)
+position = Vector2(-89, 535)
 waypoints_node = NodePath("../Waypoints")
+
+[node name="PlayerCore" parent="." unique_id=871273602 instance=ExtResource("3_h2yge")]
+position = Vector2(1126, 256)
