@@ -1,49 +1,49 @@
 extends CharacterBody2D
 class_name EnemyBase
 
-@export var max_fear_bar: int # HP Musuh (Fear Bar) 
-@export var speed: float 
-@export var terror_energy: int # Resource yang didapat 
-@export var waypoints_node: Node2D # Node Waypoints di Main Scene
+@export var max_fear_bar: int # Maximum health/fear capacity
+@export var speed: float # Movement speed modifier
+@export var terror_energy: int # Resource dropped upon defeat
+@export var waypoints_node: Node2D # Reference to the Waypoints parent node
 
-# Variabel pergerakan
+# Runtime state variables
 var waypoints: Array[Vector2] = []
 var current_fear_bar: int 
 var current_waypoint_index: int = 0
 
 func _ready() -> void:
-	# Inisialisasi HP musuh
+	# Initialize base stats
 	current_fear_bar = max_fear_bar
 	
-	# Ambil data semua titik jalan
+	# Populate waypoints array with global coordinates
 	if waypoints_node:
 		for waypoint: Node2D in waypoints_node.get_children():
 			waypoints.append(waypoint.global_position)
 
 func _physics_process(_delta: float) -> void:
+	# Guard clause: Ensure pathing data exists
 	if waypoints.is_empty():
+		printerr("Error: Waypoints array is empty.")
 		return
 	
-	# Berhenti memproses waypoint jika sudah di titik terakhir (menunggu Core)
+	# Check if the entity has reached the final destination
 	if current_waypoint_index >= waypoints.size():
 		reach_core()
 		return
 	
-	# Logika pergerakan ke waypoint selanjutnya
+	# Calculate trajectory and move towards the active waypoint
 	var next_waypoint: Vector2 = waypoints[current_waypoint_index]
 	var direction: Vector2 = (next_waypoint - global_position).normalized()
 	velocity = direction * speed
 	move_and_slide()
 	
-	# Cek jika sudah dekat dengan target waypoint
+	# Proceed to the next waypoint upon reaching the distance threshold
 	if global_position.distance_to(next_waypoint) < 6.7:
 		current_waypoint_index += 1
 
+# Handles logic when the entity reaches the player's core
 func reach_core() -> void:
-	# Biarkan musuh tetap bergerak sedikit agar masuk ke area PlayerCore
+	# Apply final velocity to ensure collision overlap with Core's Area2D
 	move_and_slide()
-	
-	# Pencegahan spam pesan di console
-	if not has_meta("reached_target"):
-		print("Musuh mencapai tujuan: ", name)
-		set_meta("reached_target", true)
+	print("Core Reached!")
+	return
