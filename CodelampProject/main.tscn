@@ -1,7 +1,104 @@
 [gd_scene format=3 uid="uid://du2ylgr56qy8q"]
 
+[ext_resource type="Script" uid="uid://dtojvdkhpdgfy" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://blbggmac62i3w" path="res://enemies/normal_enemy.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://d4bpo58y615ua" path="res://ghosts/pocong.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c5g0up3st3y88" path="res://ghosts/kunilanak.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bcepqgjgi4ata" path="res://ghosts/tuyul.tscn" id="5_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bvkab8npf4mqw" path="res://icon.svg" id="6_7mycd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(400, 400)
 
 [node name="Main" type="Node2D" unique_id=1858161533]
+script = ExtResource("1_0xm2m")
 
-[node name="NormalEnemy" parent="." unique_id=1748458864 instance=ExtResource("1_ig7tw")]
+[node name="Waypoints" type="Node2D" parent="." unique_id=571092845]
+
+[node name="Marker2D" type="Marker2D" parent="Waypoints" unique_id=1804730378]
+position = Vector2(90, 540)
+
+[node name="Marker2D2" type="Marker2D" parent="Waypoints" unique_id=187985708]
+position = Vector2(600, 540)
+
+[node name="Marker2D3" type="Marker2D" parent="Waypoints" unique_id=28755775]
+position = Vector2(600, 240)
+
+[node name="Marker2D4" type="Marker2D" parent="Waypoints" unique_id=997863993]
+position = Vector2(1200, 240)
+
+[node name="NormalEnemy" parent="." unique_id=1748458864 node_paths=PackedStringArray("waypoints_node") instance=ExtResource("1_ig7tw")]
+position = Vector2(0, 540)
+waypoints_node = NodePath("../Waypoints")
+
+[node name="Areas" type="Node2D" parent="." unique_id=115886294]
+
+[node name="Area2D" type="Area2D" parent="Areas" unique_id=2310073 groups=["placement_area"]]
+position = Vector2(315, 265)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D" unique_id=273443622]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Area2D2" type="Area2D" parent="Areas" unique_id=1138543599 groups=["placement_area"]]
+position = Vector2(903, 516)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D2" unique_id=1885161976]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Area2D3" type="Area2D" parent="Areas" unique_id=1133771355 groups=["placement_area"]]
+position = Vector2(1522, 510)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D3" unique_id=1099705178]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Area2D4" type="Area2D" parent="Areas" unique_id=1955722540 groups=["placement_area"]]
+position = Vector2(312, 836)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D4" unique_id=948667540]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Pocong" parent="." unique_id=14323756 instance=ExtResource("3_h2yge")]
+position = Vector2(1500, 980)
+
+[node name="Kuntilanak" parent="." unique_id=641528630 instance=ExtResource("4_lquwl")]
+position = Vector2(1660, 980)
+
+[node name="Tuyul" parent="." unique_id=1180455830 instance=ExtResource("5_7mycd")]
+position = Vector2(1820, 980)
+
+[node name="CanvasLayer (For UI Later)" type="CanvasLayer" parent="." unique_id=1929039526]
+layer = -1
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer (For UI Later)" unique_id=2081240262]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -604.0
+offset_top = -288.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 36
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer (For UI Later)/MarginContainer" unique_id=198191497]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 32
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer (For UI Later)/MarginContainer/HBoxContainer" unique_id=165425081]
+layout_mode = 2
+texture = ExtResource("6_7mycd")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer (For UI Later)/MarginContainer/HBoxContainer" unique_id=223532933]
+layout_mode = 2
+texture = ExtResource("6_7mycd")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer (For UI Later)/MarginContainer/HBoxContainer" unique_id=418884010]
+layout_mode = 2
+texture = ExtResource("6_7mycd")
