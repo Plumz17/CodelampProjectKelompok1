@@ -3,12 +3,10 @@
 [ext_resource type="Script" uid="uid://dtojvdkhpdgfy" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://blbggmac62i3w" path="res://enemies/normal_enemy.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://d4bpo58y615ua" path="res://ghosts/pocong.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" path="res://ui/game_over_ui.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c5g0up3st3y88" path="res://ghosts/kunilanak.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bcepqgjgi4ata" path="res://ghosts/tuyul.tscn" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bvkab8npf4mqw" path="res://icon.svg" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bn0kw583vuid" path="res://enemies/dukun.tscn" id="7_272bh"]
-[ext_resource type="PackedScene" path="res://core/PlayerCore.tscn" id="8_5vw27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(400, 400)
@@ -31,15 +29,11 @@ position = Vector2(600, 240)
 position = Vector2(1200, 240)
 
 [node name="NormalEnemy" parent="." unique_id=1748458864 node_paths=PackedStringArray("waypoints_node") instance=ExtResource("1_ig7tw")]
-position = Vector2(-243, 540)
-collision_layer = 0
-collision_mask = 1
+position = Vector2(0, 540)
 waypoints_node = NodePath("../Waypoints")
 
 [node name="Dukun" parent="." unique_id=540262918 node_paths=PackedStringArray("waypoints_node") instance=ExtResource("7_272bh")]
 position = Vector2(-79, 540)
-collision_layer = 0
-collision_mask = 1
 waypoints_node = NodePath("../Waypoints")
 
 [node name="Areas" type="Node2D" parent="." unique_id=115886294]
@@ -113,10 +107,3 @@ texture = ExtResource("6_7mycd")
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer (For UI Later)/MarginContainer/HBoxContainer" unique_id=418884010]
 layout_mode = 2
 texture = ExtResource("6_7mycd")
-
-[node name="PlayerCore" parent="." unique_id=871273602 node_paths=PackedStringArray("game_over_menu") instance=ExtResource("8_5vw27")]
-position = Vector2(1200, 240)
-game_over_menu = NodePath("../GameOverUI")
-
-[node name="GameOverUI" parent="." unique_id=60483366 instance=ExtResource("4_1bvp3")]
-visible = false
