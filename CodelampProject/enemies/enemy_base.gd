@@ -45,6 +45,6 @@ func _physics_process(_delta: float) -> void:
 # Handles logic when the entity reaches the player's core
 func reach_core() -> void:
 	# Apply final velocity to ensure collision overlap with Core's Area2D
-	move_and_slide()
-	print("Core Reached!")
+	#move_and_slide()
+	#print("Core Reached!")
 	return
