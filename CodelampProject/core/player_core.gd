@@ -8,12 +8,18 @@ func _ready() -> void:
 	
 	# Connect the collision signal to handle incoming entities
 	body_entered.connect(_on_body_entered)
-
+	
 func _on_body_entered(body: Node2D) -> void:
 	# Filter collisions to only process entities within the "enemy" group 
 	if body.is_in_group("enemy"):
-		current_hp -= 10
-		print("HP Player berkurang: ", current_hp)
+		
+		# Deduct health based on the specific enemy's damage stat
+		if "core_damage" in body:
+			current_hp -= body.core_damage
+		else:
+			current_hp -= 10 # Safe fallback in case the stat is missing
+			
+		print("Core damaged! Current HP: ", current_hp)
 		
 		# Remove the enemy instance to prevent multiple collision triggers
 		body.queue_free()
@@ -21,7 +27,7 @@ func _on_body_entered(body: Node2D) -> void:
 		# Evaluate game state for defeat condition 
 		if current_hp <= 0:
 			trigger_game_over()
-
+			
 func trigger_game_over() -> void:
 	current_hp = 0
 	print("GAME OVER TER-TRIGGER!") 

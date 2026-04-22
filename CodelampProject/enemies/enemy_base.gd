@@ -5,6 +5,7 @@ class_name EnemyBase
 @export var speed: float # Movement speed modifier
 @export var terror_energy: int # Resource dropped upon defeat
 @export var waypoints_node: Node2D # Reference to the Waypoints parent node
+@export var core_damage: int = 10 # Damage dealt to the player's core upon reaching it
 
 # Runtime state variables
 var waypoints: Array[Vector2] = []
