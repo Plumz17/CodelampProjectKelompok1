@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dtojvdkhpdgfy" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://blbggmac62i3w" path="res://enemies/normal_enemy.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://8it24v61hwp2" path="res://core/PlayerCore.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://b6v8gf2l6mte4" path="res://ui/game_over_ui.tscn" id="4_1bvp3"]
 
 [node name="Main" type="Node2D" unique_id=1858161533]
 script = ExtResource("1_0xm2m")
@@ -25,5 +26,9 @@ position = Vector2(1126, 259)
 position = Vector2(-89, 535)
 waypoints_node = NodePath("../Waypoints")
 
-[node name="PlayerCore" parent="." unique_id=871273602 instance=ExtResource("3_h2yge")]
+[node name="PlayerCore" parent="." unique_id=871273602 node_paths=PackedStringArray("game_over_menu") instance=ExtResource("3_h2yge")]
 position = Vector2(1126, 256)
+game_over_menu = NodePath("../GameOverUI")
+
+[node name="GameOverUI" parent="." unique_id=60483366 instance=ExtResource("4_1bvp3")]
+visible = false

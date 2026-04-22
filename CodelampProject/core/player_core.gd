@@ -1,5 +1,5 @@
 extends Area2D
-
+@export var game_over_menu: CanvasLayer
 var max_hp: int = 10
 var current_hp: int
 
@@ -25,5 +25,6 @@ func _on_body_entered(body: Node2D) -> void:
 func trigger_game_over() -> void:
 	current_hp = 0
 	print("GAME OVER TER-TRIGGER!") 
-	
-	# TODO: Implement Game Over UI and state management logic here
+	if game_over_menu:
+		game_over_menu.show_game_over()
+	#
