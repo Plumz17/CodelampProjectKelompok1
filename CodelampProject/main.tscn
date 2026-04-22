@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c5g0up3st3y88" path="res://ghosts/kunilanak.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bcepqgjgi4ata" path="res://ghosts/tuyul.tscn" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bvkab8npf4mqw" path="res://icon.svg" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bn0kw583vuid" path="res://enemies/dukun.tscn" id="7_272bh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(400, 400)
@@ -29,6 +30,10 @@ position = Vector2(1200, 240)
 
 [node name="NormalEnemy" parent="." unique_id=1748458864 node_paths=PackedStringArray("waypoints_node") instance=ExtResource("1_ig7tw")]
 position = Vector2(0, 540)
+waypoints_node = NodePath("../Waypoints")
+
+[node name="Dukun" parent="." unique_id=540262918 node_paths=PackedStringArray("waypoints_node") instance=ExtResource("7_272bh")]
+position = Vector2(-79, 540)
 waypoints_node = NodePath("../Waypoints")
 
 [node name="Areas" type="Node2D" parent="." unique_id=115886294]
