@@ -34,6 +34,8 @@ click={
 [layer_names]
 
 2d_physics/layer_1="Enemy"
+2d_physics/layer_2="Ghosts"
+2d_physics/layer_3="Player Core"
 
 [physics]
 

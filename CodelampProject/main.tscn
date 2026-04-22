@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dtojvdkhpdgfy" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://blbggmac62i3w" path="res://enemies/normal_enemy.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" path="res://ghosts/pocong.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://d4bpo58y615ua" path="res://ghosts/pocong.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b6v8gf2l6mte4" path="res://ui/game_over_ui.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" path="res://ghosts/kunilanak.tscn" id="4_lquwl"]
-[ext_resource type="PackedScene" path="res://ghosts/tuyul.tscn" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://c5g0up3st3y88" path="res://ghosts/kunilanak.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bcepqgjgi4ata" path="res://ghosts/tuyul.tscn" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bvkab8npf4mqw" path="res://icon.svg" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bn0kw583vuid" path="res://enemies/dukun.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://8it24v61hwp2" path="res://core/PlayerCore.tscn" id="8_5vw27"]
@@ -32,12 +32,10 @@ position = Vector2(1200, 240)
 
 [node name="NormalEnemy" parent="." unique_id=1748458864 node_paths=PackedStringArray("waypoints_node") instance=ExtResource("1_ig7tw")]
 position = Vector2(0, 540)
-collision_layer = 1
 waypoints_node = NodePath("../Waypoints")
 
 [node name="Dukun" parent="." unique_id=540262918 node_paths=PackedStringArray("waypoints_node") instance=ExtResource("7_272bh")]
 position = Vector2(-79, 540)
-collision_layer = 1
 waypoints_node = NodePath("../Waypoints")
 
 [node name="Areas" type="Node2D" parent="." unique_id=115886294]
