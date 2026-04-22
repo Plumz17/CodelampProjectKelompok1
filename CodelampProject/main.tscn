@@ -3,10 +3,12 @@
 [ext_resource type="Script" uid="uid://dtojvdkhpdgfy" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://blbggmac62i3w" path="res://enemies/normal_enemy.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://d4bpo58y615ua" path="res://ghosts/pocong.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://b6v8gf2l6mte4" path="res://ui/game_over_ui.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c5g0up3st3y88" path="res://ghosts/kunilanak.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bcepqgjgi4ata" path="res://ghosts/tuyul.tscn" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bvkab8npf4mqw" path="res://icon.svg" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bn0kw583vuid" path="res://enemies/dukun.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://8it24v61hwp2" path="res://core/PlayerCore.tscn" id="8_5vw27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(400, 400)
@@ -107,3 +109,10 @@ texture = ExtResource("6_7mycd")
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer (For UI Later)/MarginContainer/HBoxContainer" unique_id=418884010]
 layout_mode = 2
 texture = ExtResource("6_7mycd")
+
+[node name="PlayerCore" parent="." unique_id=871273602 node_paths=PackedStringArray("game_over_menu") instance=ExtResource("8_5vw27")]
+position = Vector2(1199, 240)
+game_over_menu = NodePath("../GameOverUI")
+
+[node name="GameOverUI" parent="." unique_id=60483366 instance=ExtResource("4_1bvp3")]
+visible = false

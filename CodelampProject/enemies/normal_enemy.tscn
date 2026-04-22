@@ -3,8 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://cg72vgq1uckne" path="res://enemies/enemy_base.tscn" id="1_pg5ck"]
 [ext_resource type="Script" uid="uid://cl2a71kkiouny" path="res://enemies/normal_enemy.gd" id="2_snoi0"]
 
-[node name="NormalEnemy" unique_id=1748458864 instance=ExtResource("1_pg5ck")]
+[node name="NormalEnemy" unique_id=1748458864 groups=["enemy"] instance=ExtResource("1_pg5ck")]
 script = ExtResource("2_snoi0")
 max_fear_bar = 30
-speed = 5.0
+speed = 15.0
 terror_energy = 15
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=2043971900]
+position = Vector2(0, -0.5)
