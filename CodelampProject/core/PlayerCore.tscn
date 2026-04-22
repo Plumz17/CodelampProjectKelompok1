@@ -7,6 +7,7 @@
 radius = 63.007935
 
 [node name="PlayerCore" type="Area2D" unique_id=871273602]
+collision_layer = 4
 script = ExtResource("1_jvo0p")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=649255779]
