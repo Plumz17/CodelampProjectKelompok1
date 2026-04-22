@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c5g0up3st3y88"]
+
+[ext_resource type="PackedScene" uid="uid://ejfan6r0hrg4" path="res://ghosts/ghost_base.tscn" id="1_ebf0h"]
+[ext_resource type="Script" uid="uid://cksdp2ytnmlpq" path="res://ghosts/kunilanak.gd" id="2_ebf0h"]
+
+[node name="Kuntilanak" unique_id=14323756 instance=ExtResource("1_ebf0h")]
+script = ExtResource("2_ebf0h")
+fear_damage = 20.0
+attack_rate = 3.0
+cost = 60
+cost_upgrade = 70
+cost_move = 30
