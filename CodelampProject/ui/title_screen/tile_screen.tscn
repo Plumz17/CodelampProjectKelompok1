@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://7hhqvlld0ih7"]
+
+[ext_resource type="Texture2D" uid="uid://ggcjn0g5djba" path="res://ui/title_screen/bg.png" id="1_bylpc"]
+[ext_resource type="Texture2D" uid="uid://bisdsx8652xl8" path="res://ui/title_screen/Kuntilanak_bekgron.png" id="1_gfb1y"]
+[ext_resource type="Script" uid="uid://bgmijky74ast4" path="res://ui/title_screen/diagonal_container.gd" id="3_xx1fv"]
+[ext_resource type="Texture2D" uid="uid://b4ix8i3k0lb3v" path="res://ui/title_screen/level_select.png" id="4_xx1fv"]
+[ext_resource type="Texture2D" uid="uid://dsw60kyxu3ksg" path="res://ui/title_screen/settings.png" id="5_hb510"]
+[ext_resource type="Texture2D" uid="uid://bijxp07n4n4wk" path="res://ui/title_screen/new_game.png" id="6_bylpc"]
+[ext_resource type="Texture2D" uid="uid://dgwsoatkyc6wf" path="res://ui/title_screen/exit.png" id="6_vu3mf"]
+
+[node name="TileScreen" type="Control" unique_id=559802658]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="TextureRect" parent="." unique_id=281068020]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bylpc")
+
+[node name="HotGhost" type="TextureRect" parent="." unique_id=630197660]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("1_gfb1y")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1216911880]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -700.0
+offset_bottom = 30.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 450
+theme_override_constants/margin_right = 860
+
+[node name="DiagonalContainer" type="Container" parent="MarginContainer" unique_id=16061314]
+layout_mode = 2
+script = ExtResource("3_xx1fv")
+x_dev = -50.0
+y_dev = 120.0
+metadata/_custom_type_script = "uid://bgmijky74ast4"
+
+[node name="TextureButton4" type="TextureButton" parent="MarginContainer/DiagonalContainer" unique_id=1846602096]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("6_vu3mf")
+
+[node name="TextureButton3" type="TextureButton" parent="MarginContainer/DiagonalContainer" unique_id=2024981892]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("5_hb510")
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/DiagonalContainer" unique_id=1302744413]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("4_xx1fv")
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/DiagonalContainer" unique_id=1257348298]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("6_bylpc")
