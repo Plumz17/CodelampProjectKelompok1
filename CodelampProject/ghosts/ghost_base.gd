@@ -27,10 +27,8 @@ func _process(_delta: float) -> void:
 		global_position = get_global_mouse_position() + drag_offset
 		# Change Color if can place/not
 		if can_place:
-			print("Can Place!")
 			modulate = Color.GREEN
 		else:
-			print("Can't Place!")
 			modulate = Color.RED
 	else:
 		z_index = 0
@@ -41,14 +39,12 @@ func _input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> voi
 	if not viewport.is_input_handled() and event.is_action_pressed("click"):
 		dragging = true
 		drag_offset = global_position - get_global_mouse_position()
-		print("Test")
 	
 func _unhandled_input(event: InputEvent) -> void:
 	#Stop Dragging
 	if event.is_action_released("click"):
 		dragging = false
 		place_ghost()
-		print("Untest")
 
 #Tries to place ghost
 func place_ghost() -> void:

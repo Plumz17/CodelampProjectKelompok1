@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dsw60kyxu3ksg" path="res://ui/title_screen/settings.png" id="5_hb510"]
 [ext_resource type="Texture2D" uid="uid://bijxp07n4n4wk" path="res://ui/title_screen/new_game.png" id="6_bylpc"]
 [ext_resource type="Texture2D" uid="uid://dgwsoatkyc6wf" path="res://ui/title_screen/exit.png" id="6_vu3mf"]
+[ext_resource type="Script" uid="uid://dneiju2endwlt" path="res://ui/title_screen/button.gd" id="8_hb510"]
 
 [node name="TileScreen" type="Control" unique_id=559802658]
 layout_mode = 3
@@ -56,22 +57,27 @@ x_dev = -50.0
 y_dev = 120.0
 metadata/_custom_type_script = "uid://bgmijky74ast4"
 
-[node name="TextureButton4" type="TextureButton" parent="MarginContainer/DiagonalContainer" unique_id=1846602096]
+[node name="ExitButton" type="TextureButton" parent="MarginContainer/DiagonalContainer" unique_id=1846602096]
 layout_mode = 2
 size_flags_horizontal = 8
 texture_normal = ExtResource("6_vu3mf")
+script = ExtResource("8_hb510")
 
-[node name="TextureButton3" type="TextureButton" parent="MarginContainer/DiagonalContainer" unique_id=2024981892]
+[node name="SettingsButton" type="TextureButton" parent="MarginContainer/DiagonalContainer" unique_id=2024981892]
 layout_mode = 2
 size_flags_horizontal = 8
 texture_normal = ExtResource("5_hb510")
+script = ExtResource("8_hb510")
 
-[node name="TextureButton2" type="TextureButton" parent="MarginContainer/DiagonalContainer" unique_id=1302744413]
+[node name="LevelSelectButton" type="TextureButton" parent="MarginContainer/DiagonalContainer" unique_id=1302744413]
 layout_mode = 2
 size_flags_horizontal = 8
 texture_normal = ExtResource("4_xx1fv")
+script = ExtResource("8_hb510")
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/DiagonalContainer" unique_id=1257348298]
+[node name="NewGameButton" type="TextureButton" parent="MarginContainer/DiagonalContainer" unique_id=1257348298]
 layout_mode = 2
 size_flags_horizontal = 8
 texture_normal = ExtResource("6_bylpc")
+script = ExtResource("8_hb510")
+action_id = "new_game"
