@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bmpnn8fhiio4v"
-path="res://.godot/imported/Minimalist1.wav-447292be1df847e3be862be655294c35.sample"
+path="res://.godot/imported/Minimalist1.wav-cf0aceb3edbdfe3cbfde4ae1b9fe229b.sample"
 
 [deps]
 
-source_file="res://ui/title_screen/Minimalist1.wav"
-dest_files=["res://.godot/imported/Minimalist1.wav-447292be1df847e3be862be655294c35.sample"]
+source_file="res://ui/title_screen/assets/Minimalist1.wav"
+dest_files=["res://.godot/imported/Minimalist1.wav-cf0aceb3edbdfe3cbfde4ae1b9fe229b.sample"]
 
 [params]
 
