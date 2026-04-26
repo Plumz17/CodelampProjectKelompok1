@@ -6,6 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1nlul"]
 size = Vector2(128, 128)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_43t2x"]
+
 [node name="GhostBase" type="Area2D" unique_id=14323756]
 script = ExtResource("1_43t2x")
 
@@ -15,5 +17,11 @@ texture = ExtResource("1_1nlul")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=980447987]
 shape = SubResource("RectangleShape2D_1nlul")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[node name="PlacementAreaDetector" type="Area2D" parent="." unique_id=1799227498]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacementAreaDetector" unique_id=907044736]
+shape = SubResource("CircleShape2D_43t2x")
+debug_color = Color(0.64149237, 0.51218694, 0.32137337, 0.41960785)
+
+[connection signal="area_entered" from="PlacementAreaDetector" to="." method="_on_placement_area_detector_area_entered"]
+[connection signal="area_exited" from="PlacementAreaDetector" to="." method="_on_placement_area_detector_area_exited"]

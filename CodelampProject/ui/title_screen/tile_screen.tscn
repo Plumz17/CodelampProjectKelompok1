@@ -1,0 +1,193 @@
+[gd_scene format=3 uid="uid://7hhqvlld0ih7"]
+
+[ext_resource type="Texture2D" uid="uid://ggcjn0g5djba" path="res://ui/title_screen/assets/bg.png" id="1_bylpc"]
+[ext_resource type="Texture2D" uid="uid://bisdsx8652xl8" path="res://ui/title_screen/assets/Kuntilanak_bekgron.png" id="1_gfb1y"]
+[ext_resource type="Script" uid="uid://tpvfv6r1ldo4" path="res://ui/title_screen/hot_ghost.gd" id="3_vu3mf"]
+[ext_resource type="Script" uid="uid://bgmijky74ast4" path="res://ui/title_screen/diagonal_container.gd" id="3_xx1fv"]
+[ext_resource type="AudioStream" uid="uid://bmpnn8fhiio4v" path="res://ui/title_screen/assets/Minimalist1.wav" id="4_3u542"]
+[ext_resource type="Texture2D" uid="uid://b4ix8i3k0lb3v" path="res://ui/title_screen/assets/level_select.png" id="4_xx1fv"]
+[ext_resource type="Texture2D" uid="uid://dsw60kyxu3ksg" path="res://ui/title_screen/assets/settings.png" id="5_hb510"]
+[ext_resource type="Texture2D" uid="uid://bijxp07n4n4wk" path="res://ui/title_screen/assets/new_game.png" id="6_bylpc"]
+[ext_resource type="Texture2D" uid="uid://dgwsoatkyc6wf" path="res://ui/title_screen/assets/exit.png" id="6_vu3mf"]
+[ext_resource type="Script" uid="uid://dneiju2endwlt" path="res://ui/title_screen/button.gd" id="8_hb510"]
+
+[node name="TileScreen" type="Control" unique_id=559802658]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="TextureRect" parent="." unique_id=281068020]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bylpc")
+
+[node name="HotGhost" type="TextureRect" parent="." unique_id=630197660]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1920.0
+offset_top = -540.0
+offset_bottom = 540.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1.05, 1.05)
+pivot_offset = Vector2(1920, 540)
+texture = ExtResource("1_gfb1y")
+script = ExtResource("3_vu3mf")
+
+[node name="VFX" type="AudioStreamPlayer2D" parent="." unique_id=1235949056]
+stream = ExtResource("4_3u542")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1216911880]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -820.0
+offset_right = 20.0
+offset_bottom = 500.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 500
+theme_override_constants/margin_right = 880
+
+[node name="DiagonalContainer" type="Container" parent="MarginContainer" unique_id=16061314]
+layout_mode = 2
+script = ExtResource("3_xx1fv")
+x_dev = -60.0
+y_dev = 120.0
+metadata/_custom_type_script = "uid://bgmijky74ast4"
+
+[node name="Button" type="Control" parent="MarginContainer/DiagonalContainer" unique_id=123922694 node_paths=PackedStringArray("button_group", "texture_button")]
+layout_direction = 3
+layout_mode = 2
+script = ExtResource("8_hb510")
+action_id = "new_game"
+button_group = NodePath("Group")
+texture_button = NodePath("Group/TextureButton")
+speed = 1.0
+height = 10.0
+
+[node name="Group" type="Control" parent="MarginContainer/DiagonalContainer/Button" unique_id=1532447900]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/DiagonalContainer/Button/Group" unique_id=281011168]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 160.0
+texture_normal = ExtResource("6_vu3mf")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/DiagonalContainer/Button/Group" unique_id=1204338006]
+self_modulate = Color(0.36078432, 0, 0, 1)
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("6_vu3mf")
+
+[node name="Button2" type="Control" parent="MarginContainer/DiagonalContainer" unique_id=228497983 node_paths=PackedStringArray("button_group", "texture_button")]
+layout_direction = 3
+layout_mode = 2
+script = ExtResource("8_hb510")
+action_id = "new_game"
+button_group = NodePath("Group")
+texture_button = NodePath("Group/TextureButton")
+speed = 1.0
+height = 10.0
+
+[node name="Group" type="Control" parent="MarginContainer/DiagonalContainer/Button2" unique_id=1611032313]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/DiagonalContainer/Button2/Group" unique_id=577371356]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 160.0
+texture_normal = ExtResource("5_hb510")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/DiagonalContainer/Button2/Group" unique_id=593840187]
+self_modulate = Color(0.36078432, 0, 0, 1)
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("5_hb510")
+
+[node name="Button3" type="Control" parent="MarginContainer/DiagonalContainer" unique_id=253703410 node_paths=PackedStringArray("button_group", "texture_button")]
+layout_direction = 3
+layout_mode = 2
+script = ExtResource("8_hb510")
+action_id = "new_game"
+button_group = NodePath("Group")
+texture_button = NodePath("Group/TextureButton")
+speed = 1.0
+height = 10.0
+
+[node name="Group" type="Control" parent="MarginContainer/DiagonalContainer/Button3" unique_id=1902614991]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/DiagonalContainer/Button3/Group" unique_id=2118786061]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 160.0
+texture_normal = ExtResource("4_xx1fv")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/DiagonalContainer/Button3/Group" unique_id=991363275]
+self_modulate = Color(0.36078432, 0, 0, 1)
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("4_xx1fv")
+
+[node name="Button4" type="Control" parent="MarginContainer/DiagonalContainer" unique_id=467965052 node_paths=PackedStringArray("button_group", "texture_button")]
+layout_direction = 3
+layout_mode = 2
+script = ExtResource("8_hb510")
+action_id = "new_game"
+button_group = NodePath("Group")
+texture_button = NodePath("Group/TextureButton")
+speed = 1.0
+height = 10.0
+
+[node name="Group" type="Control" parent="MarginContainer/DiagonalContainer/Button4" unique_id=1756364943]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/DiagonalContainer/Button4/Group" unique_id=616973100]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 160.0
+texture_normal = ExtResource("6_bylpc")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/DiagonalContainer/Button4/Group" unique_id=124317111]
+self_modulate = Color(0.36078432, 0, 0, 1)
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("6_bylpc")

@@ -5,6 +5,7 @@
 
 [node name="Tuyul" unique_id=14323756 instance=ExtResource("1_2odaq")]
 script = ExtResource("2_2odaq")
+id = "tuyul"
 fear_damage = 5.0
 attack_rate = 2.0
 cost = 30
