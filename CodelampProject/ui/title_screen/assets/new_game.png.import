@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bisdsx8652xl8"
-path="res://.godot/imported/Kuntilanak_bekgron.png-aef57adb011d68e38bfb13733fd333f3.ctex"
+uid="uid://bijxp07n4n4wk"
+path="res://.godot/imported/new_game.png-94d243b27dc296995a8a4ecde99ce062.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/title_screen/Kuntilanak_bekgron.png"
-dest_files=["res://.godot/imported/Kuntilanak_bekgron.png-aef57adb011d68e38bfb13733fd333f3.ctex"]
+source_file="res://ui/title_screen/assets/new_game.png"
+dest_files=["res://.godot/imported/new_game.png-94d243b27dc296995a8a4ecde99ce062.ctex"]
 
 [params]
 
