@@ -13,6 +13,7 @@ class_name GhostBase
 var dragging : bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 var original_position: Vector2
+var last_valid_position: Vector2
 
 # Some booleans to check whether ghost can be placed
 var can_place: bool = false
@@ -24,8 +25,10 @@ var attack_cooldown: float = 0.0
 func _ready():
 	#Set original position
 	original_position = global_position
+	last_valid_position = global_position
 	placement_area_detector.area_entered.connect(_on_area_entered)
 	placement_area_detector.area_exited.connect(_on_area_exited)
+	
 
 func _process(delta: float) -> void:
 	#Move position with mouse if dragging
@@ -70,10 +73,13 @@ func _input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> voi
 func place_ghost() -> void:
 	#If can't place return to default poisition
 	if !can_place:
-		queue_free()
-	else: #when placed, set default position as the current position
-		original_position = global_position
+		if is_placed:
+			global_position = last_valid_position
+		else:
+			queue_free()
+	else: 
 		is_placed = true
+		last_valid_position = global_position
 		attack_cooldown = 0.0
 
 func _find_target_in_range() -> EnemyBase:
