@@ -8,6 +8,7 @@ script = ExtResource("2_snoi0")
 max_fear_bar = 30
 speed = 15.0
 terror_energy = 15
+core_damage = 1
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=2043971900]
 position = Vector2(0, -0.5)

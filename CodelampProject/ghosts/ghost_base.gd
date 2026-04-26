@@ -27,10 +27,8 @@ func _process(_delta: float) -> void:
 		global_position = get_global_mouse_position() + drag_offset
 		# Change Color if can place/not
 		if can_place:
-			print("Can Place!")
 			modulate = Color.GREEN
 		else:
-			print("Can't Place!")
 			modulate = Color.RED
 	else:
 		z_index = 0
@@ -41,14 +39,12 @@ func _input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> voi
 	if not viewport.is_input_handled() and event.is_action_pressed("click"):
 		dragging = true
 		drag_offset = global_position - get_global_mouse_position()
-		print("Test")
 	
 func _unhandled_input(event: InputEvent) -> void:
 	#Stop Dragging
 	if event.is_action_released("click"):
 		dragging = false
 		place_ghost()
-		print("Untest")
 
 #Tries to place ghost
 func place_ghost() -> void:
@@ -58,14 +54,14 @@ func place_ghost() -> void:
 	else: #when placed, set default position as the current position
 		original_position = global_position
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_placement_area_detector_area_entered(area: Area2D) -> void:
 	if area is GhostBase and area.in_placement_area:
 		overlapping_ghost = true
 	if area.is_in_group("placement_area"):
 		in_placement_area = true
 	can_place = in_placement_area and not overlapping_ghost
 
-func _on_area_exited(area: Area2D) -> void:
+func _on_placement_area_detector_area_exited(area: Area2D) -> void:
 	if area is GhostBase:
 		overlapping_ghost = false
 	if area.is_in_group("placement_area"):

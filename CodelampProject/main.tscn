@@ -2,16 +2,20 @@
 
 [ext_resource type="Script" uid="uid://dtojvdkhpdgfy" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://blbggmac62i3w" path="res://enemies/normal_enemy.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://efog20aku1nm" path="res://enemies/vlogger.tscn" id="2_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://d4bpo58y615ua" path="res://ghosts/pocong.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b6v8gf2l6mte4" path="res://ui/game_over_ui.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c5g0up3st3y88" path="res://ghosts/kunilanak.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bcepqgjgi4ata" path="res://ghosts/tuyul.tscn" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bvkab8npf4mqw" path="res://icon.svg" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bn0kw583vuid" path="res://enemies/dukun.tscn" id="7_272bh"]
-[ext_resource type="PackedScene" uid="uid://8it24v61hwp2" path="res://core/PlayerCore.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://8it24v61hwp2" path="res://core/player_core.tscn" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://bhcww8gh5xcgo" path="res://levels/assets/Map Background.png" id="10_efxa6"]
+[ext_resource type="Texture2D" uid="uid://bp4wjrro82ojx" path="res://levels/assets/Layout Map.png" id="11_dg77c"]
+[ext_resource type="Texture2D" uid="uid://bn57vvmf63y6q" path="res://levels/assets/Path.png" id="12_dg77c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(400, 400)
+size = Vector2(69.076614, 138.94687)
 
 [node name="Main" type="Node2D" unique_id=1858161533]
 script = ExtResource("1_0xm2m")
@@ -19,49 +23,95 @@ script = ExtResource("1_0xm2m")
 [node name="Waypoints" type="Node2D" parent="." unique_id=571092845]
 
 [node name="Marker2D" type="Marker2D" parent="Waypoints" unique_id=1804730378]
-position = Vector2(90, 540)
+position = Vector2(90, 900)
 
 [node name="Marker2D2" type="Marker2D" parent="Waypoints" unique_id=187985708]
-position = Vector2(600, 540)
+position = Vector2(420, 900)
 
 [node name="Marker2D3" type="Marker2D" parent="Waypoints" unique_id=28755775]
-position = Vector2(600, 240)
+position = Vector2(420, 240)
 
 [node name="Marker2D4" type="Marker2D" parent="Waypoints" unique_id=997863993]
-position = Vector2(1200, 240)
+position = Vector2(1500, 240)
 
-[node name="NormalEnemy" parent="." unique_id=1748458864 node_paths=PackedStringArray("waypoints_node") instance=ExtResource("1_ig7tw")]
-position = Vector2(0, 540)
+[node name="Vlogger" parent="." unique_id=1748458864 node_paths=PackedStringArray("waypoints_node") groups=["enemy"] instance=ExtResource("2_ycdy4")]
+z_index = 0
+position = Vector2(10, 900)
+waypoints_node = NodePath("../Waypoints")
+
+[node name="NormalEnemy" parent="." unique_id=765597039 node_paths=PackedStringArray("waypoints_node") instance=ExtResource("1_ig7tw")]
+z_index = 0
+position = Vector2(10, 900)
 waypoints_node = NodePath("../Waypoints")
 
 [node name="Dukun" parent="." unique_id=540262918 node_paths=PackedStringArray("waypoints_node") instance=ExtResource("7_272bh")]
-position = Vector2(-79, 540)
+z_index = 0
+position = Vector2(10, 900)
 waypoints_node = NodePath("../Waypoints")
 
 [node name="Areas" type="Node2D" parent="." unique_id=115886294]
 
 [node name="Area2D" type="Area2D" parent="Areas" unique_id=2310073 groups=["placement_area"]]
-position = Vector2(315, 265)
+position = Vector2(264, 684)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D" unique_id=273443622]
+scale = Vector2(1.1423659, 0.7060907)
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Area2D2" type="Area2D" parent="Areas" unique_id=1138543599 groups=["placement_area"]]
-position = Vector2(903, 516)
+[node name="Area2D2" type="Area2D" parent="Areas" unique_id=1570793791 groups=["placement_area"]]
+position = Vector2(266, 265)
+scale = Vector2(1, 1.44)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D2" unique_id=1885161976]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D2" unique_id=701969622]
+scale = Vector2(1.1423659, 0.7060907)
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Area2D3" type="Area2D" parent="Areas" unique_id=1133771355 groups=["placement_area"]]
-position = Vector2(1522, 510)
+[node name="Area2D3" type="Area2D" parent="Areas" unique_id=927582912 groups=["placement_area"]]
+position = Vector2(565, 387)
+scale = Vector2(1, 0.6000013)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D3" unique_id=1099705178]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D3" unique_id=525972999]
+scale = Vector2(1.1423659, 0.7060907)
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Area2D4" type="Area2D" parent="Areas" unique_id=1955722540 groups=["placement_area"]]
-position = Vector2(312, 836)
+[node name="Area2D4" type="Area2D" parent="Areas" unique_id=921566229 groups=["placement_area"]]
+position = Vector2(562, 627)
+scale = Vector2(1, 0.6000013)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D4" unique_id=948667540]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D4" unique_id=77503706]
+scale = Vector2(1.1423659, 0.7060907)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Area2D5" type="Area2D" parent="Areas" unique_id=2019881832 groups=["placement_area"]]
+position = Vector2(806, 394)
+scale = Vector2(1, 0.6000013)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D5" unique_id=118846501]
+scale = Vector2(1.1423659, 0.7060907)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Area2D6" type="Area2D" parent="Areas" unique_id=689162841 groups=["placement_area"]]
+position = Vector2(1111, 389)
+scale = Vector2(1, 0.6000013)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D6" unique_id=1794240597]
+scale = Vector2(1.1423659, 0.7060907)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Area2D7" type="Area2D" parent="Areas" unique_id=1980432294 groups=["placement_area"]]
+position = Vector2(423, 116)
+scale = Vector2(2.8, 0.4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D7" unique_id=1618144634]
+scale = Vector2(1.1423659, 0.7060907)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Area2D8" type="Area2D" parent="Areas" unique_id=1259089525 groups=["placement_area"]]
+position = Vector2(960.00006, 118)
+scale = Vector2(2.9, 0.4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D8" unique_id=1867734609]
+scale = Vector2(1.1423659, 0.7060907)
 shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="Pocong" parent="." unique_id=14323756 instance=ExtResource("3_h2yge")]
@@ -111,8 +161,30 @@ layout_mode = 2
 texture = ExtResource("6_7mycd")
 
 [node name="PlayerCore" parent="." unique_id=871273602 node_paths=PackedStringArray("game_over_menu") instance=ExtResource("8_5vw27")]
-position = Vector2(1199, 240)
+position = Vector2(1500, 240)
 game_over_menu = NodePath("../GameOverUI")
 
 [node name="GameOverUI" parent="." unique_id=60483366 instance=ExtResource("4_1bvp3")]
 visible = false
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1722140780]
+z_index = -1
+texture = ExtResource("10_efxa6")
+centered = false
+
+[node name="Background2" type="Sprite2D" parent="." unique_id=1053716023]
+z_index = -1
+texture = ExtResource("11_dg77c")
+centered = false
+
+[node name="Background3" type="Sprite2D" parent="." unique_id=1428046509]
+z_index = -1
+texture = ExtResource("12_dg77c")
+centered = false
+
+[connection signal="area_entered" from="Pocong" to="Pocong" method="_on_area_entered"]
+[connection signal="area_exited" from="Pocong" to="Pocong" method="_on_area_exited"]
+[connection signal="area_entered" from="Kuntilanak" to="Kuntilanak" method="_on_area_entered"]
+[connection signal="area_exited" from="Kuntilanak" to="Kuntilanak" method="_on_area_exited"]
+[connection signal="area_entered" from="Tuyul" to="Tuyul" method="_on_area_entered"]
+[connection signal="area_exited" from="Tuyul" to="Tuyul" method="_on_area_exited"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://8it24v61hwp2"]
 
 [ext_resource type="Script" uid="uid://dxmdaa4mkxlyt" path="res://core/player_core.gd" id="1_jvo0p"]
-[ext_resource type="Texture2D" uid="uid://bvkab8npf4mqw" path="res://icon.svg" id="2_0kxrg"]
+[ext_resource type="Texture2D" uid="uid://cm87ejijskxik" path="res://levels/assets/Red_Circle.png" id="2_d7bfy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8futu"]
 radius = 63.007935
@@ -11,7 +11,7 @@ collision_layer = 4
 script = ExtResource("1_jvo0p")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=649255779]
-texture = ExtResource("2_0kxrg")
+texture = ExtResource("2_d7bfy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=702021302]
 shape = SubResource("CircleShape2D_8futu")

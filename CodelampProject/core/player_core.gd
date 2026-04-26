@@ -12,7 +12,6 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	# Filter collisions to only process entities within the "enemy" group 
 	if body.is_in_group("enemy"):
-		
 		# Deduct health based on the specific enemy's damage stat
 		if "core_damage" in body:
 			current_hp -= body.core_damage

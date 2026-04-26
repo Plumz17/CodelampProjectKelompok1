@@ -28,3 +28,7 @@ func _notification(what):
 			c.pivot_offset = Vector2(c.size.x, c.size.y)
 			c.position = Vector2(-index * x_dev - c.size.x, -index * y_dev)
 			c.rotation_degrees = index * rot_dev
+
+
+func _on_button_pressed() -> void:
+	pass # Replace with function body.

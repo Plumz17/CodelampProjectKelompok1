@@ -39,7 +39,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 	# Proceed to the next waypoint upon reaching the distance threshold
-	if global_position.distance_to(next_waypoint) < 6.7:
+	if global_position.distance_to(next_waypoint) < 1.0:
 		current_waypoint_index += 1
 
 # Handles logic when the entity reaches the player's core

@@ -5,3 +5,7 @@
 
 [node name="Vlogger" unique_id=1748458864 instance=ExtResource("1_lqq0b")]
 script = ExtResource("2_lqq0b")
+max_fear_bar = 45
+speed = 70.0
+terror_energy = 20
+core_damage = 1
