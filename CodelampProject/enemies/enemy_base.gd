@@ -15,6 +15,7 @@ var current_waypoint_index: int = 0
 func _ready() -> void:
 	# Initialize base stats
 	current_fear_bar = max_fear_bar
+	add_to_group("enemy")
 	
 	# Populate waypoints array with global coordinates
 	if waypoints_node:
@@ -39,8 +40,13 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 	# Proceed to the next waypoint upon reaching the distance threshold
-	if global_position.distance_to(next_waypoint) < 1.0:
+	if global_position.distance_to(next_waypoint) < 6.7:
 		current_waypoint_index += 1
+
+func take_fear_damage(amount: float) -> void:
+	current_fear_bar -= int(amount)
+	if current_fear_bar <= 0:
+		queue_free()
 
 # Handles logic when the entity reaches the player's core
 func reach_core() -> void:
