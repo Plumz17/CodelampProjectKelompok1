@@ -1,12 +1,14 @@
 extends Area2D
 class_name GhostBase
 
+@export var id: String
 @export var fear_damage: float #Ghost Damage
 @export var attack_rate: float #Time between attacks
 @export var cost: int
 @export var cost_upgrade: int
 @export var cost_move: int
 @export var attack_range: float = 180.0
+@onready var placement_area_detector: Area2D = $PlacementAreaDetector
 
 var dragging : bool = false
 var drag_offset: Vector2 = Vector2.ZERO
@@ -22,6 +24,8 @@ var attack_cooldown: float = 0.0
 func _ready():
 	#Set original position
 	original_position = global_position
+	placement_area_detector.area_entered.connect(_on_area_entered)
+	placement_area_detector.area_exited.connect(_on_area_exited)
 
 func _process(delta: float) -> void:
 	#Move position with mouse if dragging
@@ -30,11 +34,12 @@ func _process(delta: float) -> void:
 		global_position = get_global_mouse_position() + drag_offset
 		# Change Color if can place/not
 		if can_place:
-			print("Can Place!")
 			modulate = Color.GREEN
 		else:
-			print("Can't Place!")
 			modulate = Color.RED
+		if Input.is_action_just_released("click"):
+			dragging = false
+			place_ghost()
 	else:
 		z_index = 0
 		modulate = Color.WHITE
@@ -48,25 +53,23 @@ func _process(delta: float) -> void:
 				target.take_fear_damage(fear_damage)
 				attack_cooldown = attack_rate
 
-func _input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
-	# Start Dragging
-	if not viewport.is_input_handled() and event.is_action_pressed("click"):
-		dragging = true
-		drag_offset = global_position - get_global_mouse_position()
-		print("Test")
+#func _input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
+	## Start Dragging
+	#if not viewport.is_input_handled() and event.is_action_pressed("click"):
+		#dragging = true
+		#drag_offset = global_position - get_global_mouse_position()
 	
-func _unhandled_input(event: InputEvent) -> void:
-	#Stop Dragging
-	if event.is_action_released("click"):
-		dragging = false
-		place_ghost()
-		print("Untest")
+#func _unhandled_input(event: InputEvent) -> void:
+	##Stop Dragging
+	#if dragging and event.is_action_released("click"):
+		#dragging = false
+		#place_ghost()
 
 #Tries to place ghost
 func place_ghost() -> void:
 	#If can't place return to default poisition
 	if !can_place:
-		global_position = original_position
+		queue_free()
 	else: #when placed, set default position as the current position
 		original_position = global_position
 		is_placed = true
@@ -85,10 +88,12 @@ func _find_target_in_range() -> EnemyBase:
 	return nearest
 
 func _on_area_entered(area: Area2D) -> void:
+	print("test")
 	if area is GhostBase and area.in_placement_area:
 		overlapping_ghost = true
 	if area.is_in_group("placement_area"):
 		in_placement_area = true
+	print("OG: %s, INPA: %s" % [overlapping_ghost, in_placement_area])
 	can_place = in_placement_area and not overlapping_ghost
 
 func _on_area_exited(area: Area2D) -> void:

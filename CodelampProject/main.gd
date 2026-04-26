@@ -165,3 +165,7 @@ func _on_enemy_removed() -> void:
 		emit_signal("wave_cleared", _current_wave_index)
 		print("Wave %d cleared!" % (_current_wave_index + 1))
 		_current_wave_index += 1
+
+
+func _on_kuntianak_button_pressed() -> void:
+	pass # Replace with function body.

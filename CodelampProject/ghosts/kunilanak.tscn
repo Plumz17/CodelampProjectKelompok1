@@ -5,8 +5,10 @@
 
 [node name="Kuntilanak" unique_id=14323756 instance=ExtResource("1_ebf0h")]
 script = ExtResource("2_ebf0h")
+id = "kuntilanak"
 fear_damage = 20.0
 attack_rate = 3.0
 cost = 60
 cost_upgrade = 70
 cost_move = 30
+attack_range = null
