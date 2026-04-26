@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bn57vvmf63y6q" path="res://levels/assets/Path.png" id="12_dg77c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(145, 400)
+size = Vector2(69.076614, 138.94687)
 
 [node name="Main" type="Node2D" unique_id=1858161533]
 script = ExtResource("1_0xm2m")
@@ -98,43 +98,19 @@ scale = Vector2(1, 0.6000013)
 scale = Vector2(1.1423659, 0.7060907)
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Area2D7" type="Area2D" parent="Areas" unique_id=864797075 groups=["placement_area"]]
-position = Vector2(1351, 386)
-scale = Vector2(1, 0.6000013)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D7" unique_id=2097675777]
-scale = Vector2(1.1423659, 0.7060907)
-shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Area2D8" type="Area2D" parent="Areas" unique_id=1168525882 groups=["placement_area"]]
-position = Vector2(1655, 267.00003)
-scale = Vector2(1.0657884, 1.4070257)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D8" unique_id=1867261227]
-scale = Vector2(1.1423659, 0.7060907)
-shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Area2D9" type="Area2D" parent="Areas" unique_id=1980432294 groups=["placement_area"]]
+[node name="Area2D7" type="Area2D" parent="Areas" unique_id=1980432294 groups=["placement_area"]]
 position = Vector2(423, 116)
 scale = Vector2(2.8, 0.4)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D9" unique_id=1618144634]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D7" unique_id=1618144634]
 scale = Vector2(1.1423659, 0.7060907)
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Area2D10" type="Area2D" parent="Areas" unique_id=1259089525 groups=["placement_area"]]
+[node name="Area2D8" type="Area2D" parent="Areas" unique_id=1259089525 groups=["placement_area"]]
 position = Vector2(960.00006, 118)
 scale = Vector2(2.9, 0.4)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D10" unique_id=1867734609]
-scale = Vector2(1.1423659, 0.7060907)
-shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Area2D11" type="Area2D" parent="Areas" unique_id=1185814796 groups=["placement_area"]]
-position = Vector2(1499.0001, 113)
-scale = Vector2(2.8, 0.4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D11" unique_id=499564636]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D8" unique_id=1867734609]
 scale = Vector2(1.1423659, 0.7060907)
 shape = SubResource("RectangleShape2D_h2yge")
 
@@ -205,3 +181,10 @@ centered = false
 z_index = -1
 texture = ExtResource("12_dg77c")
 centered = false
+
+[connection signal="area_entered" from="Pocong" to="Pocong" method="_on_area_entered"]
+[connection signal="area_exited" from="Pocong" to="Pocong" method="_on_area_exited"]
+[connection signal="area_entered" from="Kuntilanak" to="Kuntilanak" method="_on_area_entered"]
+[connection signal="area_exited" from="Kuntilanak" to="Kuntilanak" method="_on_area_exited"]
+[connection signal="area_entered" from="Tuyul" to="Tuyul" method="_on_area_entered"]
+[connection signal="area_exited" from="Tuyul" to="Tuyul" method="_on_area_exited"]

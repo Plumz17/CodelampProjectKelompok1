@@ -54,14 +54,14 @@ func place_ghost() -> void:
 	else: #when placed, set default position as the current position
 		original_position = global_position
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_placement_area_detector_area_entered(area: Area2D) -> void:
 	if area is GhostBase and area.in_placement_area:
 		overlapping_ghost = true
 	if area.is_in_group("placement_area"):
 		in_placement_area = true
 	can_place = in_placement_area and not overlapping_ghost
 
-func _on_area_exited(area: Area2D) -> void:
+func _on_placement_area_detector_area_exited(area: Area2D) -> void:
 	if area is GhostBase:
 		overlapping_ghost = false
 	if area.is_in_group("placement_area"):
