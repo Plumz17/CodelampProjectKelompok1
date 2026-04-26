@@ -53,11 +53,12 @@ func _process(delta: float) -> void:
 				target.take_fear_damage(fear_damage)
 				attack_cooldown = attack_rate
 
-#func _input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
-	## Start Dragging
-	#if not viewport.is_input_handled() and event.is_action_pressed("click"):
-		#dragging = true
-		#drag_offset = global_position - get_global_mouse_position()
+# Allow ghost to be dragged again after placing
+func _input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
+	# Start Dragging
+	if not viewport.is_input_handled() and event.is_action_pressed("click"):
+		dragging = true
+		drag_offset = global_position - get_global_mouse_position()
 	
 #func _unhandled_input(event: InputEvent) -> void:
 	##Stop Dragging
