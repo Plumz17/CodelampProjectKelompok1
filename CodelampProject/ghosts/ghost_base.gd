@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 		if attack_cooldown <= 0.0:
 			var target := _find_target_in_range()
 			if target:
-				target.take_fear_damage(fear_damage)
+				target.take_fear_damage(fear_damage, id) 
 				attack_cooldown = attack_rate
 
 # Allow ghost to be dragged again after placing

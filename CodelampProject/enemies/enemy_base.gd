@@ -11,6 +11,7 @@ class_name EnemyBase
 var waypoints: Array[Vector2] = []
 var current_fear_bar: int 
 var current_waypoint_index: int = 0
+var is_fleeing: bool = false
 
 func _ready() -> void:
 	# Initialize base stats
@@ -28,26 +29,45 @@ func _physics_process(_delta: float) -> void:
 		printerr("Error: Waypoints array is empty.")
 		return
 	
+	# Despawn the enemy if they successfully flee back to the start
+	if is_fleeing and current_waypoint_index < 0:
+		queue_free()
+		return
+	
 	# Check if the entity has reached the final destination
-	if current_waypoint_index >= waypoints.size():
+	if not is_fleeing and current_waypoint_index >= waypoints.size():
 		reach_core()
 		return
 	
 	# Calculate trajectory and move towards the active waypoint
 	var next_waypoint: Vector2 = waypoints[current_waypoint_index]
 	var direction: Vector2 = (next_waypoint - global_position).normalized()
-	velocity = direction * speed
+	
+	# Enemies run 50% faster when terrified
+	var current_speed: float = speed * 1.5 if is_fleeing else speed
+	
+	velocity = direction * current_speed
 	move_and_slide()
 	
 	# Proceed to the next waypoint upon reaching the distance threshold
 	if global_position.distance_to(next_waypoint) < 6.7:
-		current_waypoint_index += 1
+		if is_fleeing:
+			current_waypoint_index -= 1
+		else:
+			current_waypoint_index += 1
 
-func take_fear_damage(amount: float) -> void:
-	current_fear_bar -= int(amount)
+func take_fear_damage(amount: int, damage_source: String = "ghost") -> void:
+	if is_fleeing:
+		return 
+	current_fear_bar -= amount
+	print(name, " menerima ", amount, " Fear Damage dari ", damage_source, "! Sisa HP Mental: ", current_fear_bar)
 	if current_fear_bar <= 0:
-		queue_free()
-
+		trigger_flee()
+		
+func trigger_flee() -> void:
+	is_fleeing = true
+	current_fear_bar = 0
+	current_waypoint_index -= 1 # Turn around immediately
 # Handles logic when the entity reaches the player's core
 func reach_core() -> void:
 	# Apply final velocity to ensure collision overlap with Core's Area2D
