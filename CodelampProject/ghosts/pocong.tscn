@@ -24,22 +24,6 @@ region = Rect2(480, 0, 160, 160)
 atlas = ExtResource("3_anpga")
 region = Rect2(640, 0, 160, 160)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_31asv"]
-atlas = ExtResource("3_anpga")
-region = Rect2(0, 160, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fmxln"]
-atlas = ExtResource("3_anpga")
-region = Rect2(160, 160, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u82rm"]
-atlas = ExtResource("3_anpga")
-region = Rect2(320, 160, 160, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3bfx4"]
-atlas = ExtResource("3_anpga")
-region = Rect2(480, 160, 160, 160)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_mgf36"]
 animations = [{
 "frames": [{
@@ -57,22 +41,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v772i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_31asv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fmxln")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u82rm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3bfx4")
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_anpga"]
@@ -90,7 +62,7 @@ cost_move = 20
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1" unique_id=851828699]
 sprite_frames = SubResource("SpriteFrames_mgf36")
 autoplay = "default"
-frame_progress = 0.30980086
+frame_progress = 0.75013125
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2" unique_id=498860928]
 shape = SubResource("CircleShape2D_anpga")
