@@ -1,0 +1,294 @@
+[gd_scene format=3 uid="uid://dhppuy2u4xg6f"]
+
+[ext_resource type="Script" uid="uid://ds72uddlua0xh" path="res://ui/settings/settings_ui.gd" id="1_0gtvq"]
+[ext_resource type="LabelSettings" uid="uid://60glk3s4snjl" path="res://ui/settings/settings_label.tres" id="1_1ub5d"]
+[ext_resource type="Texture2D" uid="uid://bmcdeokplknci" path="res://ui/settings/Illustration4.png" id="1_5g22p"]
+[ext_resource type="Script" uid="uid://d4ea32ndro3b1" path="res://ui/settings/volume_slider.gd" id="1_mv08y"]
+[ext_resource type="StyleBox" uid="uid://b3thdx7g0hvku" path="res://ui/settings/slider_style_box_flat.tres" id="2_e04ht"]
+[ext_resource type="StyleBox" uid="uid://b1tclwatfy0ub" path="res://ui/settings/grabber_area_style_box_flat.tres" id="3_s7htu"]
+[ext_resource type="FontFile" uid="uid://dgusccip2oax1" path="res://ui/settings/KONSTANTINE.otf" id="4_e04ht"]
+[ext_resource type="Script" uid="uid://didtaoghchb2x" path="res://ui/settings/settings_button.gd" id="5_a5sxg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5g22p"]
+font = ExtResource("4_e04ht")
+font_size = 96
+
+[sub_resource type="ImageTexture" id="ImageTexture_s7htu"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_5g22p"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_0gtvq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s7htu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5g22p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0gtvq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_elvp6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gsjxa"]
+
+[sub_resource type="Animation" id="Animation_0gtvq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1000, -126)]
+}
+
+[sub_resource type="Animation" id="Animation_gsjxa"]
+resource_name = "hide"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.29730177),
+"update": 0,
+"values": [Vector2(0, -1126), Vector2(1000, -126)]
+}
+
+[sub_resource type="Animation" id="Animation_elvp6"]
+resource_name = "show"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.3186402, 1),
+"update": 0,
+"values": [Vector2(1000, -126), Vector2(0, -1126)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gsjxa"]
+_data = {
+&"RESET": SubResource("Animation_0gtvq"),
+&"hide": SubResource("Animation_gsjxa"),
+&"show": SubResource("Animation_elvp6")
+}
+
+[node name="SettingsUI" type="Control" unique_id=1159783693]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.9966347)
+script = ExtResource("1_0gtvq")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1682103495]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=688242249]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1000.0
+offset_top = -666.0
+offset_right = 4326.0
+offset_bottom = 2666.0
+grow_vertical = 2
+theme_override_constants/margin_left = 1100
+theme_override_constants/margin_top = 1100
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer" unique_id=1576695714]
+self_modulate = Color(0.13333334, 0.105882354, 0.105882354, 1)
+layout_mode = 2
+texture = ExtResource("1_5g22p")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect" unique_id=201814152]
+layout_mode = 1
+offset_right = 600.0
+offset_bottom = 769.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 180
+theme_override_constants/margin_top = 300
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer" unique_id=542939710]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1968289238]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer3" unique_id=77419212]
+layout_mode = 2
+theme_override_constants/margin_bottom = 30
+
+[node name="Label" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer3/MarginContainer2" unique_id=492829628]
+layout_mode = 2
+text = "Audio
+Settings"
+label_settings = SubResource("LabelSettings_5g22p")
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer3" unique_id=940176654]
+layout_mode = 2
+text = "SFX volume"
+label_settings = ExtResource("1_1ub5d")
+horizontal_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer3" unique_id=1193431957]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer3/MarginContainer" unique_id=1681097924]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer3/MarginContainer" unique_id=854011296]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 6
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer3/MarginContainer/MarginContainer" unique_id=263997788]
+custom_minimum_size = Vector2(480, 60)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("ImageTexture_s7htu")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_5g22p")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_0gtvq")
+theme_override_styles/slider = ExtResource("2_e04ht")
+theme_override_styles/grabber_area = ExtResource("3_s7htu")
+theme_override_styles/grabber_area_highlight = ExtResource("3_s7htu")
+max_value = 1.0
+step = 0.001
+value = 1.0
+script = ExtResource("1_mv08y")
+bus_name = "SFX"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=1632283664]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1204279957]
+layout_mode = 2
+text = "MUSIC volume"
+label_settings = ExtResource("1_1ub5d")
+horizontal_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=946892512]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer2/MarginContainer" unique_id=1667692527]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer2/MarginContainer" unique_id=533072583]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 6
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer2/MarginContainer/MarginContainer" unique_id=1877790064]
+custom_minimum_size = Vector2(480, 60)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("ImageTexture_s7htu")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_5g22p")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_0gtvq")
+theme_override_styles/slider = ExtResource("2_e04ht")
+theme_override_styles/grabber_area = ExtResource("3_s7htu")
+theme_override_styles/grabber_area_highlight = ExtResource("3_s7htu")
+max_value = 1.0
+step = 0.001
+value = 1.0
+script = ExtResource("1_mv08y")
+bus_name = "Master"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=48458009]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1724888576]
+layout_mode = 2
+text = "master volume"
+label_settings = ExtResource("1_1ub5d")
+horizontal_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=928336023]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer" unique_id=1070166126]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer" unique_id=1793152756]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 6
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/MarginContainer" unique_id=1899329681]
+custom_minimum_size = Vector2(480, 60)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("ImageTexture_s7htu")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_5g22p")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_0gtvq")
+theme_override_styles/slider = ExtResource("2_e04ht")
+theme_override_styles/grabber_area = ExtResource("3_s7htu")
+theme_override_styles/grabber_area_highlight = ExtResource("3_s7htu")
+max_value = 1.0
+step = 0.001
+value = 1.0
+script = ExtResource("1_mv08y")
+bus_name = "Master"
+
+[node name="MarginController" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer" unique_id=310534418]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+script = ExtResource("5_a5sxg")
+
+[node name="Control" type="Control" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/MarginController" unique_id=84927361]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/MarginController/Control" unique_id=1098339480]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -177.0
+offset_bottom = 80.0
+grow_horizontal = 0
+pivot_offset_ratio = Vector2(1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_e04ht")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s7htu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5g22p")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gtvq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_elvp6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gsjxa")
+text = "BACK"
+alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1890986468]
+libraries/ = SubResource("AnimationLibrary_gsjxa")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

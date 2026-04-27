@@ -1,21 +1,11 @@
 [gd_scene format=3 uid="uid://ejfan6r0hrg4"]
 
-[ext_resource type="Texture2D" uid="uid://bvkab8npf4mqw" path="res://icon.svg" id="1_1nlul"]
 [ext_resource type="Script" uid="uid://ec1cs4u5nwma" path="res://ghosts/ghost_base.gd" id="1_43t2x"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nlul"]
-size = Vector2(128, 128)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_43t2x"]
 
 [node name="GhostBase" type="Area2D" unique_id=14323756]
 script = ExtResource("1_43t2x")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1993292904]
-texture = ExtResource("1_1nlul")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=980447987]
-shape = SubResource("RectangleShape2D_1nlul")
 
 [node name="PlacementAreaDetector" type="Area2D" parent="." unique_id=1799227498]
 

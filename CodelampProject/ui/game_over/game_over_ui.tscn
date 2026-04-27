@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b6v8gf2l6mte4"]
 
-[ext_resource type="Script" uid="uid://06vjex45xyg3" path="res://ui/game_over_ui.gd" id="1_mh6r7"]
+[ext_resource type="Script" uid="uid://06vjex45xyg3" path="res://ui/game_over/game_over_ui.gd" id="1_mh6r7"]
 
 [node name="GameOverUI" type="CanvasLayer" unique_id=60483366]
 process_mode = 3

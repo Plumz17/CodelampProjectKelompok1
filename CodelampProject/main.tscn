@@ -1,19 +1,20 @@
-[gd_scene format=3 uid="uid://du2ylgr56qy8q"]
+[gd_scene format=3 uid="uid://bsnmbo85eivk8"]
 
 [ext_resource type="Script" uid="uid://dtojvdkhpdgfy" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://blbggmac62i3w" path="res://enemies/normal_enemy.tscn" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://b4bnfo5q5724h" path="res://waves/wave_data.gd" id="2_w48qg"]
+[ext_resource type="Script" uid="uid://dvscq130ujlss" path="res://waves/wave_data.gd" id="2_w48qg"]
 [ext_resource type="PackedScene" uid="uid://efog20aku1nm" path="res://enemies/vlogger.tscn" id="2_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://d4bpo58y615ua" path="res://ghosts/pocong.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://b6v8gf2l6mte4" path="res://ui/game_over_ui.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://b6v8gf2l6mte4" path="res://ui/game_over/game_over_ui.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c5g0up3st3y88" path="res://ghosts/kunilanak.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bcepqgjgi4ata" path="res://ghosts/tuyul.tscn" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bvkab8npf4mqw" path="res://icon.svg" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bn0kw583vuid" path="res://enemies/dukun.tscn" id="7_272bh"]
+[ext_resource type="Script" uid="uid://d3a1m6bojn7s7" path="res://ui/ghost_button/ghost_button.gd" id="9_w48qg"]
 [ext_resource type="Texture2D" uid="uid://bhcww8gh5xcgo" path="res://levels/assets/Map Background.png" id="10_efxa6"]
 [ext_resource type="Texture2D" uid="uid://bp4wjrro82ojx" path="res://levels/assets/Layout Map.png" id="11_dg77c"]
 [ext_resource type="Texture2D" uid="uid://bn57vvmf63y6q" path="res://levels/assets/Path.png" id="12_dg77c"]
-[ext_resource type="Texture2D" uid="uid://bc8fan0qk2t0l" path="res://tilemaps/Tilemap-3.png" id="14_w48qg"]
+[ext_resource type="Texture2D" uid="uid://cxtrh83iklia7" path="res://tilemaps/Tilemap-3.png" id="14_w48qg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(69.076614, 138.94687)
@@ -236,20 +237,12 @@ scale = Vector2(2.9, 0.4)
 scale = Vector2(1.1423659, 0.7060907)
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Pocong" parent="." unique_id=14323756 instance=ExtResource("3_h2yge")]
-position = Vector2(1500, 980)
+[node name="Ghosts" type="Node2D" parent="." unique_id=2022774454]
 
-[node name="Kuntilanak" parent="." unique_id=641528630 instance=ExtResource("4_lquwl")]
-position = Vector2(1660, 980)
+[node name="GhostSelectUI" type="CanvasLayer" parent="." unique_id=1929039526]
+layer = 0
 
-[node name="Tuyul" parent="." unique_id=1180455830 instance=ExtResource("5_7mycd")]
-position = Vector2(1820, 980)
-
-[node name="CanvasLayer (For UI Later)" type="CanvasLayer" parent="." unique_id=1929039526]
-layer = -1
-visible = false
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer (For UI Later)" unique_id=2081240262]
+[node name="MarginContainer" type="MarginContainer" parent="GhostSelectUI" unique_id=2081240262]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -264,23 +257,35 @@ size_flags_vertical = 8
 theme_override_constants/margin_right = 36
 theme_override_constants/margin_bottom = 36
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer (For UI Later)/MarginContainer" unique_id=198191497]
+[node name="HBoxContainer" type="HBoxContainer" parent="GhostSelectUI/MarginContainer" unique_id=198191497]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_constants/separation = 32
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer (For UI Later)/MarginContainer/HBoxContainer" unique_id=165425081]
+[node name="PocongButon" type="TextureButton" parent="GhostSelectUI/MarginContainer/HBoxContainer" unique_id=390455861 node_paths=PackedStringArray("ghost_group")]
 layout_mode = 2
-texture = ExtResource("6_7mycd")
+texture_normal = ExtResource("6_7mycd")
+script = ExtResource("9_w48qg")
+ghost_scene = ExtResource("3_h2yge")
+ghost_group = NodePath("../../../../Ghosts")
+ghost_type = "pocong"
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer (For UI Later)/MarginContainer/HBoxContainer" unique_id=223532933]
+[node name="KuntianakButton" type="TextureButton" parent="GhostSelectUI/MarginContainer/HBoxContainer" unique_id=1090439914 node_paths=PackedStringArray("ghost_group")]
 layout_mode = 2
-texture = ExtResource("6_7mycd")
+texture_normal = ExtResource("6_7mycd")
+script = ExtResource("9_w48qg")
+ghost_scene = ExtResource("4_lquwl")
+ghost_group = NodePath("../../../../Ghosts")
+ghost_type = "kuntilanak"
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer (For UI Later)/MarginContainer/HBoxContainer" unique_id=418884010]
+[node name="TuyulButton" type="TextureButton" parent="GhostSelectUI/MarginContainer/HBoxContainer" unique_id=1674326265 node_paths=PackedStringArray("ghost_group")]
 layout_mode = 2
-texture = ExtResource("6_7mycd")
+texture_normal = ExtResource("6_7mycd")
+script = ExtResource("9_w48qg")
+ghost_scene = ExtResource("5_7mycd")
+ghost_group = NodePath("../../../../Ghosts")
+ghost_type = "tuyul"
 
 [node name="GameOverUI" parent="." unique_id=60483366 instance=ExtResource("4_1bvp3")]
 visible = false
@@ -302,10 +307,3 @@ centered = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=197207079]
 tile_set = SubResource("TileSet_2cqfq")
-
-[connection signal="area_entered" from="Pocong" to="Pocong" method="_on_area_entered"]
-[connection signal="area_exited" from="Pocong" to="Pocong" method="_on_area_exited"]
-[connection signal="area_entered" from="Kuntilanak" to="Kuntilanak" method="_on_area_entered"]
-[connection signal="area_exited" from="Kuntilanak" to="Kuntilanak" method="_on_area_exited"]
-[connection signal="area_entered" from="Tuyul" to="Tuyul" method="_on_area_entered"]
-[connection signal="area_exited" from="Tuyul" to="Tuyul" method="_on_area_exited"]

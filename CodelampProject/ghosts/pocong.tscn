@@ -2,11 +2,67 @@
 
 [ext_resource type="PackedScene" uid="uid://ejfan6r0hrg4" path="res://ghosts/ghost_base.tscn" id="1_oehfi"]
 [ext_resource type="Script" uid="uid://jm6akn88aj34" path="res://ghosts/pocong.gd" id="2_anpga"]
+[ext_resource type="Texture2D" uid="uid://caa1vjtkwa5mk" path="res://ghosts/pocong_idle.png" id="3_anpga"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbbtx"]
+atlas = ExtResource("3_anpga")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vpd2"]
+atlas = ExtResource("3_anpga")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtf6g"]
+atlas = ExtResource("3_anpga")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5lgg"]
+atlas = ExtResource("3_anpga")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v772i"]
+atlas = ExtResource("3_anpga")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mgf36"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbbtx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vpd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtf6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5lgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v772i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_anpga"]
+radius = 25.079872
 
 [node name="Pocong" unique_id=14323756 instance=ExtResource("1_oehfi")]
 script = ExtResource("2_anpga")
+id = "pocong"
 fear_damage = 10.0
 attack_rate = 1.0
 cost = 40
 cost_upgrade = 50
 cost_move = 20
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1" unique_id=851828699]
+sprite_frames = SubResource("SpriteFrames_mgf36")
+autoplay = "default"
+frame_progress = 0.75013125
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2" unique_id=498860928]
+shape = SubResource("CircleShape2D_anpga")

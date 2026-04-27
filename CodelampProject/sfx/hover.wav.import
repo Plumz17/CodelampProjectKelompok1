@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bmpnn8fhiio4v"
-path="res://.godot/imported/Minimalist1.wav-cf0aceb3edbdfe3cbfde4ae1b9fe229b.sample"
+path="res://.godot/imported/hover.wav-ba46fb4ffa054b65f7f63954d7457226.sample"
 
 [deps]
 
-source_file="res://ui/title_screen/assets/Minimalist1.wav"
-dest_files=["res://.godot/imported/Minimalist1.wav-cf0aceb3edbdfe3cbfde4ae1b9fe229b.sample"]
+source_file="res://sfx/hover.wav"
+dest_files=["res://.godot/imported/hover.wav-ba46fb4ffa054b65f7f63954d7457226.sample"]
 
 [params]
 

@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://60glk3s4snjl"]
+
+[ext_resource type="FontFile" uid="uid://dgusccip2oax1" path="res://ui/settings/KONSTANTINE.otf" id="1_uuoc4"]
+
+[resource]
+font = ExtResource("1_uuoc4")
+font_size = 63

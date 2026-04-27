@@ -2,11 +2,22 @@
 
 [ext_resource type="PackedScene" uid="uid://ejfan6r0hrg4" path="res://ghosts/ghost_base.tscn" id="1_2odaq"]
 [ext_resource type="Script" uid="uid://cpvltpymu2l8w" path="res://ghosts/tuyul.gd" id="2_2odaq"]
+[ext_resource type="Texture2D" uid="uid://bvkab8npf4mqw" path="res://icon.svg" id="3_1g6xf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71ur0"]
+size = Vector2(128, 128)
 
 [node name="Tuyul" unique_id=14323756 instance=ExtResource("1_2odaq")]
 script = ExtResource("2_2odaq")
+id = "tuyul"
 fear_damage = 5.0
 attack_rate = 2.0
 cost = 30
 cost_upgrade = 40
 cost_move = 15
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=2067866297]
+texture = ExtResource("3_1g6xf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2" unique_id=1667082634]
+shape = SubResource("RectangleShape2D_71ur0")

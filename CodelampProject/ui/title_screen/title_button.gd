@@ -1,5 +1,5 @@
 extends Control
-class_name GameButton
+class_name TitleButton
 @export var action_id: String
 @export var button_group: Control
 @export var texture_button: TextureButton
@@ -7,7 +7,7 @@ class_name GameButton
 @export var height: float
 var original_y: float
 var original_scale: Vector2
-@onready var vfx: AudioStreamPlayer2D = $"../../../VFX"
+@onready var settings_ui: Control = $"../../../SettingsUI"
 
 func _ready() -> void:
 	original_y = button_group.position.y
@@ -34,7 +34,7 @@ func _on_button_hovered() -> void:
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(texture_button, "scale", original_scale * 1.1, 0.4)
-	vfx.play()
+	AudioManager.playsfx_hover()
 
 func _on_button_unhovered() -> void:
 	var tween = create_tween()
@@ -43,8 +43,11 @@ func _on_button_unhovered() -> void:
 	tween.tween_property(texture_button, "scale", original_scale, 0.4)
 
 func _on_button_pressed() -> void:
+	AudioManager.playsfx_click()
 	if action_id.to_lower() == "new_game":
 		get_tree().change_scene_to_file("res://main.tscn")
+	if action_id.to_lower() == "settings":
+		SignalHub.emit_show_settings()
 
 func setup_signals() -> void:
 	texture_button.pressed.connect(_on_button_pressed)
