@@ -60,6 +60,8 @@ func take_fear_damage(amount: int, damage_source: String = "ghost") -> void:
 	if is_fleeing:
 		return 
 	current_fear_bar -= amount
+	if current_fear_bar < 0:
+		current_fear_bar = 0
 	print(name, " menerima ", amount, " Fear Damage dari ", damage_source, "! Sisa HP Mental: ", current_fear_bar)
 	if current_fear_bar <= 0:
 		trigger_flee()
