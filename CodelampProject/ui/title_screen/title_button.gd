@@ -47,7 +47,7 @@ func _on_button_pressed() -> void:
 	if action_id.to_lower() == "new_game":
 		get_tree().change_scene_to_file("res://main.tscn")
 	if action_id.to_lower() == "settings":
-		settings_ui.show()
+		SignalHub.emit_show_settings()
 
 func setup_signals() -> void:
 	texture_button.pressed.connect(_on_button_pressed)

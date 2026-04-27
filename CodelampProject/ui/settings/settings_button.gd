@@ -4,7 +4,6 @@ class_name SettingsButton
 
 var original_y: float
 var original_scale: Vector2
-@onready var settings_ui: Control = $"../../../.."
 
 func _ready() -> void:
 	setup_signals()
@@ -26,7 +25,7 @@ func _on_button_unhovered() -> void:
 
 func _on_button_pressed() -> void:
 	AudioManager.playsfx_cancel()
-	settings_ui.hide()
-
+	SignalHub.emit_hide_settings()
+	
 func setup_signals() -> void:
 	pressed.connect(_on_button_pressed)
