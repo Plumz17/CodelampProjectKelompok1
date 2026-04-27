@@ -1,5 +1,5 @@
 extends Control
-class_name GameButton
+class_name TitleButton
 @export var action_id: String
 @export var button_group: Control
 @export var texture_button: TextureButton
@@ -7,7 +7,6 @@ class_name GameButton
 @export var height: float
 var original_y: float
 var original_scale: Vector2
-@onready var vfx: AudioStreamPlayer2D = $"../../../VFX"
 @onready var settings_ui: Control = $"../../../SettingsUI"
 
 func _ready() -> void:

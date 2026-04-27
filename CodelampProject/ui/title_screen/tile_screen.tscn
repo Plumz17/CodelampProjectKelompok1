@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dsw60kyxu3ksg" path="res://ui/title_screen/assets/settings.png" id="5_hb510"]
 [ext_resource type="Texture2D" uid="uid://bijxp07n4n4wk" path="res://ui/title_screen/assets/new_game.png" id="6_bylpc"]
 [ext_resource type="Texture2D" uid="uid://dgwsoatkyc6wf" path="res://ui/title_screen/assets/exit.png" id="6_vu3mf"]
-[ext_resource type="Script" uid="uid://dneiju2endwlt" path="res://ui/title_screen/button.gd" id="8_hb510"]
+[ext_resource type="Script" uid="uid://dneiju2endwlt" path="res://ui/title_screen/title_button.gd" id="8_hb510"]
 [ext_resource type="PackedScene" uid="uid://dhppuy2u4xg6f" path="res://ui/settings/settings_ui.tscn" id="10_3u542"]
 
 [node name="TileScreen" type="Control" unique_id=559802658]
