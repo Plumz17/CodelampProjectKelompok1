@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://bisdsx8652xl8" path="res://ui/title_screen/assets/Kuntilanak_bekgron.png" id="1_gfb1y"]
 [ext_resource type="Script" uid="uid://tpvfv6r1ldo4" path="res://ui/title_screen/hot_ghost.gd" id="3_vu3mf"]
 [ext_resource type="Script" uid="uid://bgmijky74ast4" path="res://ui/title_screen/diagonal_container.gd" id="3_xx1fv"]
-[ext_resource type="AudioStream" uid="uid://bmpnn8fhiio4v" path="res://ui/title_screen/assets/Minimalist1.wav" id="4_3u542"]
 [ext_resource type="Texture2D" uid="uid://b4ix8i3k0lb3v" path="res://ui/title_screen/assets/level_select.png" id="4_xx1fv"]
 [ext_resource type="Texture2D" uid="uid://dsw60kyxu3ksg" path="res://ui/title_screen/assets/settings.png" id="5_hb510"]
 [ext_resource type="Texture2D" uid="uid://bijxp07n4n4wk" path="res://ui/title_screen/assets/new_game.png" id="6_bylpc"]
 [ext_resource type="Texture2D" uid="uid://dgwsoatkyc6wf" path="res://ui/title_screen/assets/exit.png" id="6_vu3mf"]
 [ext_resource type="Script" uid="uid://dneiju2endwlt" path="res://ui/title_screen/button.gd" id="8_hb510"]
+[ext_resource type="PackedScene" uid="uid://dhppuy2u4xg6f" path="res://ui/settings/settings_ui.tscn" id="10_3u542"]
 
 [node name="TileScreen" type="Control" unique_id=559802658]
 layout_mode = 3
@@ -46,9 +46,6 @@ pivot_offset = Vector2(1920, 540)
 texture = ExtResource("1_gfb1y")
 script = ExtResource("3_vu3mf")
 
-[node name="VFX" type="AudioStreamPlayer2D" parent="." unique_id=1235949056]
-stream = ExtResource("4_3u542")
-
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1216911880]
 layout_mode = 1
 anchors_preset = 1
@@ -72,7 +69,7 @@ metadata/_custom_type_script = "uid://bgmijky74ast4"
 layout_direction = 3
 layout_mode = 2
 script = ExtResource("8_hb510")
-action_id = "new_game"
+action_id = "exit"
 button_group = NodePath("Group")
 texture_button = NodePath("Group/TextureButton")
 speed = 1.0
@@ -103,7 +100,7 @@ texture = ExtResource("6_vu3mf")
 layout_direction = 3
 layout_mode = 2
 script = ExtResource("8_hb510")
-action_id = "new_game"
+action_id = "settings"
 button_group = NodePath("Group")
 texture_button = NodePath("Group/TextureButton")
 speed = 1.0
@@ -134,7 +131,7 @@ texture = ExtResource("5_hb510")
 layout_direction = 3
 layout_mode = 2
 script = ExtResource("8_hb510")
-action_id = "new_game"
+action_id = "level_select"
 button_group = NodePath("Group")
 texture_button = NodePath("Group/TextureButton")
 speed = 1.0
@@ -191,3 +188,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 texture = ExtResource("6_bylpc")
+
+[node name="SettingsUI" parent="." unique_id=1159783693 instance=ExtResource("10_3u542")]
+visible = false
+layout_mode = 1

@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dhppuy2u4xg6f"]
+
+[ext_resource type="LabelSettings" uid="uid://60glk3s4snjl" path="res://ui/settings/settings_label.tres" id="1_1ub5d"]
+[ext_resource type="Script" uid="uid://d4ea32ndro3b1" path="res://ui/settings/volume_slider.gd" id="1_mv08y"]
+[ext_resource type="StyleBox" uid="uid://b3thdx7g0hvku" path="res://ui/settings/slider_style_box_flat.tres" id="2_e04ht"]
+[ext_resource type="FontFile" uid="uid://dgusccip2oax1" path="res://ui/settings/KONSTANTINE.otf" id="4_e04ht"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e04ht"]
+
+[node name="SettingsUI" type="Control" unique_id=1159783693]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1682103495]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5764706)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=427448669]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=542939710]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1672435210]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1724888576]
+layout_mode = 2
+text = "master volume"
+label_settings = ExtResource("1_1ub5d")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=928336023]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer" unique_id=1070166126]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/CenterContainer" unique_id=1899329681]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_styles/slider = ExtResource("2_e04ht")
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_mv08y")
+bus_name = "Master"
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer" unique_id=528076683]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer" unique_id=1098339480]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_e04ht")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_e04ht")
+text = "BACK"

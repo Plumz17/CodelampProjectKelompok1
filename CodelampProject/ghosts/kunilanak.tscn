@@ -2,6 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://ejfan6r0hrg4" path="res://ghosts/ghost_base.tscn" id="1_ebf0h"]
 [ext_resource type="Script" uid="uid://cksdp2ytnmlpq" path="res://ghosts/kunilanak.gd" id="2_ebf0h"]
+[ext_resource type="Texture2D" uid="uid://bvkab8npf4mqw" path="res://icon.svg" id="3_a8712"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgcg0"]
+size = Vector2(128, 128)
 
 [node name="Kuntilanak" unique_id=14323756 instance=ExtResource("1_ebf0h")]
 script = ExtResource("2_ebf0h")
@@ -12,3 +16,9 @@ cost = 60
 cost_upgrade = 70
 cost_move = 30
 attack_range = null
+
+[node name="Sprite2D" type="Sprite2D" parent="PlacementAreaDetector" parent_id_path=PackedInt32Array(1799227498) index="1" unique_id=115866263]
+texture = ExtResource("3_a8712")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1" unique_id=1259623893]
+shape = SubResource("RectangleShape2D_lgcg0")
