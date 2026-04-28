@@ -2,19 +2,28 @@
 
 [ext_resource type="Script" uid="uid://dtojvdkhpdgfy" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://blbggmac62i3w" path="res://enemies/normal_enemy.tscn" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://dvscq130ujlss" path="res://waves/wave_data.gd" id="2_w48qg"]
-[ext_resource type="PackedScene" uid="uid://efog20aku1nm" path="res://enemies/vlogger.tscn" id="2_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://bpulsf7rc8uj" path="res://levels/level_1.tscn" id="2_2cqfq"]
+[ext_resource type="Script" uid="uid://bdafudmnkq00d" path="res://waves/wave_data.gd" id="2_w48qg"]
 [ext_resource type="PackedScene" uid="uid://d4bpo58y615ua" path="res://ghosts/pocong.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b6v8gf2l6mte4" path="res://ui/game_over/game_over_ui.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c5g0up3st3y88" path="res://ghosts/kunilanak.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bcepqgjgi4ata" path="res://ghosts/tuyul.tscn" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bvkab8npf4mqw" path="res://icon.svg" id="6_7mycd"]
-[ext_resource type="PackedScene" uid="uid://bn0kw583vuid" path="res://enemies/dukun.tscn" id="7_272bh"]
 [ext_resource type="Script" uid="uid://d3a1m6bojn7s7" path="res://ui/ghost_button/ghost_button.gd" id="9_w48qg"]
 [ext_resource type="Texture2D" uid="uid://bhcww8gh5xcgo" path="res://levels/assets/Map Background.png" id="10_efxa6"]
 [ext_resource type="Texture2D" uid="uid://bp4wjrro82ojx" path="res://levels/assets/Layout Map.png" id="11_dg77c"]
 [ext_resource type="Texture2D" uid="uid://bn57vvmf63y6q" path="res://levels/assets/Path.png" id="12_dg77c"]
 [ext_resource type="Texture2D" uid="uid://cxtrh83iklia7" path="res://tilemaps/Tilemap-3.png" id="14_w48qg"]
+
+[sub_resource type="Resource" id="Resource_vivmo"]
+script = ExtResource("2_w48qg")
+enemy_scenes = Array[PackedScene]([ExtResource("1_ig7tw")])
+enemy_counts = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_2cqfq"]
+script = ExtResource("2_w48qg")
+enemy_scenes = Array[PackedScene]([ExtResource("1_ig7tw")])
+enemy_counts = Array[int]([1])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(69.076614, 138.94687)
@@ -129,7 +138,8 @@ sources/0 = SubResource("TileSetAtlasSource_w48qg")
 
 [node name="Main" type="Node2D" unique_id=1858161533]
 script = ExtResource("1_0xm2m")
-waves = Array[ExtResource("2_w48qg")]([null, null])
+level_scene = ExtResource("2_2cqfq")
+waves = Array[ExtResource("2_w48qg")]([SubResource("Resource_vivmo"), SubResource("Resource_2cqfq")])
 
 [node name="WaveButton" type="Button" parent="." unique_id=1963204510]
 offset_left = 24.0
@@ -137,40 +147,6 @@ offset_top = 24.0
 offset_right = 168.0
 offset_bottom = 55.0
 text = "Start Wave 1"
-
-[node name="Waypoints" type="Node2D" parent="." unique_id=571092845]
-
-[node name="Marker2D" type="Marker2D" parent="Waypoints" unique_id=1804730378]
-position = Vector2(90, 900)
-
-[node name="Marker2D2" type="Marker2D" parent="Waypoints" unique_id=187985708]
-position = Vector2(420, 900)
-
-[node name="Marker2D3" type="Marker2D" parent="Waypoints" unique_id=28755775]
-position = Vector2(420, 240)
-
-[node name="Marker2D4" type="Marker2D" parent="Waypoints" unique_id=997863993]
-position = Vector2(1500, 240)
-
-[node name="Vlogger" parent="." unique_id=1748458864 node_paths=PackedStringArray("waypoints_node") groups=["enemy"] instance=ExtResource("2_ycdy4")]
-z_index = 0
-position = Vector2(10, 900)
-max_fear_bar = 30
-speed = 80.0
-waypoints_node = NodePath("../Waypoints")
-
-[node name="NormalEnemy" parent="." unique_id=765597039 node_paths=PackedStringArray("waypoints_node") instance=ExtResource("1_ig7tw")]
-z_index = 0
-position = Vector2(10, 900)
-speed = 70.0
-waypoints_node = NodePath("../Waypoints")
-
-[node name="Dukun" parent="." unique_id=540262918 node_paths=PackedStringArray("waypoints_node") instance=ExtResource("7_272bh")]
-z_index = 0
-position = Vector2(10, 900)
-max_fear_bar = 50
-speed = 90.0
-waypoints_node = NodePath("../Waypoints")
 
 [node name="Areas" type="Node2D" parent="." unique_id=115886294]
 
