@@ -14,7 +14,6 @@ var _wave_button: Button
 @export var waves: Array[WaveData] = []
 
 var _current_wave_index: int = 0
-var _enemies_to_spawn: Array = []
 var _spawn_queue: Array = []
 var _active_enemies: int = 0
 var _wave_in_progress: bool = false
@@ -130,9 +129,14 @@ func start_next_wave() -> void:
 # ── Build flat spawn queue from wave enemy list ───────────────
 func _build_spawn_queue(wave_data: WaveData) -> void:
 	_spawn_queue.clear()
-	for entry in wave_data.enemies:
-		for i in entry.count:
-			_spawn_queue.append(entry.scene)
+	var pair_count := mini(wave_data.enemy_scenes.size(), wave_data.enemy_counts.size())
+	for index in range(pair_count):
+		var enemy_scene: PackedScene = wave_data.enemy_scenes[index]
+		var count: int = wave_data.enemy_counts[index]
+		if not enemy_scene or count <= 0:
+			continue
+		for i in range(count):
+			_spawn_queue.append(enemy_scene)
 
 # ── Spawn one enemy per timer tick ───────────────────────────
 func _on_spawn_timer_timeout() -> void:
@@ -147,10 +151,8 @@ func _on_spawn_timer_timeout() -> void:
 	var enemy = enemy_scene.instantiate()
 	enemy.position = _spawn_point.global_position
 
-	# Assign waypoints if the enemy uses them
-	if enemy.has_method("set") and _waypoints_node:
-		if "waypoints_node" in enemy:
-			enemy.waypoints_node = _waypoints_node
+	if enemy is EnemyBase and _waypoints_node:
+		enemy.waypoints_node = _waypoints_node
 
 	_active_enemies += 1
 	enemy.tree_exited.connect(_on_enemy_removed)
@@ -165,6 +167,8 @@ func _on_enemy_removed() -> void:
 		emit_signal("wave_cleared", _current_wave_index)
 		print("Wave %d cleared!" % (_current_wave_index + 1))
 		_current_wave_index += 1
+		_is_preparing = true
+		_update_wave_button()
 
 
 func _on_kuntianak_button_pressed() -> void:

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bpulsf7rc8uj"]
+
+[node name="Level1" type="Node2D" unique_id=1850092077]
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1976489387]
+position = Vector2(10, 895)
+
+[node name="Waypoints" type="Node2D" parent="." unique_id=216890234]
+
+[node name="Marker2D" type="Marker2D" parent="Waypoints" unique_id=773251265]
+position = Vector2(90, 900)
+
+[node name="Marker2D2" type="Marker2D" parent="Waypoints" unique_id=65044327]
+position = Vector2(420, 900)
+
+[node name="Marker2D3" type="Marker2D" parent="Waypoints" unique_id=702459908]
+position = Vector2(420, 240)
+
+[node name="Marker2D4" type="Marker2D" parent="Waypoints" unique_id=1332237519]
+position = Vector2(1500, 240)
