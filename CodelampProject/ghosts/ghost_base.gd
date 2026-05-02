@@ -14,6 +14,7 @@ var dragging : bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 var original_position: Vector2
 var last_valid_position: Vector2
+var disable_timer: float = 0.0 # ghost stun
 
 # Some booleans to check whether ghost can be placed
 var can_place: bool = false
@@ -48,6 +49,17 @@ func _process(delta: float) -> void:
 		modulate = Color.WHITE
 	
 	if is_placed:
+		
+		if disable_timer > 0.0:
+			disable_timer -= delta
+			# Visual indicator for stun (pale blue tint)
+			modulate = Color(0.5, 0.5, 1.0) 
+			# Skip attack logic while stunned
+			return 
+		else:
+			# Reset color to normal
+			modulate = Color.WHITE
+		
 		if attack_cooldown > 0.0:
 			attack_cooldown -= delta
 		if attack_cooldown <= 0.0:
@@ -109,3 +121,7 @@ func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("placement_area"):
 		in_placement_area = false
 	can_place = in_placement_area and not overlapping_ghost
+	
+# stun effect to the ghost for a specific duration
+func apply_disable(duration: float) -> void:
+	disable_timer = duration

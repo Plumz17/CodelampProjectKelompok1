@@ -50,7 +50,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_anpga"]
 radius = 25.079872
 
-[node name="Pocong" unique_id=14323756 instance=ExtResource("1_oehfi")]
+[node name="Pocong" unique_id=14323756 groups=["ghost"] instance=ExtResource("1_oehfi")]
 script = ExtResource("2_anpga")
 id = "pocong"
 fear_damage = 10.0
