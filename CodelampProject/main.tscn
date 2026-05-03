@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bp4wjrro82ojx" path="res://levels/assets/Layout Map.png" id="11_dg77c"]
 [ext_resource type="Texture2D" uid="uid://bn57vvmf63y6q" path="res://levels/assets/Path.png" id="12_dg77c"]
 [ext_resource type="Texture2D" uid="uid://cxtrh83iklia7" path="res://tilemaps/Tilemap-3.png" id="14_w48qg"]
+[ext_resource type="PackedScene" path="res://ui/top_hud/top_hud.tscn" id="15_hud01"]
 
 [sub_resource type="Resource" id="Resource_vivmo"]
 script = ExtResource("2_w48qg")
@@ -141,12 +142,7 @@ script = ExtResource("1_0xm2m")
 level_scene = ExtResource("2_2cqfq")
 waves = Array[ExtResource("2_w48qg")]([SubResource("Resource_vivmo"), SubResource("Resource_2cqfq")])
 
-[node name="WaveButton" type="Button" parent="." unique_id=1963204510]
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 168.0
-offset_bottom = 55.0
-text = "Start Wave 1"
+[node name="TopHUD" parent="." unique_id=2028899001 instance=ExtResource("15_hud01")]
 
 [node name="Areas" type="Node2D" parent="." unique_id=115886294]
 
