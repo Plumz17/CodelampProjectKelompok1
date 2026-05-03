@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	else:
 		cast_disable_skill()
 
-# Overrides the base class function to apply Dukun's tank passive
+# Overrides the base class function to apply Dukun's passive
 func take_fear_damage(amount: int, damage_source: String = "ghost") -> void:
 	# Passive: Halve ALL incoming fear damage (from ghosts or rooms)
 	amount = int(amount / 2.0)
