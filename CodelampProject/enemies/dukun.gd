@@ -4,6 +4,7 @@ class_name Dukun
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#Test the inheritence (Remove later)
+	name = "Dukun"
 	super._ready()
 	print("Fear: %s, Speed: %s, Terror: %s" % [max_fear_bar, speed, terror_energy])
 

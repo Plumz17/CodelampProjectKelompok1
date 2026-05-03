@@ -3,6 +3,8 @@ class_name Vlogger
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	name = "vlogger"
 	# Call the parent class _ready() to initialize base stats and waypoints
 	super._ready()
 	
