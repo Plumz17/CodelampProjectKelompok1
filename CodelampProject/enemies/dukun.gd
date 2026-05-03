@@ -4,6 +4,7 @@ class_name Dukun
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#Test the inheritence (Remove later)
+	name = "Dukun"
 	super._ready()
 	print("Fear: %s, Speed: %s, Terror: %s" % [max_fear_bar, speed, terror_energy])
 
@@ -11,7 +12,6 @@ func _ready() -> void:
 var skill_cooldown_timer: float = 0.0
 
 func _process(delta: float) -> void:
-	# Do not cast skills if the Dukun is fleeing
 	if is_fleeing: 
 		return 
 		
@@ -21,7 +21,6 @@ func _process(delta: float) -> void:
 	else:
 		cast_disable_skill()
 
-# Overrides the base class function to apply Dukun's tank passive
 func take_fear_damage(amount: int, damage_source: String = "ghost") -> void:
 	# Passive: Halve ALL incoming fear damage (from ghosts or rooms)
 	amount = int(amount / 2.0)
@@ -44,14 +43,11 @@ func cast_disable_skill() -> void:
 				nearest_ghost = node
 				nearest_distance = distance
 				
-	#Only reset the cooldown if a ghost is successfully found and stunned
+	#reset the cooldown if a ghost is successfully found and stunned
 	if nearest_ghost and nearest_ghost.has_method("apply_disable"):
 		nearest_ghost.apply_disable(2.0)
 		print(name, " casted a 2-second stun on: ", nearest_ghost.name)
 		
-		# Reset cooldown to 20 seconds ONLY if the action is successful
 		skill_cooldown_timer = 20.0 
 	else:
-		# If no ghost is found, check again in a short time (e.g., 0.5 seconds)
-		# This keeps the Dukun on "standby" until a target enters its range
 		skill_cooldown_timer = 0.5

@@ -24,6 +24,8 @@ var is_placed: bool = false
 var attack_cooldown: float = 0.0
 
 func _ready():
+	
+	add_to_group("ghost")
 	#Set original position
 	original_position = global_position
 	last_valid_position = global_position
