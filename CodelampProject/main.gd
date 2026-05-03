@@ -8,6 +8,8 @@ var _spawn_point: Marker2D
 var _enemy_container: Node2D
 var _level_container: Node2D
 var _wave_button: Button
+var _terror_energy_label: Label
+var _terror_energy: int = 0
 
 # ── Wave Data ──────────────────────────────────────────────────
 
@@ -31,7 +33,12 @@ func _ready() -> void:
 	_enemy_container = get_node_or_null("EnemyContainer") as Node2D
 	_level_container = get_node_or_null("LevelContainer") as Node2D
 	_spawn_timer = get_node_or_null("SpawnTimer") as Timer
-	_wave_button = get_node_or_null("WaveButton") as Button
+	_wave_button = get_node_or_null("TopHUD/WaveButton") as Button
+	if not _wave_button:
+		_wave_button = find_child("WaveButton", true, false) as Button
+	_terror_energy_label = get_node_or_null("TopHUD/TerrorEnergyLabel") as Label
+	if not _terror_energy_label:
+		_terror_energy_label = find_child("TerrorEnergyLabel", true, false) as Label
 
 	if not _enemy_container:
 		_enemy_container = Node2D.new()
@@ -49,11 +56,27 @@ func _ready() -> void:
 		add_child(_spawn_timer)
 
 	if not _wave_button:
-		_wave_button = Button.new()
+		_wave_button = load("res://ui/top_hud/wave_button.gd").new()
 		_wave_button.name = "WaveButton"
 		_wave_button.text = "Start Wave 1"
 		_wave_button.position = Vector2(24, 24)
-		add_child(_wave_button)
+		var top_hud := get_node_or_null("TopHUD") as CanvasLayer
+		if not top_hud:
+			top_hud = CanvasLayer.new()
+			top_hud.name = "TopHUD"
+			add_child(top_hud)
+		top_hud.add_child(_wave_button)
+
+	if not _terror_energy_label:
+		_terror_energy_label = load("res://ui/top_hud/energi_teror.gd").new()
+		_terror_energy_label.name = "TerrorEnergyLabel"
+		_terror_energy_label.position = Vector2(190, 30)
+		var top_hud_for_label := get_node_or_null("TopHUD") as CanvasLayer
+		if not top_hud_for_label:
+			top_hud_for_label = CanvasLayer.new()
+			top_hud_for_label.name = "TopHUD"
+			add_child(top_hud_for_label)
+		top_hud_for_label.add_child(_terror_energy_label)
 
 	# Load level scene
 	if level_scene:
@@ -61,14 +84,17 @@ func _ready() -> void:
 		_level_container.add_child(level)
 		_waypoints_node = level.get_node_or_null("Waypoints")
 		_spawn_point = level.get_node_or_null("SpawnPoint")
+		_terror_energy = int(level.get_meta("initial_terror_energy", 0))
 	else:
 		printerr("main.gd: No level_scene assigned!")
 
 	_spawn_timer.one_shot = false
 	if not _spawn_timer.timeout.is_connected(_on_spawn_timer_timeout):
 		_spawn_timer.timeout.connect(_on_spawn_timer_timeout)
-	if not _wave_button.pressed.is_connected(_on_wave_button_pressed):
-		_wave_button.pressed.connect(_on_wave_button_pressed)
+	if _wave_button and _wave_button.has_signal("start_requested"):
+		if not _wave_button.is_connected("start_requested", Callable(self, "_on_wave_button_pressed")):
+			_wave_button.connect("start_requested", Callable(self, "_on_wave_button_pressed"))
+	_update_terror_energy_label()
 	_update_wave_button()
 
 func _on_wave_button_pressed() -> void:
@@ -86,18 +112,9 @@ func _on_wave_button_pressed() -> void:
 func _update_wave_button() -> void:
 	if not _wave_button:
 		return
-	if _wave_in_progress:
-		_wave_button.disabled = true
-		_wave_button.text = "Wave %d Running" % (_current_wave_index + 1)
-		return
-	_wave_button.disabled = false
-	if _current_wave_index >= waves.size():
-		_wave_button.text = "All Waves Cleared"
-		return
-	if _is_preparing:
-		_wave_button.text = "Start Wave %d" % (_current_wave_index + 1)
-	else:
-		_wave_button.text = "Prepare Wave %d" % (_current_wave_index + 1)
+	if _wave_button.has_method("update_wave_state"):
+		_wave_button.call("update_wave_state", _current_wave_index, waves.size(), _wave_in_progress, _is_preparing)
+	_update_terror_energy_label()
 
 # ── Public: call this from a UI button ────────────────────────
 func start_next_wave() -> void:
@@ -151,12 +168,34 @@ func _on_spawn_timer_timeout() -> void:
 	var enemy = enemy_scene.instantiate()
 	enemy.position = _spawn_point.global_position
 
-	if enemy is EnemyBase and _waypoints_node:
-		enemy.waypoints_node = _waypoints_node
+	if enemy is EnemyBase:
+		if _waypoints_node:
+			enemy.waypoints_node = _waypoints_node
+		if not enemy.defeated.is_connected(_on_enemy_defeated):
+			enemy.defeated.connect(_on_enemy_defeated)
 
 	_active_enemies += 1
 	enemy.tree_exited.connect(_on_enemy_removed)
 	_enemy_container.call_deferred("add_child", enemy)
+
+func _on_enemy_defeated(terror_energy_amount: int) -> void:
+	_terror_energy += max(terror_energy_amount, 0)
+	_update_terror_energy_label()
+
+func try_spend_terror_energy(amount: int) -> bool:
+	if amount <= 0:
+		return true
+	if _terror_energy < amount:
+		return false
+	_terror_energy -= amount
+	_update_terror_energy_label()
+	return true
+
+func _update_terror_energy_label() -> void:
+	if not _terror_energy_label:
+		return
+	if _terror_energy_label.has_method("set_energi_teror"):
+		_terror_energy_label.call("set_energi_teror", _terror_energy)
 
 # ── Called when an enemy is removed from the scene ───────────
 func _on_enemy_removed() -> void:
