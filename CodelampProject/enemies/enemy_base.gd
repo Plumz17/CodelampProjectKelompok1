@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name EnemyBase
 
+signal defeated(terror_energy_amount: int)
+
 @export var max_fear_bar: int # Maximum health/fear capacity
 @export var speed: float # Movement speed modifier
 @export var terror_energy: int # Resource dropped upon defeat
@@ -12,6 +14,7 @@ var waypoints: Array[Vector2] = []
 var current_fear_bar: int 
 var current_waypoint_index: int = 0
 var is_fleeing: bool = false
+var _defeat_reward_emitted: bool = false
 
 func _ready() -> void:
 	# Initialize base stats
@@ -67,6 +70,9 @@ func take_fear_damage(amount: int, damage_source: String = "ghost") -> void:
 		trigger_flee()
 		
 func trigger_flee() -> void:
+	if not _defeat_reward_emitted:
+		_defeat_reward_emitted = true
+		defeated.emit(terror_energy)
 	is_fleeing = true
 	current_fear_bar = 0
 	current_waypoint_index -= 1 # Turn around immediately

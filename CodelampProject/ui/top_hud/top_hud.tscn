@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/top_hud/wave_button.gd" id="1_wave"]
+[ext_resource type="Script" path="res://ui/top_hud/energi_teror.gd" id="2_energy"]
+
+[node name="TopHUD" type="CanvasLayer"]
+layer = 1
+
+[node name="WaveButton" type="Button" parent="."]
+script = ExtResource("1_wave")
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 168.0
+offset_bottom = 55.0
+text = "Start Wave 1"
+
+[node name="TerrorEnergyLabel" type="Label" parent="."]
+script = ExtResource("2_energy")
+offset_left = 186.0
+offset_top = 30.0
+offset_right = 353.0
+offset_bottom = 53.0
+text = "Energi Teror: 0"

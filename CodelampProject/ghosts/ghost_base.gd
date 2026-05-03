@@ -1,6 +1,6 @@
 extends Area2D
 class_name GhostBase
-
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @export var id: String
 @export var fear_damage: float #Ghost Damage
 @export var attack_rate: float #Time between attacks
@@ -65,8 +65,14 @@ func _process(delta: float) -> void:
 		if attack_cooldown <= 0.0:
 			var target := _find_target_in_range()
 			if target:
-				target.take_fear_damage(fear_damage, id) 
+				target.take_fear_damage(fear_damage, id)
 				attack_cooldown = attack_rate
+				_play_attack_animation()
+			else:
+				# No target found, stop attack animation and return to idle
+				if anim_sprite.animation == "attack" and anim_sprite.is_playing():
+					anim_sprite.stop()
+					anim_sprite.play("idle")
 
 # Allow ghost to be dragged again after placing
 func _input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
@@ -91,6 +97,7 @@ func place_ghost() -> void:
 			queue_free()
 	else: 
 		is_placed = true
+		anim_sprite.play("idle")
 		last_valid_position = global_position
 		attack_cooldown = 0.0
 
@@ -125,3 +132,9 @@ func _on_area_exited(area: Area2D) -> void:
 # stun effect to the ghost for a specific duration
 func apply_disable(duration: float) -> void:
 	disable_timer = duration
+
+func _play_attack_animation() -> void: #inherit attack animation masing2 hantu
+    pass
+
+func _on_attack_animation_finished() -> void: #inherit stop animasi saat musuh defeated
+    pass
