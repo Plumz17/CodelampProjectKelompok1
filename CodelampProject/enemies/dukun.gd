@@ -44,10 +44,14 @@ func cast_disable_skill() -> void:
 				nearest_ghost = node
 				nearest_distance = distance
 				
-	# If a valid target is found, apply a 2-second stun
+	#Only reset the cooldown if a ghost is successfully found and stunned
 	if nearest_ghost and nearest_ghost.has_method("apply_disable"):
 		nearest_ghost.apply_disable(2.0)
 		print(name, " casted a 2-second stun on: ", nearest_ghost.name)
-	
-	# Reset the skill cooldown to 20 seconds
-	skill_cooldown_timer = 20.0
+		
+		# Reset cooldown to 20 seconds ONLY if the action is successful
+		skill_cooldown_timer = 20.0 
+	else:
+		# If no ghost is found, check again in a short time (e.g., 0.5 seconds)
+		# This keeps the Dukun on "standby" until a target enters its range
+		skill_cooldown_timer = 0.5
