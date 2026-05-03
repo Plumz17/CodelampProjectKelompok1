@@ -136,7 +136,7 @@ func apply_disable(duration: float) -> void:
 	disable_timer = duration
 
 func _play_attack_animation() -> void: #inherit attack animation masing2 hantu
-    pass
+	pass
 
 func _on_attack_animation_finished() -> void: #inherit stop animasi saat musuh defeated
-    pass
+	pass
