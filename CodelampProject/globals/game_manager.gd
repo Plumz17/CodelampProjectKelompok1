@@ -4,6 +4,9 @@ extends Node
 
 var current_level_index: int = 0
 
+func set_current_level_index(index: int) -> void:
+	current_level_index = index
+
 func get_level(level_index: int) -> PackedScene:
 	if levels.is_empty():
 		printerr("LevelManager: No levels assigned!")
@@ -16,7 +19,7 @@ func get_level(level_index: int) -> PackedScene:
 func get_current_level() -> PackedScene:
 	return get_level(current_level_index)
 
-func go_to_next_level() -> PackedScene:
+func get_next_level() -> PackedScene:
 	if current_level_index + 1 >= levels.size():
 		print("LevelManager: Already at last level.")
 		return null

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://xdgbxgk3aww"]
+
+[node name="Level2" type="Node2D" unique_id=1850092077]
+metadata/initial_terror_energy = 100
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1976489387]
+position = Vector2(10, 232)
+
+[node name="Waypoints" type="Node2D" parent="." unique_id=216890234]
+
+[node name="Marker2D" type="Marker2D" parent="Waypoints" unique_id=773251265]
+position = Vector2(90, 237)
+
+[node name="Marker2D2" type="Marker2D" parent="Waypoints" unique_id=65044327]
+position = Vector2(420, 240)
+
+[node name="Marker2D3" type="Marker2D" parent="Waypoints" unique_id=702459908]
+position = Vector2(420, 892)
+
+[node name="Marker2D4" type="Marker2D" parent="Waypoints" unique_id=1332237519]
+position = Vector2(1500, 908)

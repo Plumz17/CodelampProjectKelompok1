@@ -1,7 +1,7 @@
 extends Node2D
 
 # ── Level Loading ──────────────────────────────────────────────
-@export var level_scene: PackedScene
+#@export var level_scene: PackedScene (This will be handled in the game manager)
 
 var _waypoints_node: Node2D
 var _spawn_point: Marker2D
@@ -79,6 +79,7 @@ func _ready() -> void:
 		top_hud_for_label.add_child(_terror_energy_label)
 
 	# Load level scene
+	var level_scene = GameManager.get_current_level()
 	if level_scene:
 		var level = level_scene.instantiate()
 		_level_container.add_child(level)

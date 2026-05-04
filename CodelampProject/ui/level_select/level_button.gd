@@ -7,6 +7,7 @@ extends Control
 @export var is_back_button: bool = false
 var original_y: float
 var original_scale: Vector2
+const MAIN = preload("uid://bsnmbo85eivk8")
 
 func _ready() -> void:
 	original_y = texture_button.position.y
@@ -44,11 +45,13 @@ func _on_button_unhovered() -> void:
 	tween.tween_property(texture_button, "scale", original_scale, 0.2)
 
 func _on_button_pressed() -> void:
-	if is_back_button:
+	if is_back_button: # this code runs when back button is click
 		AudioManager.playsfx_cancel()
 		SignalHub.emit_hide_level_select()
-	else:
+	else: # this code runs when level button is clicked
 		AudioManager.playsfx_click()
+		GameManager.set_current_level_index(level_index)
+		get_tree().change_scene_to_file("res://main.tscn")
 
 func setup_signals() -> void:
 	texture_button.pressed.connect(_on_button_pressed)

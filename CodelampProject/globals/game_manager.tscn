@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://b48dyri16fm6t"]
 
 [ext_resource type="Script" uid="uid://bhasvsrp40x2q" path="res://globals/game_manager.gd" id="1_dmcod"]
+[ext_resource type="PackedScene" uid="uid://bpulsf7rc8uj" path="res://levels/level_1.tscn" id="2_75cf7"]
+[ext_resource type="PackedScene" uid="uid://xdgbxgk3aww" path="res://levels/level_2.tscn" id="3_t7ep5"]
 
 [node name="GameManager" type="Node" unique_id=1430651824]
 script = ExtResource("1_dmcod")
+levels = Array[PackedScene]([ExtResource("2_75cf7"), ExtResource("3_t7ep5")])
