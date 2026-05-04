@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dtojvdkhpdgfy" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://blbggmac62i3w" path="res://enemies/normal_enemy.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://bpulsf7rc8uj" path="res://levels/level_1.tscn" id="2_2cqfq"]
 [ext_resource type="Script" uid="uid://dvscq130ujlss" path="res://waves/wave_data.gd" id="2_w48qg"]
 [ext_resource type="PackedScene" uid="uid://d4bpo58y615ua" path="res://ghosts/pocong.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b6v8gf2l6mte4" path="res://ui/game_over/game_over_ui.tscn" id="4_1bvp3"]
@@ -139,7 +138,6 @@ sources/0 = SubResource("TileSetAtlasSource_w48qg")
 
 [node name="Main" type="Node2D" unique_id=1858161533]
 script = ExtResource("1_0xm2m")
-level_scene = ExtResource("2_2cqfq")
 waves = Array[ExtResource("2_w48qg")]([SubResource("Resource_vivmo"), SubResource("Resource_2cqfq")])
 
 [node name="TopHUD" parent="." unique_id=2028899001 instance=ExtResource("15_hud01")]

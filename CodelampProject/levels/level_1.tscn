@@ -1,6 +1,19 @@
 [gd_scene format=3 uid="uid://bpulsf7rc8uj"]
 
+[ext_resource type="Script" uid="uid://blgu7umr2es4i" path="res://levels/level.gd" id="1_vn7o3"]
+[ext_resource type="PackedScene" uid="uid://blbggmac62i3w" path="res://enemies/normal_enemy.tscn" id="2_bt44k"]
+[ext_resource type="Script" uid="uid://dvscq130ujlss" path="res://waves/wave_data.gd" id="3_kx6l7"]
+
+[sub_resource type="Resource" id="Resource_bt44k"]
+script = ExtResource("3_kx6l7")
+enemy_scenes = Array[PackedScene]([ExtResource("2_bt44k")])
+enemy_counts = Array[int]([1])
+metadata/_custom_type_script = "uid://dvscq130ujlss"
+
 [node name="Level1" type="Node2D" unique_id=1850092077]
+script = ExtResource("1_vn7o3")
+initial_terror_energy = 100
+wave_data = Array[ExtResource("3_kx6l7")]([SubResource("Resource_bt44k")])
 metadata/initial_terror_energy = 100
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1976489387]

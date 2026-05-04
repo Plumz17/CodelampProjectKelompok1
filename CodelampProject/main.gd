@@ -12,9 +12,7 @@ var _terror_energy_label: Label
 var _terror_energy: int = 0
 
 # ── Wave Data ──────────────────────────────────────────────────
-
-@export var waves: Array[WaveData] = []
-
+var waves: Array[WaveData] = []
 var _current_wave_index: int = 0
 var _spawn_queue: Array = []
 var _active_enemies: int = 0
@@ -67,6 +65,18 @@ func _ready() -> void:
 			add_child(top_hud)
 		top_hud.add_child(_wave_button)
 
+	# Load level scene
+	var level_scene = GameManager.get_current_level()
+	if level_scene:
+		var level = level_scene.instantiate()
+		_level_container.add_child(level)
+		_waypoints_node = level.get_node_or_null("Waypoints")
+		_spawn_point = level.get_node_or_null("SpawnPoint")
+		_terror_energy = level.initial_terror_energy
+		waves = level.wave_data
+	else:
+		printerr("main.gd: No level_scene assigned in Game Manager!")
+
 	if not _terror_energy_label:
 		_terror_energy_label = load("res://ui/top_hud/energi_teror.gd").new()
 		_terror_energy_label.name = "TerrorEnergyLabel"
@@ -78,16 +88,7 @@ func _ready() -> void:
 			add_child(top_hud_for_label)
 		top_hud_for_label.add_child(_terror_energy_label)
 
-	# Load level scene
-	var level_scene = GameManager.get_current_level()
-	if level_scene:
-		var level = level_scene.instantiate()
-		_level_container.add_child(level)
-		_waypoints_node = level.get_node_or_null("Waypoints")
-		_spawn_point = level.get_node_or_null("SpawnPoint")
-		_terror_energy = int(level.get_meta("initial_terror_energy", 0))
-	else:
-		printerr("main.gd: No level_scene assigned!")
+		
 
 	_spawn_timer.one_shot = false
 	if not _spawn_timer.timeout.is_connected(_on_spawn_timer_timeout):
