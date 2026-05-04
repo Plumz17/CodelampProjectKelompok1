@@ -240,24 +240,24 @@ layout_mode = 2
 texture_normal = ExtResource("6_7mycd")
 script = ExtResource("9_w48qg")
 ghost_scene = ExtResource("3_h2yge")
-ghost_type = "pocong"
 ghost_group = NodePath("../../../../Ghosts")
+ghost_type = "pocong"
 
 [node name="KuntianakButton" type="TextureButton" parent="GhostSelectUI/MarginContainer/HBoxContainer" unique_id=1090439914 node_paths=PackedStringArray("ghost_group")]
 layout_mode = 2
 texture_normal = ExtResource("6_7mycd")
 script = ExtResource("9_w48qg")
 ghost_scene = ExtResource("4_lquwl")
-ghost_type = "kuntilanak"
 ghost_group = NodePath("../../../../Ghosts")
+ghost_type = "kuntilanak"
 
 [node name="TuyulButton" type="TextureButton" parent="GhostSelectUI/MarginContainer/HBoxContainer" unique_id=1674326265 node_paths=PackedStringArray("ghost_group")]
 layout_mode = 2
 texture_normal = ExtResource("6_7mycd")
 script = ExtResource("9_w48qg")
 ghost_scene = ExtResource("5_7mycd")
-ghost_type = "tuyul"
 ghost_group = NodePath("../../../../Ghosts")
+ghost_type = "tuyul"
 
 [node name="GameOverUI" parent="." unique_id=60483366 instance=ExtResource("4_1bvp3")]
 visible = false
