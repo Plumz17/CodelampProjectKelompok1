@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bpulsf7rc8uj"]
 
 [node name="Level1" type="Node2D" unique_id=1850092077]
+metadata/_custom_type_script = ""
+metadata/initial_terror_energy = 100
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1976489387]
 position = Vector2(10, 895)
