@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dgwsoatkyc6wf" path="res://ui/title_screen/assets/exit.png" id="6_vu3mf"]
 [ext_resource type="Script" uid="uid://dneiju2endwlt" path="res://ui/title_screen/title_button.gd" id="8_hb510"]
 [ext_resource type="PackedScene" uid="uid://dhppuy2u4xg6f" path="res://ui/settings/settings_ui.tscn" id="10_3u542"]
+[ext_resource type="PackedScene" uid="uid://dblnqy75pt2xk" path="res://ui/level_select/level_select.tscn" id="11_kqu42"]
+[ext_resource type="Script" uid="uid://bd22p3tibeiab" path="res://ui/level_select/level_select.gd" id="12_tht34"]
 
 [node name="TileScreen" type="Control" unique_id=559802658]
 layout_mode = 3
@@ -192,3 +194,8 @@ texture = ExtResource("6_bylpc")
 [node name="SettingsUI" parent="." unique_id=1159783693 instance=ExtResource("10_3u542")]
 visible = false
 layout_mode = 1
+
+[node name="LevelSelect" parent="." unique_id=1226826688 instance=ExtResource("11_kqu42")]
+visible = false
+layout_mode = 1
+script = ExtResource("12_tht34")
