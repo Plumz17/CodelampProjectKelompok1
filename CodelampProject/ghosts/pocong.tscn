@@ -64,5 +64,8 @@ sprite_frames = SubResource("SpriteFrames_mgf36")
 autoplay = "default"
 frame_progress = 0.75013125
 
+[node name="AnimatedSprite2D" parent="PlacementAreaDetector" parent_id_path=PackedInt32Array(1799227498) index="2" unique_id=627858158]
+visible = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1" unique_id=498860928]
 shape = SubResource("CircleShape2D_anpga")
