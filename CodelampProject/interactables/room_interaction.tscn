@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cu1qyrkwsv73c"]
+
+[ext_resource type="Script" uid="uid://dys2dogldyr5r" path="res://interactables/room_interaction.gd" id="1_kxxje"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxxje"]
+size = Vector2(1931, 1089)
+
+[node name="RoomInteraction" type="Area2D" unique_id=1412666970]
+script = ExtResource("1_kxxje")
+
+[node name="DarkEffect" type="ColorRect" parent="." unique_id=530282641]
+visible = false
+offset_right = 1921.0
+offset_bottom = 1086.0
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1078596842]
+position = Vector2(955.5, 534.5)
+shape = SubResource("RectangleShape2D_kxxje")
+
+[node name="WhisperButton" type="Button" parent="." unique_id=1212328102]
+offset_left = 13.0
+offset_top = 132.0
+offset_right = 85.0
+offset_bottom = 163.0
+text = "Whisper"
+
+[node name="LampButton" type="Button" parent="." unique_id=1129087418]
+offset_left = 14.0
+offset_top = 179.0
+offset_right = 84.0
+offset_bottom = 210.0
+text = "Interact"
+
+[connection signal="pressed" from="WhisperButton" to="." method="_on_whisper_button_pressed"]
+[connection signal="pressed" from="LampButton" to="." method="_on_lamp_button_pressed"]

@@ -15,6 +15,7 @@ var current_fear_bar: int
 var current_waypoint_index: int = 0
 var is_fleeing: bool = false
 var _defeat_reward_emitted: bool = false
+var stun_timer: float = 0.0 # Timer for Whisper room trap stun effect
 
 func _ready() -> void:
 	# Initialize base stats
@@ -27,6 +28,12 @@ func _ready() -> void:
 			waypoints.append(waypoint.global_position)
 
 func _physics_process(_delta: float) -> void:
+	
+	# --- STUN SYSTEM (From Whisper Trap) ---
+	if stun_timer > 0:
+		stun_timer -= _delta
+		return # # Halt all movement and pathing while stunned
+		
 	# Guard clause: Ensure pathing data exists
 	if waypoints.is_empty():
 		printerr("Error: Waypoints array is empty.")
@@ -82,3 +89,7 @@ func reach_core() -> void:
 	#move_and_slide()
 	#print("Core Reached!")
 	return
+
+# Applies stun effect from Whisper room interaction
+func apply_stun(duration: float) -> void:
+	stun_timer = duration
