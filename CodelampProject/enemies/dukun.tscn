@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cg72vgq1uckne" path="res://enemies/enemy_base.tscn" id="1_h7wct"]
 [ext_resource type="Script" uid="uid://daj242yusdf0h" path="res://enemies/dukun.gd" id="2_h7wct"]
+[ext_resource type="Texture2D" uid="uid://bvkab8npf4mqw" path="res://icon.svg" id="3_3meab"]
 
 [node name="Dukun" unique_id=1748458864 groups=["enemy"] instance=ExtResource("1_h7wct")]
 script = ExtResource("2_h7wct")
@@ -9,3 +10,6 @@ max_fear_bar = 150
 speed = 7.0
 terror_energy = 50
 core_damage = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=1357502361]
+texture = ExtResource("3_3meab")
