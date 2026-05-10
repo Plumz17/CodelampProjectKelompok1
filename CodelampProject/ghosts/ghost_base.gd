@@ -1,5 +1,6 @@
 extends Area2D
 class_name GhostBase
+
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @export var id: String
 @export var fear_damage: float #Ghost Damage
@@ -23,16 +24,19 @@ var overlapping_ghost: bool = false
 var is_placed: bool = false
 var attack_cooldown: float = 0.0
 
+# Additional Variables for Room Buff
+var original_fear_damage: float = 0.0
+var is_buffed: bool = false
+
 func _ready():
-	
 	add_to_group("ghost")
 	#Set original position
 	original_position = global_position
+	original_fear_damage = fear_damage
 	last_valid_position = global_position
 	placement_area_detector.area_entered.connect(_on_area_entered)
 	placement_area_detector.area_exited.connect(_on_area_exited)
 	
-
 func _process(delta: float) -> void:
 	#Move position with mouse if dragging
 	if dragging:
@@ -48,20 +52,19 @@ func _process(delta: float) -> void:
 			place_ghost()
 	else:
 		z_index = 0
-		modulate = Color.WHITE
 	
 	if is_placed:
-		
+		# --- COLOR PRIORITY & STUN SYSTEM ---
 		if disable_timer > 0.0:
 			disable_timer -= delta
-			# Visual indicator for stun (pale blue tint)
-			modulate = Color(0.5, 0.5, 1.0) 
-			# Skip attack logic while stunned
-			return 
+			modulate = Color(0.5, 0.5, 1.0) # Pale Blue (Stunned)
+			return # Skip attack logic
+		elif is_buffed:
+			modulate = Color(1.0, 0.5, 0.5) # Red (Room Buff)
 		else:
-			# Reset color to normal
-			modulate = Color.WHITE
-		
+			modulate = Color.WHITE # Normal
+			
+		# --- ATTACK SYSTEM ---
 		if attack_cooldown > 0.0:
 			attack_cooldown -= delta
 		if attack_cooldown <= 0.0:
@@ -75,6 +78,7 @@ func _process(delta: float) -> void:
 				if anim_sprite.animation == "attack" and anim_sprite.is_playing():
 					anim_sprite.stop()
 					anim_sprite.play("idle")
+
 
 # Allow ghost to be dragged again after placing
 func _input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
@@ -140,3 +144,13 @@ func _play_attack_animation() -> void: #inherit attack animation masing2 hantu
 
 func _on_attack_animation_finished() -> void: #inherit stop animasi saat musuh defeated
 	pass
+
+# FUNCTION TO RECEIVE BUFF FROM ROOM INTERACTION
+func apply_damage_buff(multiplier: float, duration: float) -> void:
+	is_buffed = true
+	fear_damage = original_fear_damage * multiplier
+	
+	await get_tree().create_timer(duration).timeout
+	
+	fear_damage = original_fear_damage
+	is_buffed = false
