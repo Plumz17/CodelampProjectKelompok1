@@ -1,6 +1,5 @@
 extends Resource
 class_name WaveData
 
-@export var enemy_scenes: Array[PackedScene] = []
-@export var enemy_counts: Array[int] = []
-@export var interval: float = 1.5
+@export var enemy_scenes: Array[PackedScene]   # index must match SpawnEntry.EnemyType order
+@export var spawn_schedule: Array[SpawnEntry]  # typed! shows nicely in Inspector

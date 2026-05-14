@@ -1,21 +1,148 @@
 [gd_scene format=3 uid="uid://bpulsf7rc8uj"]
 
 [ext_resource type="Script" uid="uid://blgu7umr2es4i" path="res://levels/level.gd" id="1_vn7o3"]
-[ext_resource type="PackedScene" uid="uid://blbggmac62i3w" path="res://enemies/normal_enemy.tscn" id="2_bt44k"]
-[ext_resource type="Script" uid="uid://dvscq130ujlss" path="res://waves/wave_data.gd" id="3_kx6l7"]
+[ext_resource type="Script" uid="uid://dvscq130ujlss" path="res://waves/wave_data.gd" id="2_kx6l7"]
+[ext_resource type="PackedScene" uid="uid://blbggmac62i3w" path="res://enemies/normal_enemy.tscn" id="3_btoec"]
+[ext_resource type="Script" uid="uid://c0jjdh7jnsu7q" path="res://levels/spawn_entry.gd" id="3_n46q3"]
+[ext_resource type="PackedScene" uid="uid://efog20aku1nm" path="res://enemies/vlogger.tscn" id="4_gwceb"]
 [ext_resource type="PackedScene" uid="uid://cu1qyrkwsv73c" path="res://interactables/room_interaction.tscn" id="4_kx6l7"]
 
-[sub_resource type="Resource" id="Resource_bt44k"]
-script = ExtResource("3_kx6l7")
-enemy_scenes = Array[PackedScene]([ExtResource("2_bt44k")])
-enemy_counts = Array[int]([1])
+[sub_resource type="Resource" id="Resource_btoec"]
+script = ExtResource("3_n46q3")
+count = 2
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_gwceb"]
+script = ExtResource("3_n46q3")
+time_seconds = 5.0
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_l53as"]
+script = ExtResource("3_n46q3")
+time_seconds = 10.0
+count = 2
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_3sk1a"]
+script = ExtResource("3_n46q3")
+time_seconds = 20.0
+count = 4
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_08mmt"]
+script = ExtResource("2_kx6l7")
+enemy_scenes = Array[PackedScene]([ExtResource("3_btoec"), ExtResource("4_gwceb")])
+spawn_schedule = Array[ExtResource("3_n46q3")]([SubResource("Resource_btoec"), SubResource("Resource_gwceb"), SubResource("Resource_l53as"), SubResource("Resource_3sk1a")])
+metadata/_custom_type_script = "uid://dvscq130ujlss"
+
+[sub_resource type="Resource" id="Resource_5ot28"]
+script = ExtResource("3_n46q3")
+count = 3
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_aerfg"]
+script = ExtResource("3_n46q3")
+time_seconds = 5.0
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_nmsli"]
+script = ExtResource("3_n46q3")
+time_seconds = 10.0
+count = 3
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_betor"]
+script = ExtResource("3_n46q3")
+time_seconds = 20.0
+count = 4
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_vjtdm"]
+script = ExtResource("2_kx6l7")
+enemy_scenes = Array[PackedScene]([ExtResource("3_btoec"), ExtResource("4_gwceb")])
+spawn_schedule = Array[ExtResource("3_n46q3")]([SubResource("Resource_5ot28"), SubResource("Resource_aerfg"), SubResource("Resource_nmsli"), SubResource("Resource_betor")])
+metadata/_custom_type_script = "uid://dvscq130ujlss"
+
+[sub_resource type="Resource" id="Resource_kx6l7"]
+script = ExtResource("3_n46q3")
+count = 3
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_n46q3"]
+script = ExtResource("3_n46q3")
+time_seconds = 5.0
+count = 3
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_oqlok"]
+script = ExtResource("3_n46q3")
+time_seconds = 10.0
+count = 3
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_7nvrk"]
+script = ExtResource("3_n46q3")
+time_seconds = 20.0
+count = 2
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_jkxa6"]
+script = ExtResource("3_n46q3")
+time_seconds = 20.0
+count = 2
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_bgw3c"]
+script = ExtResource("2_kx6l7")
+enemy_scenes = Array[PackedScene]([ExtResource("3_btoec"), ExtResource("4_gwceb")])
+spawn_schedule = Array[ExtResource("3_n46q3")]([SubResource("Resource_kx6l7"), SubResource("Resource_n46q3"), SubResource("Resource_oqlok"), SubResource("Resource_7nvrk"), SubResource("Resource_jkxa6")])
+metadata/_custom_type_script = "uid://dvscq130ujlss"
+
+[sub_resource type="Resource" id="Resource_w75he"]
+script = ExtResource("3_n46q3")
+count = 3
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_udfhf"]
+script = ExtResource("3_n46q3")
+time_seconds = 10.0
+count = 4
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_i6od7"]
+script = ExtResource("3_n46q3")
+time_seconds = 20.0
+count = 3
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_ryfpa"]
+script = ExtResource("3_n46q3")
+time_seconds = 20.0
+count = 1
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_ntdhj"]
+script = ExtResource("3_n46q3")
+time_seconds = 30.0
+count = 1
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_0fu15"]
+script = ExtResource("3_n46q3")
+time_seconds = 30.0
+count = 3
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="Resource_lrvbd"]
+script = ExtResource("2_kx6l7")
+enemy_scenes = Array[PackedScene]([ExtResource("3_btoec"), ExtResource("4_gwceb")])
+spawn_schedule = Array[ExtResource("3_n46q3")]([SubResource("Resource_w75he"), SubResource("Resource_udfhf"), SubResource("Resource_i6od7"), SubResource("Resource_ryfpa"), SubResource("Resource_ntdhj"), SubResource("Resource_0fu15")])
 metadata/_custom_type_script = "uid://dvscq130ujlss"
 
 [node name="Level1" type="Node2D" unique_id=1850092077]
 script = ExtResource("1_vn7o3")
 initial_terror_energy = 100
-wave_data = Array[ExtResource("3_kx6l7")]([SubResource("Resource_bt44k")])
-metadata/initial_terror_energy = 100
+wave_data = Array[ExtResource("2_kx6l7")]([SubResource("Resource_08mmt"), SubResource("Resource_vjtdm"), SubResource("Resource_bgw3c"), SubResource("Resource_lrvbd")])
 
 [node name="RoomInteraction" parent="." unique_id=1412666970 instance=ExtResource("4_kx6l7")]
 
