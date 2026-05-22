@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cu1qyrkwsv73c"]
 
-[ext_resource type="Script" uid="uid://dys2dogldyr5r" path="res://interactables/room_interaction.gd" id="1_kxxje"]
+[ext_resource type="Script" uid="uid://c2jnyhgpnwfwh" path="res://interactables/room_interaction.gd" id="1_kxxje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxxje"]
 size = Vector2(1931, 1089)
@@ -10,8 +10,10 @@ script = ExtResource("1_kxxje")
 
 [node name="DarkEffect" type="ColorRect" parent="." unique_id=530282641]
 visible = false
+z_index = 5
 offset_right = 1921.0
 offset_bottom = 1086.0
+mouse_filter = 2
 color = Color(0, 0, 0, 0.5882353)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1078596842]
