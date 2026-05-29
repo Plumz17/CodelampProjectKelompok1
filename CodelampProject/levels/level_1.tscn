@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c0jjdh7jnsu7q" path="res://levels/spawn_entry.gd" id="3_n46q3"]
 [ext_resource type="PackedScene" uid="uid://efog20aku1nm" path="res://enemies/vlogger.tscn" id="4_gwceb"]
 [ext_resource type="PackedScene" uid="uid://cu1qyrkwsv73c" path="res://interactables/room_interaction.tscn" id="4_kx6l7"]
+[ext_resource type="PackedScene" uid="uid://8it24v61hwp2" path="res://core/player_core.tscn" id="7_gwceb"]
 
 [sub_resource type="Resource" id="Resource_btoec"]
 script = ExtResource("3_n46q3")
@@ -148,6 +149,9 @@ wave_data = Array[ExtResource("2_kx6l7")]([SubResource("Resource_08mmt"), SubRes
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1976489387]
 position = Vector2(10, 895)
+
+[node name="PlayerCore" parent="." unique_id=871273602 instance=ExtResource("7_gwceb")]
+position = Vector2(1503, 239)
 
 [node name="Waypoints" type="Node2D" parent="." unique_id=216890234]
 
