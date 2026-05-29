@@ -261,7 +261,7 @@ ghost_scene = ExtResource("5_7mycd")
 ghost_group = NodePath("../../../../Ghosts")
 ghost_type = "tuyul"
 
-[node name="GameOverUI" parent="." unique_id=60483366 instance=ExtResource("4_1bvp3")]
+[node name="GameOverUI" parent="." unique_id=642820325 instance=ExtResource("4_1bvp3")]
 visible = false
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1722140780]
@@ -281,3 +281,5 @@ centered = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=197207079]
 tile_set = SubResource("TileSet_2cqfq")
+
+[connection signal="visibility_changed" from="GameOverUI" to="." method="_on_game_over_ui_visibility_changed"]
