@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var _game_over_ui = $GameOverUI
+
 # ── Level Loading ──────────────────────────────────────────────
 #@export var level_scene: PackedScene (This will be handled in the game manager)
 
@@ -29,6 +31,10 @@ signal wave_cleared(wave_index: int)
 signal all_waves_cleared
 
 func _ready() -> void:
+	#gameover
+	if _game_over_ui:
+		_game_over_ui.visible = false
+
 	_enemy_container = get_node_or_null("EnemyContainer") as Node2D
 	_level_container = get_node_or_null("LevelContainer") as Node2D
 	_spawn_timer = get_node_or_null("SpawnTimer") as Timer
@@ -75,6 +81,14 @@ func _ready() -> void:
 		_spawn_point = level.get_node_or_null("SpawnPoint")
 		_terror_energy = level.initial_terror_energy
 		waves = level.wave_data
+		
+		#search playecore on level
+		var player_core = level.get_node_or_null("PlayerCore")
+		if player_core:
+			player_core.connect("core_destroyed", Callable(self, "_on_player_core_destroyed"))
+		else:
+			printerr("main.gd: PlayerCore tidak ditemukan di level scene!")
+			
 	else:
 		printerr("main.gd: No level_scene assigned in Game Manager!")
 
@@ -88,8 +102,6 @@ func _ready() -> void:
 			top_hud_for_label.name = "TopHUD"
 			add_child(top_hud_for_label)
 		top_hud_for_label.add_child(_terror_energy_label)
-
-		
 
 	_spawn_timer.one_shot = false
 	if not _spawn_timer.timeout.is_connected(_on_spawn_timer_timeout):
@@ -251,3 +263,20 @@ func _on_enemy_removed() -> void:
 
 func _on_kuntianak_button_pressed() -> void:
 	pass # Replace with function body.
+
+# GameOver func  
+func _on_player_core_destroyed() -> void:
+	print("Sinyal Core Hancur diterima oleh Main!")
+	
+	# off spawner enemy
+	if _spawn_timer:
+		_spawn_timer.stop()
+	
+	# call UI Game Over
+	if _game_over_ui and _game_over_ui.has_method("show_game_over"):
+		_game_over_ui.show_game_over()
+	else:
+		# Fallback if func show_game_over not in script UI 
+		if _game_over_ui:
+			_game_over_ui.visible = true
+		get_tree().paused = true
