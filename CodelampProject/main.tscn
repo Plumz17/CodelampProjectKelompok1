@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c5g0up3st3y88" path="res://ghosts/kunilanak.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bcepqgjgi4ata" path="res://ghosts/tuyul.tscn" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bgidkwieyuuid" path="res://ui/ghost_button/icon_kunti.png" id="6_w48qg"]
+[ext_resource type="Texture2D" uid="uid://djk6x0sv0k5b4" path="res://ui/ghost_button/icon_tuyul.png" id="8_w48qg"]
 [ext_resource type="Script" uid="uid://d3a1m6bojn7s7" path="res://ui/ghost_button/ghost_button.gd" id="9_w48qg"]
 [ext_resource type="Texture2D" uid="uid://bhcww8gh5xcgo" path="res://levels/assets/Map Background.png" id="10_efxa6"]
 [ext_resource type="Texture2D" uid="uid://bp4wjrro82ojx" path="res://levels/assets/Layout Map.png" id="11_dg77c"]
@@ -255,7 +256,7 @@ offset_left = 64.0
 offset_right = 192.0
 offset_bottom = 128.0
 scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("3_ycdy4")
+texture_normal = ExtResource("8_w48qg")
 script = ExtResource("9_w48qg")
 ghost_scene = ExtResource("5_7mycd")
 ghost_group = NodePath("../../../../Ghosts")
