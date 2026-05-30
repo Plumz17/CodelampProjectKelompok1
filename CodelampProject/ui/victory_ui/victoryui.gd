@@ -7,7 +7,6 @@ func _ready() -> void:
 # Fungsi ini yang akan dipanggil oleh main.gd
 func show_victory() -> void:
 	visible = true
-	get_tree().paused = true # Pause game agar semuanya berhenti
 
 # --- KONEKSIKAN TOMBOL DI BAWAH INI DARI TAB NODE -> SIGNALS ---
 
