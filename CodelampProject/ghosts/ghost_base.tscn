@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ec1cs4u5nwma" path="res://ghosts/ghost_base.gd" id="1_43t2x"]
 [ext_resource type="Texture2D" uid="uid://cv05c5dng15gd" path="res://ghosts/pocong_attack.png" id="2_43t2x"]
+[ext_resource type="Texture2D" uid="uid://caa1vjtkwa5mk" path="res://ghosts/pocong_idle.png" id="3_pre2p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_43t2x"]
 
@@ -61,6 +62,42 @@ region = Rect2(320, 320, 160, 160)
 atlas = ExtResource("2_43t2x")
 region = Rect2(480, 320, 160, 160)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n1yd"]
+atlas = ExtResource("3_pre2p")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmfo0"]
+atlas = ExtResource("3_pre2p")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1vo4"]
+atlas = ExtResource("3_pre2p")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_peday"]
+atlas = ExtResource("3_pre2p")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi8uv"]
+atlas = ExtResource("3_pre2p")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqo6e"]
+atlas = ExtResource("3_pre2p")
+region = Rect2(800, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvasj"]
+atlas = ExtResource("3_pre2p")
+region = Rect2(960, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykchq"]
+atlas = ExtResource("3_pre2p")
+region = Rect2(1120, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sunq4"]
+atlas = ExtResource("3_pre2p")
+region = Rect2(1280, 0, 160, 160)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0n1yd"]
 animations = [{
 "frames": [{
@@ -109,6 +146,38 @@ animations = [{
 "loop": true,
 "name": &"attack",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0n1yd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmfo0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1vo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_peday")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi8uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqo6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvasj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykchq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sunq4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
 }]
 
 [node name="GhostBase" type="Area2D" unique_id=14323756]
@@ -122,7 +191,7 @@ debug_color = Color(0.64149237, 0.51218694, 0.32137337, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=627858158]
 sprite_frames = SubResource("SpriteFrames_0n1yd")
-animation = &"attack"
+animation = &"idle"
 
 [connection signal="area_entered" from="PlacementAreaDetector" to="." method="_on_placement_area_detector_area_entered"]
 [connection signal="area_exited" from="PlacementAreaDetector" to="." method="_on_placement_area_detector_area_exited"]

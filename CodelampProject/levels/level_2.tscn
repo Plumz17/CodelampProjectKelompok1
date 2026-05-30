@@ -1,33 +1,306 @@
 [gd_scene format=3 uid="uid://xdgbxgk3aww"]
 
-[ext_resource type="Script" uid="uid://blgu7umr2es4i" path="res://levels/level.gd" id="1_mi4ay"]
-[ext_resource type="PackedScene" uid="uid://efog20aku1nm" path="res://enemies/vlogger.tscn" id="2_0srwa"]
-[ext_resource type="Script" uid="uid://dvscq130ujlss" path="res://waves/wave_data.gd" id="3_v5uil"]
+[ext_resource type="Script" uid="uid://blgu7umr2es4i" path="res://levels/level.gd" id="1_level"]
+[ext_resource type="Script" uid="uid://dvscq130ujlss" path="res://waves/wave_data.gd" id="2_wave"]
+[ext_resource type="Script" uid="uid://c0jjdh7jnsu7q" path="res://levels/spawn_entry.gd" id="3_spawn"]
+[ext_resource type="PackedScene" uid="uid://blbggmac62i3w" path="res://enemies/normal_enemy.tscn" id="4_normal"]
+[ext_resource type="PackedScene" uid="uid://efog20aku1nm" path="res://enemies/vlogger.tscn" id="5_vlogger"]
+[ext_resource type="PackedScene" uid="uid://cu1qyrkwsv73c" path="res://interactables/room_interaction.tscn" id="6_room"]
+[ext_resource type="Texture2D" uid="uid://bhcww8gh5xcgo" path="res://levels/assets/Map Background.png" id="7_bg"]
+[ext_resource type="Texture2D" uid="uid://bp4wjrro82ojx" path="res://levels/assets/Layout Map.png" id="8_layout"]
+[ext_resource type="Texture2D" uid="uid://bn57vvmf63y6q" path="res://levels/assets/Path.png" id="9_path"]
+[ext_resource type="Texture2D" uid="uid://ddkacjihl7i33" path="res://levels/assets/Door.png" id="10_sd18g"]
+[ext_resource type="Texture2D" uid="uid://cm87ejijskxik" path="res://levels/assets/Red_Circle.png" id="11_vm7no"]
 
-[sub_resource type="Resource" id="Resource_0srwa"]
-script = ExtResource("3_v5uil")
-enemy_scenes = Array[PackedScene]([ExtResource("2_0srwa")])
+[sub_resource type="Resource" id="SpawnEntry_l2_w1_a"]
+script = ExtResource("3_spawn")
+count = 4
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="SpawnEntry_l2_w1_b"]
+script = ExtResource("3_spawn")
+time_seconds = 10.0
+count = 6
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="SpawnEntry_l2_w1_c"]
+script = ExtResource("3_spawn")
+time_seconds = 20.0
+count = 2
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="WaveData_l2_w1"]
+script = ExtResource("2_wave")
+enemy_scenes = Array[PackedScene]([ExtResource("4_normal"), ExtResource("5_vlogger")])
+spawn_schedule = Array[ExtResource("3_spawn")]([SubResource("SpawnEntry_l2_w1_a"), SubResource("SpawnEntry_l2_w1_b"), SubResource("SpawnEntry_l2_w1_c")])
 metadata/_custom_type_script = "uid://dvscq130ujlss"
 
-[node name="Level2" type="Node2D" unique_id=1850092077]
-script = ExtResource("1_mi4ay")
-initial_terror_energy = 67
-wave_data = Array[ExtResource("3_v5uil")]([SubResource("Resource_0srwa")])
-metadata/initial_terror_energy = 100
+[sub_resource type="Resource" id="SpawnEntry_l2_w2_a"]
+script = ExtResource("3_spawn")
+count = 4
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
 
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1976489387]
-position = Vector2(10, 232)
+[sub_resource type="Resource" id="SpawnEntry_l2_w2_b"]
+script = ExtResource("3_spawn")
+time_seconds = 10.0
+count = 4
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
 
-[node name="Waypoints" type="Node2D" parent="." unique_id=216890234]
+[sub_resource type="Resource" id="SpawnEntry_l2_w2_c"]
+script = ExtResource("3_spawn")
+time_seconds = 22.0
+count = 6
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
 
-[node name="Marker2D" type="Marker2D" parent="Waypoints" unique_id=773251265]
-position = Vector2(90, 237)
+[sub_resource type="Resource" id="WaveData_l2_w2"]
+script = ExtResource("2_wave")
+enemy_scenes = Array[PackedScene]([ExtResource("4_normal"), ExtResource("5_vlogger")])
+spawn_schedule = Array[ExtResource("3_spawn")]([SubResource("SpawnEntry_l2_w2_a"), SubResource("SpawnEntry_l2_w2_b"), SubResource("SpawnEntry_l2_w2_c")])
+metadata/_custom_type_script = "uid://dvscq130ujlss"
 
-[node name="Marker2D2" type="Marker2D" parent="Waypoints" unique_id=65044327]
+[sub_resource type="Resource" id="SpawnEntry_l2_w3_a"]
+script = ExtResource("3_spawn")
+count = 6
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="SpawnEntry_l2_w3_b"]
+script = ExtResource("3_spawn")
+time_seconds = 15.0
+count = 6
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="SpawnEntry_l2_w3_c"]
+script = ExtResource("3_spawn")
+time_seconds = 30.0
+count = 6
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="WaveData_l2_w3"]
+script = ExtResource("2_wave")
+enemy_scenes = Array[PackedScene]([ExtResource("4_normal"), ExtResource("5_vlogger")])
+spawn_schedule = Array[ExtResource("3_spawn")]([SubResource("SpawnEntry_l2_w3_a"), SubResource("SpawnEntry_l2_w3_b"), SubResource("SpawnEntry_l2_w3_c")])
+metadata/_custom_type_script = "uid://dvscq130ujlss"
+
+[sub_resource type="Resource" id="SpawnEntry_l2_w4_a"]
+script = ExtResource("3_spawn")
+count = 6
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="SpawnEntry_l2_w4_b"]
+script = ExtResource("3_spawn")
+time_seconds = 15.0
+count = 8
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="SpawnEntry_l2_w4_c"]
+script = ExtResource("3_spawn")
+time_seconds = 35.0
+count = 4
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="SpawnEntry_l2_w4_d"]
+script = ExtResource("3_spawn")
+time_seconds = 42.0
+count = 2
+metadata/_custom_type_script = "uid://c0jjdh7jnsu7q"
+
+[sub_resource type="Resource" id="WaveData_l2_w4"]
+script = ExtResource("2_wave")
+enemy_scenes = Array[PackedScene]([ExtResource("4_normal"), ExtResource("5_vlogger")])
+spawn_schedule = Array[ExtResource("3_spawn")]([SubResource("SpawnEntry_l2_w4_a"), SubResource("SpawnEntry_l2_w4_b"), SubResource("SpawnEntry_l2_w4_c"), SubResource("SpawnEntry_l2_w4_d")])
+metadata/_custom_type_script = "uid://dvscq130ujlss"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tower"]
+radius = 24.0
+
+[node name="Level2" type="Node2D" unique_id=1144284861]
+script = ExtResource("1_level")
+initial_terror_energy = 100
+wave_data = Array[ExtResource("2_wave")]([SubResource("WaveData_l2_w1"), SubResource("WaveData_l2_w2"), SubResource("WaveData_l2_w3"), SubResource("WaveData_l2_w4")])
+
+[node name="Background" type="Sprite2D" parent="." unique_id=720743533]
+z_index = -3
+texture = ExtResource("7_bg")
+centered = false
+
+[node name="Layout" type="Sprite2D" parent="." unique_id=431106460]
+z_index = -2
+texture = ExtResource("8_layout")
+centered = false
+
+[node name="Path" type="Sprite2D" parent="." unique_id=380390831]
+z_index = -1
+texture = ExtResource("9_path")
+centered = false
+
+[node name="RoomInteraction" parent="." unique_id=132124068 instance=ExtResource("6_room")]
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=859278793]
+position = Vector2(10, 895)
+
+[node name="Waypoints" type="Node2D" parent="." unique_id=430739515]
+
+[node name="Marker2D" type="Marker2D" parent="Waypoints" unique_id=1514702203]
+position = Vector2(90, 900)
+
+[node name="Marker2D2" type="Marker2D" parent="Waypoints" unique_id=2012704535]
+position = Vector2(420, 900)
+
+[node name="Marker2D3" type="Marker2D" parent="Waypoints" unique_id=1857339885]
 position = Vector2(420, 240)
 
-[node name="Marker2D3" type="Marker2D" parent="Waypoints" unique_id=702459908]
-position = Vector2(420, 892)
+[node name="Marker2D4" type="Marker2D" parent="Waypoints" unique_id=176882655]
+position = Vector2(1180, 240)
 
-[node name="Marker2D4" type="Marker2D" parent="Waypoints" unique_id=1332237519]
-position = Vector2(1500, 908)
+[node name="Marker2D5" type="Marker2D" parent="Waypoints" unique_id=1141180153]
+position = Vector2(964, 779)
+
+[node name="Marker2D6" type="Marker2D" parent="Waypoints" unique_id=2022759272]
+position = Vector2(688, 780)
+
+[node name="Marker2D7" type="Marker2D" parent="Waypoints" unique_id=601793749]
+position = Vector2(970, 400)
+
+[node name="Marker2D8" type="Marker2D" parent="Waypoints" unique_id=1393382936]
+position = Vector2(964, 584)
+
+[node name="Marker2D9" type="Marker2D" parent="Waypoints" unique_id=814188385]
+position = Vector2(972, 240)
+
+[node name="Marker2D10" type="Marker2D" parent="Waypoints" unique_id=898252354]
+position = Vector2(1500, 240)
+
+[node name="Areas" type="Node2D" parent="." unique_id=1461846755]
+
+[node name="TowerArea01" type="Area2D" parent="Areas" unique_id=2135393602 groups=["placement_area"]]
+position = Vector2(264, 122)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea01" unique_id=1376246681]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea02" type="Area2D" parent="Areas" unique_id=193832173 groups=["placement_area"]]
+position = Vector2(426, 122)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea02" unique_id=1075473297]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea03" type="Area2D" parent="Areas" unique_id=1494310484 groups=["placement_area"]]
+position = Vector2(572, 122)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea03" unique_id=1226448364]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea04" type="Area2D" parent="Areas" unique_id=2096668900 groups=["placement_area"]]
+position = Vector2(264, 258)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea04" unique_id=1411553752]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea05" type="Area2D" parent="Areas" unique_id=1035991535 groups=["placement_area"]]
+position = Vector2(264, 406)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea05" unique_id=1593751011]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea06" type="Area2D" parent="Areas" unique_id=1872042051 groups=["placement_area"]]
+position = Vector2(804, 122)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea06" unique_id=564830187]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea07" type="Area2D" parent="Areas" unique_id=278856723 groups=["placement_area"]]
+position = Vector2(966, 122)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea07" unique_id=620250848]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea08" type="Area2D" parent="Areas" unique_id=1841716516 groups=["placement_area"]]
+position = Vector2(1120, 122)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea08" unique_id=1874741163]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea09" type="Area2D" parent="Areas" unique_id=28112338 groups=["placement_area"]]
+position = Vector2(568, 390)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea09" unique_id=1695898986]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea10" type="Area2D" parent="Areas" unique_id=972292037 groups=["placement_area"]]
+position = Vector2(1332, 118)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea10" unique_id=1059726282]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea11" type="Area2D" parent="Areas" unique_id=615224518 groups=["placement_area"]]
+position = Vector2(1120, 406)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea11" unique_id=1214287704]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea12" type="Area2D" parent="Areas" unique_id=746602437 groups=["placement_area"]]
+position = Vector2(816, 640)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea12" unique_id=1476878683]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea13" type="Area2D" parent="Areas" unique_id=3510378 groups=["placement_area"]]
+position = Vector2(812, 392)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea13" unique_id=2037596616]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea14" type="Area2D" parent="Areas" unique_id=1401911970 groups=["placement_area"]]
+position = Vector2(264, 636)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea14" unique_id=619472701]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea15" type="Area2D" parent="Areas" unique_id=2007776264 groups=["placement_area"]]
+position = Vector2(264, 768)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea15" unique_id=457444734]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea16" type="Area2D" parent="Areas" unique_id=557438745 groups=["placement_area"]]
+position = Vector2(568, 636)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea16" unique_id=1832662772]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea17" type="Area2D" parent="Areas" unique_id=315255850 groups=["placement_area"]]
+position = Vector2(568, 904)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea17" unique_id=1972816105]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea18" type="Area2D" parent="Areas" unique_id=1461417042 groups=["placement_area"]]
+position = Vector2(812, 908)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea18" unique_id=2014986674]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea19" type="Area2D" parent="Areas" unique_id=1647891215 groups=["placement_area"]]
+position = Vector2(966, 904)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea19" unique_id=458590781]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="TowerArea20" type="Area2D" parent="Areas" unique_id=1079126874 groups=["placement_area"]]
+position = Vector2(1112, 640)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/TowerArea20" unique_id=105379551]
+shape = SubResource("CircleShape2D_tower")
+
+[node name="Doors" type="Node2D" parent="." unique_id=2030214516]
+
+[node name="DoorA" type="Sprite2D" parent="Doors" unique_id=1838017488]
+position = Vector2(1035, 777)
+texture = ExtResource("10_sd18g")
+
+[node name="RedCircle" type="Node" parent="." unique_id=1930088119]
+
+[node name="RedCircle" type="Sprite2D" parent="RedCircle" unique_id=1028532976]
+position = Vector2(1505.0001, 242)
+scale = Vector2(0.9347826, 0.9347826)
+texture = ExtResource("11_vm7no")
