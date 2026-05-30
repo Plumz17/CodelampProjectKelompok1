@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var _game_over_ui = $GameOverUI
+@onready var _victory_ui = $VictoryUI
 
 # ── Level Loading ────
 #@export var level_scene: PackedScene (This will be handled in the game manager)
@@ -334,16 +335,42 @@ func _update_terror_energy_label() -> void:
 # ── Called when an enemy is removed from the scene ────
 func _on_enemy_removed() -> void:
 	_active_enemies -= 1
+	
+	# Wave is cleared when all spawned enemies are gone and queue is empty
 	if _active_enemies <= 0 and _spawn_queue.is_empty() and _wave_in_progress:
 		_wave_in_progress = false
 		emit_signal("wave_cleared", _current_wave_index)
 		print("Wave %d cleared!" % (_current_wave_index + 1))
+		
 		_current_wave_index += 1
 		_is_preparing = true
-		_update_wave_button()
+		
+		# === LOGIKA CEK KEMENANGAN ===
+		if _current_wave_index >= waves.size():
+			trigger_victory()
+		else:
+			_update_wave_button()
 
 func _on_kuntianak_button_pressed() -> void:
 	pass # Replace with function body.
+
+# ── Victory Condition ─────────────────────────────────────────
+func trigger_victory() -> void:
+	print("LEVEL CLEARED! Kemenangan Diraih!")
+	
+	# Pastikan sinyal ini ada di deklarasi signal di atas ya, kalau belum ada tambahkan: signal all_waves_cleared
+	emit_signal("all_waves_cleared") 
+	
+	if _spawn_timer:
+		_spawn_timer.stop()
+		
+	# Panggil fungsi dari victoryui.gd
+	if _victory_ui and _victory_ui.has_method("show_victory"):
+		_victory_ui.show_victory()
+	else:
+		if _victory_ui:
+			_victory_ui.visible = true
+		get_tree().paused = true
 
 # ── GameOver ────
 func _on_player_core_destroyed() -> void:
@@ -358,3 +385,7 @@ func _on_player_core_destroyed() -> void:
 		if _game_over_ui:
 			_game_over_ui.visible = true
 		get_tree().paused = true
+
+
+func _on_victory_ui_visibility_changed() -> void:
+	pass # Replace with function body.
