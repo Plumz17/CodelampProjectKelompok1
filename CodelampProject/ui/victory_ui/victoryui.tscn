@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://clwndgj07o0ji"]
 
-[ext_resource type="Script" uid="uid://bikg26p3p3c0i" path="res://ui/victory/victoryui.gd" id="1_421qr"]
+[ext_resource type="Script" path="res://ui/victory_ui/victoryui.gd" id="1_421qr"]
 
 [node name="VictoryUI" type="CanvasLayer" unique_id=60483366]
 process_mode = 3

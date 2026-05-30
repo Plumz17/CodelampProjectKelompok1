@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://d3a1m6bojn7s7" path="res://ui/ghost_button/ghost_button.gd" id="9_ghost_button"]
 [ext_resource type="PackedScene" path="res://ui/victory_ui/victoryui.tscn" id="10_dg77c"]
 [ext_resource type="PackedScene" path="res://ui/top_hud/top_hud.tscn" id="10_top_hud"]
-[ext_resource type="Script" path="res://ui/victory_ui/victoryui.gd" id="11_ycdy4"]
 
 [node name="Main" type="Node2D" unique_id=1858161533]
 script = ExtResource("1_main")
@@ -98,7 +97,7 @@ ghost_group = NodePath("../../../../../Ghosts")
 ghost_type = "tuyul"
 
 [node name="VictoryUI" parent="." unique_id=60483366 instance=ExtResource("10_dg77c")]
-script = ExtResource("11_ycdy4")
+visible = false
 
 [node name="GameOverUI" parent="." unique_id=2061512220 instance=ExtResource("2_gameover")]
 visible = false
