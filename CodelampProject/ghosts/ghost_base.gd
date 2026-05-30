@@ -23,6 +23,12 @@ var in_placement_area: bool = false
 var overlapping_ghost: bool = false
 var is_placed: bool = false
 var attack_cooldown: float = 0.0
+var ability_name: String = ""
+var ability_start_cooldown: float = 0.0
+var ability_cooldown: float = 0.0
+var ability_duration: float = 0.0
+var ability_current_cooldown: float = 0.0
+var _ability_has_been_used: bool = false
 
 # Additional Variables for Room Buff
 var original_fear_damage: float = 0.0
@@ -54,12 +60,14 @@ func _process(delta: float) -> void:
 		z_index = 0
 	
 	if is_placed:
+		if ability_current_cooldown > 0.0:
+			ability_current_cooldown = max(ability_current_cooldown - delta, 0.0)
 		# --- COLOR PRIORITY & STUN SYSTEM ---
 		if disable_timer > 0.0:
 			disable_timer -= delta
 			modulate = Color(0.5, 0.5, 1.0) # Pale Blue (Stunned)
 			return # Skip attack logic
-		elif is_buffed:
+		if is_buffed:
 			modulate = Color(1.0, 0.5, 0.5) # Red (Room Buff)
 		else:
 			modulate = Color.WHITE # Normal
@@ -95,17 +103,22 @@ func _input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> voi
 
 #Tries to place ghost
 func place_ghost() -> void:
-	#If can't place return to default poisition
 	if !can_place:
 		if is_placed:
 			global_position = last_valid_position
 		else:
 			queue_free()
-	else: 
-		is_placed = true
-		anim_sprite.play("idle")
-		last_valid_position = global_position
-		attack_cooldown = 0.0
+		return
+	if not is_placed:
+		var main_node := get_tree().current_scene
+		if main_node and main_node.has_method("try_spend_terror_energy"):
+			if not main_node.try_spend_terror_energy(cost):
+				queue_free()
+				return
+	is_placed = true
+	anim_sprite.play("idle")
+	last_valid_position = global_position
+	attack_cooldown = 0.0
 
 func _find_target_in_range() -> EnemyBase:
 	var nearest: EnemyBase = null
@@ -138,6 +151,30 @@ func _on_area_exited(area: Area2D) -> void:
 # stun effect to the ghost for a specific duration
 func apply_disable(duration: float) -> void:
 	disable_timer = duration
+
+func can_activate_ability() -> bool:
+	if not is_placed:
+		return false
+	return ability_current_cooldown <= 0.0
+
+func try_activate_ability() -> bool:
+	if not can_activate_ability():
+		return false
+	var activated := _activate_ability()
+	if not activated:
+		return false
+	if _ability_has_been_used:
+		ability_current_cooldown = ability_cooldown
+	else:
+		ability_current_cooldown = ability_start_cooldown
+		_ability_has_been_used = true
+	return true
+
+func get_ability_cooldown_left() -> float:
+	return max(ability_current_cooldown, 0.0)
+
+func _activate_ability() -> bool:
+	return false
 
 func _play_attack_animation() -> void: #inherit attack animation masing2 hantu
 	pass

@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var _game_over_ui = $GameOverUI
 
-# ── Level Loading ──────────────────────────────────────────────
+# ── Level Loading ────
 #@export var level_scene: PackedScene (This will be handled in the game manager)
 
 var _waypoints_node: Node2D
@@ -12,8 +12,14 @@ var _level_container: Node2D
 var _wave_button: Button
 var _terror_energy_label: Label
 var _terror_energy: int = 0
+var _ghost_container: Node2D
+var _pocong_ability_button: Button
+var _kuntilanak_ability_button: Button
+var _tuyul_ability_button: Button
+var _tuyul_bonus_time_left: float = 0.0
+var _tuyul_bonus_amount: int = 0
 
-# ── Wave Data ──────────────────────────────────────────────────
+# ── Wave Data ────
 var waves: Array[WaveData] = []
 var _current_wave_index: int = 0
 var _spawn_queue: Array = []
@@ -22,23 +28,27 @@ var _wave_in_progress: bool = false
 var _is_preparing: bool = true
 var _last_spawn_time_in_wave: float = 0.0
 
-# ── Spawn Timer ────────────────────────────────────────────────
+# ── Spawn Timer ────
 var _spawn_timer: Timer
 
-# ── Signals ───────────────────────────────────────────────────
+# ── Signals ────
 signal wave_started(wave_index: int)
 signal wave_cleared(wave_index: int)
 signal all_waves_cleared
 
 func _ready() -> void:
-	#gameover
+	# GameOver UI
 	if _game_over_ui:
 		_game_over_ui.visible = false
 
+	_ghost_container = get_node_or_null("Ghosts") as Node2D
 	_enemy_container = get_node_or_null("EnemyContainer") as Node2D
 	_level_container = get_node_or_null("LevelContainer") as Node2D
 	_spawn_timer = get_node_or_null("SpawnTimer") as Timer
 	_wave_button = get_node_or_null("TopHUD/WaveButton") as Button
+	_pocong_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/PocongAbilityButton") as Button
+	_kuntilanak_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/KuntilanakAbilityButton") as Button
+	_tuyul_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/TuyulAbilityButton") as Button
 	if not _wave_button:
 		_wave_button = find_child("WaveButton", true, false) as Button
 	_terror_energy_label = get_node_or_null("TopHUD/TerrorEnergyLabel") as Label
@@ -81,14 +91,13 @@ func _ready() -> void:
 		_spawn_point = level.get_node_or_null("SpawnPoint")
 		_terror_energy = level.initial_terror_energy
 		waves = level.wave_data
-		
-		#search playecore on level
+
+		# Connect PlayerCore destroyed signal
 		var player_core = level.get_node_or_null("PlayerCore")
 		if player_core:
 			player_core.connect("core_destroyed", Callable(self, "_on_player_core_destroyed"))
 		else:
 			printerr("main.gd: PlayerCore tidak ditemukan di level scene!")
-			
 	else:
 		printerr("main.gd: No level_scene assigned in Game Manager!")
 
@@ -115,8 +124,21 @@ func _ready() -> void:
 				"start_requested",
 				Callable(self, "_on_wave_button_pressed")
 			)
+	if _pocong_ability_button and not _pocong_ability_button.pressed.is_connected(_on_pocong_ability_button_pressed):
+		_pocong_ability_button.pressed.connect(_on_pocong_ability_button_pressed)
+	if _kuntilanak_ability_button and not _kuntilanak_ability_button.pressed.is_connected(_on_kuntilanak_ability_button_pressed):
+		_kuntilanak_ability_button.pressed.connect(_on_kuntilanak_ability_button_pressed)
+	if _tuyul_ability_button and not _tuyul_ability_button.pressed.is_connected(_on_tuyul_ability_button_pressed):
+		_tuyul_ability_button.pressed.connect(_on_tuyul_ability_button_pressed)
 	_update_terror_energy_label()
 	_update_wave_button()
+
+func _physics_process(delta: float) -> void:
+	if _tuyul_bonus_time_left > 0.0:
+		_tuyul_bonus_time_left = max(_tuyul_bonus_time_left - delta, 0.0)
+		if _tuyul_bonus_time_left <= 0.0:
+			_tuyul_bonus_amount = 0
+	_update_ability_buttons()
 
 func _on_wave_button_pressed() -> void:
 	if _wave_in_progress:
@@ -143,7 +165,7 @@ func _update_wave_button() -> void:
 		)
 	_update_terror_energy_label()
 
-# ── Public: call this from a UI button ────────────────────────
+# ── Public: call this from a UI button ────
 func start_next_wave() -> void:
 	if _wave_in_progress:
 		printerr("Wave already in progress!")
@@ -173,7 +195,7 @@ func start_next_wave() -> void:
 	emit_signal("wave_started", _current_wave_index)
 	print("Wave %d started!" % (_current_wave_index + 1))
 
-# ── Build flat spawn queue from wave enemy list ───────────────
+# ── Build flat spawn queue from wave enemy list ────
 func _build_spawn_queue(wave_data: WaveData) -> void:
 	_spawn_queue.clear()
 	_last_spawn_time_in_wave = 0.0
@@ -194,7 +216,7 @@ func _build_spawn_queue(wave_data: WaveData) -> void:
 			_last_spawn_time_in_wave = spawn_time
 	_spawn_queue.sort_custom(func(a, b): return float(a[0]) < float(b[0]))
 
-# ── Spawn one enemy per timer tick ───────────────────────────
+# ── Spawn one enemy per timer tick ────
 func _on_spawn_timer_timeout() -> void:
 	if _spawn_queue.is_empty():
 		_spawn_timer.stop()
@@ -231,7 +253,68 @@ func _on_spawn_timer_timeout() -> void:
 
 func _on_enemy_defeated(terror_energy_amount: int) -> void:
 	_terror_energy += max(terror_energy_amount, 0)
+	if _tuyul_bonus_amount > 0:
+		_terror_energy += _tuyul_bonus_amount
 	_update_terror_energy_label()
+
+func start_tuyul_steal_bonus(duration: float, enemy_count: int) -> void:
+	_tuyul_bonus_time_left = max(duration, 0.0)
+	_tuyul_bonus_amount = clampi(enemy_count / 5, 1, 6)
+
+func _get_placed_ghosts_by_id(ghost_id: String) -> Array[GhostBase]:
+	var placed: Array[GhostBase] = []
+	if not _ghost_container:
+		return placed
+	for node in _ghost_container.get_children():
+		if node is GhostBase:
+			var ghost := node as GhostBase
+			if ghost.id == ghost_id and ghost.is_placed:
+				placed.append(ghost)
+	return placed
+
+func _get_best_ability_owner(ghost_id: String) -> GhostBase:
+	var placed := _get_placed_ghosts_by_id(ghost_id)
+	if placed.is_empty():
+		return null
+	var selected: GhostBase = null
+	for ghost in placed:
+		if ghost.can_activate_ability():
+			if selected == null or ghost.get_ability_cooldown_left() < selected.get_ability_cooldown_left():
+				selected = ghost
+	if selected:
+		return selected
+	selected = placed[0]
+	for ghost in placed:
+		if ghost.get_ability_cooldown_left() < selected.get_ability_cooldown_left():
+			selected = ghost
+	return selected
+
+func _update_ability_buttons() -> void:
+	_update_ability_button_state(_pocong_ability_button, "pocong")
+	_update_ability_button_state(_kuntilanak_ability_button, "kuntilanak")
+	_update_ability_button_state(_tuyul_ability_button, "tuyul")
+
+func _update_ability_button_state(button: Button, ghost_id: String) -> void:
+	if not button:
+		return
+	var owner := _get_best_ability_owner(ghost_id)
+	button.disabled = owner == null or not owner.can_activate_ability()
+
+func _on_pocong_ability_button_pressed() -> void:
+	_activate_ghost_ability("pocong")
+
+func _on_kuntilanak_ability_button_pressed() -> void:
+	_activate_ghost_ability("kuntilanak")
+
+func _on_tuyul_ability_button_pressed() -> void:
+	_activate_ghost_ability("tuyul")
+
+func _activate_ghost_ability(ghost_id: String) -> void:
+	var owner := _get_best_ability_owner(ghost_id)
+	if not owner:
+		return
+	owner.try_activate_ability()
+	_update_ability_buttons()
 
 func try_spend_terror_energy(amount: int) -> bool:
 	if amount <= 0:
@@ -248,10 +331,9 @@ func _update_terror_energy_label() -> void:
 	if _terror_energy_label.has_method("set_energi_teror"):
 		_terror_energy_label.call("set_energi_teror", _terror_energy)
 
-# ── Called when an enemy is removed from the scene ───────────
+# ── Called when an enemy is removed from the scene ────
 func _on_enemy_removed() -> void:
 	_active_enemies -= 1
-	# Wave is cleared when all spawned enemies are gone and queue is empty
 	if _active_enemies <= 0 and _spawn_queue.is_empty() and _wave_in_progress:
 		_wave_in_progress = false
 		emit_signal("wave_cleared", _current_wave_index)
@@ -260,23 +342,19 @@ func _on_enemy_removed() -> void:
 		_is_preparing = true
 		_update_wave_button()
 
-
 func _on_kuntianak_button_pressed() -> void:
 	pass # Replace with function body.
 
-# GameOver func  
+# ── GameOver ────
 func _on_player_core_destroyed() -> void:
 	print("Sinyal Core Hancur diterima oleh Main!")
-	
-	# off spawner enemy
+
 	if _spawn_timer:
 		_spawn_timer.stop()
-	
-	# call UI Game Over
+
 	if _game_over_ui and _game_over_ui.has_method("show_game_over"):
 		_game_over_ui.show_game_over()
 	else:
-		# Fallback if func show_game_over not in script UI 
 		if _game_over_ui:
 			_game_over_ui.visible = true
 		get_tree().paused = true
