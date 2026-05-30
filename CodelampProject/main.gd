@@ -10,7 +10,7 @@ var _waypoints_node: Node2D
 var _spawn_point: Marker2D
 var _enemy_container: Node2D
 var _level_container: Node2D
-var _wave_button: Button
+var _wave_button: TextureButton
 var _terror_energy_label: Label
 var _terror_energy: int = 0
 var _ghost_container: Node2D
@@ -46,12 +46,12 @@ func _ready() -> void:
 	_enemy_container = get_node_or_null("EnemyContainer") as Node2D
 	_level_container = get_node_or_null("LevelContainer") as Node2D
 	_spawn_timer = get_node_or_null("SpawnTimer") as Timer
-	_wave_button = get_node_or_null("TopHUD/WaveButton") as Button
+	_wave_button = get_node_or_null("TopHUD/WaveButton") as TextureButton
 	_pocong_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/PocongAbilityButton") as Button
 	_kuntilanak_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/KuntilanakAbilityButton") as Button
 	_tuyul_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/TuyulAbilityButton") as Button
 	if not _wave_button:
-		_wave_button = find_child("WaveButton", true, false) as Button
+		_wave_button = find_child("WaveButton", true, false) as TextureButton
 	_terror_energy_label = get_node_or_null("TopHUD/TerrorEnergyLabel") as Label
 	if not _terror_energy_label:
 		_terror_energy_label = find_child("TerrorEnergyLabel", true, false) as Label
@@ -73,16 +73,18 @@ func _ready() -> void:
 
 	if not _wave_button:
 		_wave_button = load("res://ui/top_hud/wave_button.gd").new()
+
 		_wave_button.name = "WaveButton"
-		_wave_button.text = "Start Wave 1"
 		_wave_button.position = Vector2(24, 24)
+
 		var top_hud := get_node_or_null("TopHUD") as CanvasLayer
+
 		if not top_hud:
 			top_hud = CanvasLayer.new()
 			top_hud.name = "TopHUD"
 			add_child(top_hud)
-		top_hud.add_child(_wave_button)
 
+		top_hud.add_child(_wave_button)
 	# Load level scene
 	var level_scene = GameManager.get_current_level()
 	if level_scene:
