@@ -6,6 +6,10 @@ func _ready() -> void:
 	#Test the inheritence (Remove later)
 	name = "Dukun"
 	super._ready()
+	
+	if sprite:
+		sprite.play("walk")
+	
 	print("Fear: %s, Speed: %s, Terror: %s" % [max_fear_bar, speed, terror_energy])
 
 # Cooldown timer for the active stun skill

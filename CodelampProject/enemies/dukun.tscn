@@ -2,7 +2,78 @@
 
 [ext_resource type="PackedScene" uid="uid://cg72vgq1uckne" path="res://enemies/enemy_base.tscn" id="1_h7wct"]
 [ext_resource type="Script" uid="uid://daj242yusdf0h" path="res://enemies/dukun.gd" id="2_h7wct"]
-[ext_resource type="Texture2D" uid="uid://bvkab8npf4mqw" path="res://icon.svg" id="3_3meab"]
+[ext_resource type="Texture2D" uid="uid://cawop7akc0jlu" path="res://enemies/Dukun_walk.png" id="3_3meab"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg2jr"]
+atlas = ExtResource("3_3meab")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufddh"]
+atlas = ExtResource("3_3meab")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojehd"]
+atlas = ExtResource("3_3meab")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xkqi"]
+atlas = ExtResource("3_3meab")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsgoo"]
+atlas = ExtResource("3_3meab")
+region = Rect2(1280, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0aufu"]
+atlas = ExtResource("3_3meab")
+region = Rect2(1600, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtm30"]
+atlas = ExtResource("3_3meab")
+region = Rect2(1920, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpvcp"]
+atlas = ExtResource("3_3meab")
+region = Rect2(2240, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oad6r"]
+atlas = ExtResource("3_3meab")
+region = Rect2(2560, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5q4q4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg2jr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufddh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojehd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xkqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsgoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0aufu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtm30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpvcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oad6r")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 15.0
+}]
 
 [node name="Dukun" unique_id=1748458864 groups=["enemy"] instance=ExtResource("1_h7wct")]
 script = ExtResource("2_h7wct")
@@ -11,5 +82,7 @@ speed = 70.0
 terror_energy = 50
 core_damage = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=1357502361]
-texture = ExtResource("3_3meab")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1" unique_id=1878011815]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_5q4q4")
+animation = &"walk"
