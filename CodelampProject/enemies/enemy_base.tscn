@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cg72vgq1uckne"]
 
 [ext_resource type="Script" uid="uid://xfqym8q25vud" path="res://enemies/enemy_base.gd" id="1_6dmn1"]
+[ext_resource type="Texture2D" uid="uid://1b8aecaacv3q" path="res://enemies/Enemy_Fear.png" id="2_6dmn1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1nlul"]
 size = Vector2(67, 67)
@@ -17,7 +18,7 @@ script = ExtResource("1_6dmn1")
 shape = SubResource("RectangleShape2D_1nlul")
 
 [node name="FearBar" type="ProgressBar" parent="." unique_id=1011305686]
-offset_left = -35.0
+offset_left = -21.0
 offset_top = -45.0
 offset_right = 37.0
 offset_bottom = -38.0
@@ -25,3 +26,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/fill = SubResource("StyleBoxFlat_tllp7")
 show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="FearBar" unique_id=2125369425]
+position = Vector2(-9, -1.0000038)
+scale = Vector2(0.36057696, 0.34906918)
+texture = ExtResource("2_6dmn1")

@@ -183,4 +183,5 @@ cost_move = 30
 shape = SubResource("CircleShape2D_lgcg0")
 
 [node name="AnimatedSprite2D" parent="." index="2" unique_id=627858158]
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_75xdn")

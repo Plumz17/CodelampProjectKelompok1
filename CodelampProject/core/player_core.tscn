@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dxmdaa4mkxlyt" path="res://core/player_core.gd" id="1_jvo0p"]
 [ext_resource type="Texture2D" uid="uid://cm87ejijskxik" path="res://levels/assets/Red_Circle.png" id="2_d7bfy"]
+[ext_resource type="FontFile" uid="uid://f7nd1djbpf8r" path="res://fonts/Cinzel-Black.ttf" id="3_jnc61"]
 [ext_resource type="Texture2D" uid="uid://bjj0vwdiq32og" path="res://core/asset/Player_Core_HP.png" id="3_qv2kv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8futu"]
@@ -22,6 +23,7 @@ offset_left = -51.0
 offset_top = -34.0
 offset_right = 52.0
 offset_bottom = 39.0
+theme_override_fonts/font = ExtResource("3_jnc61")
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
