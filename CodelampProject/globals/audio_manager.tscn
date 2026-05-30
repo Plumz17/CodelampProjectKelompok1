@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://bavyw1ac3d8gm" path="res://sfx/click.wav" id="2_3uslp"]
 [ext_resource type="AudioStream" uid="uid://bmpnn8fhiio4v" path="res://sfx/hover.wav" id="3_dd2wf"]
 [ext_resource type="AudioStream" uid="uid://s5enq2mse5mu" path="res://sfx/cancel.wav" id="4_dd2wf"]
+[ext_resource type="AudioStream" uid="uid://74m56m6r8hon" path="res://bgm/bgm_night.wav" id="5_4m8wf"]
 
 [node name="AudioManager" type="Node" unique_id=1669956131]
 script = ExtResource("1_sv3hj")
@@ -12,4 +13,5 @@ ui_hover = ExtResource("3_dd2wf")
 ui_cancel = ExtResource("4_dd2wf")
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="." unique_id=1200375189]
+stream = ExtResource("5_4m8wf")
 bus = &"BGM"
