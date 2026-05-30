@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c2jnyhgpnwfwh" path="res://interactables/room_interaction.gd" id="1_kxxje"]
 [ext_resource type="Texture2D" uid="uid://bs705eitj7rcw" path="res://interactables/assets/Button_Bisikan-base.png" id="2_llsms"]
 [ext_resource type="Texture2D" uid="uid://gy5da0bmoegx" path="res://interactables/assets/Button_Bisikan-animation.png" id="3_1tjhc"]
+[ext_resource type="FontFile" uid="uid://f7nd1djbpf8r" path="res://fonts/Cinzel-Black.ttf" id="4_f0vg3"]
 [ext_resource type="Texture2D" uid="uid://gv0u2xgwdpye" path="res://interactables/assets/Button_Lampu-base.png" id="4_wo6h3"]
 [ext_resource type="Texture2D" uid="uid://drm685c06po67" path="res://interactables/assets/Button_Lampu-animation.png" id="5_f0vg3"]
 
@@ -178,6 +179,7 @@ offset_right = 76.5
 offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_f0vg3")
 theme_override_font_sizes/font_size = 35
 text = "WHISPER"
 uppercase = true
@@ -207,6 +209,7 @@ offset_right = 55.0
 offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_f0vg3")
 theme_override_font_sizes/font_size = 40
 text = "Lamp"
 uppercase = true

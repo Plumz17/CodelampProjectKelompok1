@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtojvdkhpdgfy" path="res://main.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://b6v8gf2l6mte4" path="res://ui/game_over/game_over_ui.tscn" id="2_gameover"]
+[ext_resource type="FontFile" uid="uid://dyx3nj2m80r3k" path="res://fonts/Cinzel-Medium.ttf" id="3_dg77c"]
 [ext_resource type="PackedScene" uid="uid://d4bpo58y615ua" path="res://ghosts/pocong.tscn" id="3_pocong"]
 [ext_resource type="PackedScene" uid="uid://c5g0up3st3y88" path="res://ghosts/kunilanak.tscn" id="4_kuntilanak"]
 [ext_resource type="PackedScene" uid="uid://bcepqgjgi4ata" path="res://ghosts/tuyul.tscn" id="5_tuyul"]
@@ -9,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://btbfpaku6c6ma" path="res://ghosts/kuntilanak_icon.png" id="7_kuntilanak_icon"]
 [ext_resource type="Texture2D" uid="uid://cxyggl56fsjcx" path="res://ghosts/tuyul_icon.png" id="8_tuyul_icon"]
 [ext_resource type="Script" uid="uid://d3a1m6bojn7s7" path="res://ui/ghost_button/ghost_button.gd" id="9_ghost_button"]
-[ext_resource type="PackedScene" path="res://ui/victory_ui/victoryui.tscn" id="10_dg77c"]
-[ext_resource type="PackedScene" path="res://ui/top_hud/top_hud.tscn" id="10_top_hud"]
+[ext_resource type="PackedScene" uid="uid://bd2gcpkqobb3y" path="res://ui/victory_ui/victoryui.tscn" id="10_dg77c"]
+[ext_resource type="PackedScene" uid="uid://enu8y70b6r57" path="res://ui/top_hud/top_hud.tscn" id="10_top_hud"]
 
 [node name="Main" type="Node2D" unique_id=1858161533]
 script = ExtResource("1_main")
@@ -53,16 +54,19 @@ theme_override_constants/separation = 110
 
 [node name="PocongAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=615291044]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_dg77c")
 disabled = true
 text = "Haunted Stomp"
 
 [node name="KuntilanakAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=1467218559]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_dg77c")
 disabled = true
 text = "Dreadful Scream"
 
 [node name="TuyulAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=473111613]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_dg77c")
 disabled = true
 text = "Steal"
 
