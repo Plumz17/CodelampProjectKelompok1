@@ -4,6 +4,7 @@ signal show_settings
 signal hide_settings
 signal show_level_select
 signal hide_level_select
+var auto_open_level_select: bool = false
 
 func emit_show_settings() -> void:
 	show_settings.emit()

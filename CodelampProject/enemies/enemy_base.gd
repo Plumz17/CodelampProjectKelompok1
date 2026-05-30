@@ -50,23 +50,23 @@ func _physics_process(_delta: float) -> void:
 		reach_core()
 		return
 	
-	# Calculate trajectory and move towards the active waypoint
 	var next_waypoint: Vector2 = waypoints[current_waypoint_index]
-	var direction: Vector2 = (next_waypoint - global_position).normalized()
-	
-	# Enemies run 50% faster when terrified
+	var to_waypoint: Vector2 = next_waypoint - global_position
 	var current_speed: float = speed * 1.5 if is_fleeing else speed
-	
-	velocity = direction * current_speed
-	move_and_slide()
-	
-	# Proceed to the next waypoint upon reaching the distance threshold
-	if global_position.distance_to(next_waypoint) < 6.7:
+	var step_distance: float = current_speed * _delta
+	if to_waypoint.length() <= max(step_distance, 6.7):
+		global_position = next_waypoint
+		velocity = Vector2.ZERO
 		if is_fleeing:
 			current_waypoint_index -= 1
 		else:
 			current_waypoint_index += 1
-	
+		return
+		
+	var direction: Vector2 = to_waypoint.normalized()
+	velocity = direction * current_speed
+	move_and_slide()
+
 	# --- Rotate System ---
 	rotation = 0.0
 	
@@ -75,6 +75,7 @@ func _physics_process(_delta: float) -> void:
 		sprite.position.y = 0.0
 		# Putar murni gambarnya saja mengikuti arah velocity
 		sprite.rotation = velocity.angle() - deg_to_rad(-90)
+
 
 func take_fear_damage(amount: int, damage_source: String = "ghost") -> void:
 	if is_fleeing:
@@ -85,15 +86,19 @@ func take_fear_damage(amount: int, damage_source: String = "ghost") -> void:
 	print(name, " menerima ", amount, " Fear Damage dari ", damage_source, "! Sisa HP Mental: ", current_fear_bar)
 	if current_fear_bar <= 0:
 		trigger_flee()
-		
+
+
 func trigger_flee() -> void:
 	if not _defeat_reward_emitted:
 		_defeat_reward_emitted = true
 		defeated.emit(terror_energy)
 	is_fleeing = true
 	current_fear_bar = 0
-	current_waypoint_index -= 1 # Turn around immediately
 	
+	if current_waypoint_index >= waypoints.size():
+		current_waypoint_index = waypoints.size() - 1
+	else:
+		current_waypoint_index = max(current_waypoint_index - 1, 0)
 # Handles logic when the entity reaches the player's core
 func reach_core() -> void:
 	# Apply final velocity to ensure collision overlap with Core's Area2D
@@ -104,3 +109,19 @@ func reach_core() -> void:
 # Applies stun effect from Whisper room interaction
 func apply_stun(duration: float) -> void:
 	stun_timer = duration
+
+func stumble_back(steps: int = 1) -> void:
+	if waypoints.is_empty():
+		return
+	if steps <= 0:
+		return
+	if is_fleeing:
+		current_waypoint_index = max(current_waypoint_index - steps, -1)
+		return
+	if waypoints.size() <= 1:
+		current_waypoint_index = 0
+		return
+	if current_waypoint_index <= 1:
+		current_waypoint_index = 1
+		return
+	current_waypoint_index = max(current_waypoint_index - steps, 1)

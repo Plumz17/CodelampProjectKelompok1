@@ -1,286 +1,109 @@
-[gd_scene format=3 uid="uid://bsnmbo85eivk8"]
+[gd_scene format=3 uid="uid://b58anmj4yah1n"]
 
-[ext_resource type="Script" uid="uid://dtojvdkhpdgfy" path="res://main.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://d4bpo58y615ua" path="res://ghosts/pocong.tscn" id="3_h2yge"]
-[ext_resource type="Texture2D" uid="uid://b62lmr5u1tctv" path="res://ui/ghost_button/icon_pocong.png" id="3_ycdy4"]
-[ext_resource type="PackedScene" uid="uid://b6v8gf2l6mte4" path="res://ui/game_over/game_over_ui.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://c5g0up3st3y88" path="res://ghosts/kunilanak.tscn" id="4_lquwl"]
-[ext_resource type="PackedScene" uid="uid://bcepqgjgi4ata" path="res://ghosts/tuyul.tscn" id="5_7mycd"]
-[ext_resource type="Texture2D" uid="uid://bgidkwieyuuid" path="res://ui/ghost_button/icon_kunti.png" id="6_w48qg"]
-[ext_resource type="Texture2D" uid="uid://djk6x0sv0k5b4" path="res://ui/ghost_button/icon_tuyul.png" id="8_w48qg"]
-[ext_resource type="Script" uid="uid://d3a1m6bojn7s7" path="res://ui/ghost_button/ghost_button.gd" id="9_w48qg"]
-[ext_resource type="Texture2D" uid="uid://bhcww8gh5xcgo" path="res://levels/assets/Map Background.png" id="10_efxa6"]
-[ext_resource type="Texture2D" uid="uid://bp4wjrro82ojx" path="res://levels/assets/Layout Map.png" id="11_dg77c"]
-[ext_resource type="Texture2D" uid="uid://bn57vvmf63y6q" path="res://levels/assets/Path.png" id="12_dg77c"]
-[ext_resource type="Texture2D" uid="uid://cxtrh83iklia7" path="res://tilemaps/Tilemap-3.png" id="14_w48qg"]
-[ext_resource type="PackedScene" path="res://ui/top_hud/top_hud.tscn" id="15_hud01"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(69.076614, 138.94687)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w48qg"]
-texture = ExtResource("14_w48qg")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-8:2/0 = 0
-9:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-7:3/0 = 0
-8:3/0 = 0
-9:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-7:4/0 = 0
-8:4/0 = 0
-9:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-7:5/0 = 0
-8:5/0 = 0
-9:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-6:6/0 = 0
-7:6/0 = 0
-8:6/0 = 0
-9:6/0 = 0
-0:7/0 = 0
-1:7/0 = 0
-2:7/0 = 0
-3:7/0 = 0
-4:7/0 = 0
-5:7/0 = 0
-6:7/0 = 0
-7:7/0 = 0
-8:7/0 = 0
-9:7/0 = 0
-0:8/0 = 0
-1:8/0 = 0
-2:8/0 = 0
-3:8/0 = 0
-4:8/0 = 0
-5:8/0 = 0
-6:8/0 = 0
-7:8/0 = 0
-8:8/0 = 0
-9:8/0 = 0
-0:9/0 = 0
-1:9/0 = 0
-2:9/0 = 0
-3:9/0 = 0
-4:9/0 = 0
-5:9/0 = 0
-6:9/0 = 0
-7:9/0 = 0
-8:9/0 = 0
-9:9/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_2cqfq"]
-tile_size = Vector2i(64, 64)
-sources/0 = SubResource("TileSetAtlasSource_w48qg")
+[ext_resource type="Script" uid="uid://dtojvdkhpdgfy" path="res://main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://b6v8gf2l6mte4" path="res://ui/game_over/game_over_ui.tscn" id="2_gameover"]
+[ext_resource type="PackedScene" uid="uid://d4bpo58y615ua" path="res://ghosts/pocong.tscn" id="3_pocong"]
+[ext_resource type="PackedScene" uid="uid://c5g0up3st3y88" path="res://ghosts/kunilanak.tscn" id="4_kuntilanak"]
+[ext_resource type="PackedScene" uid="uid://bcepqgjgi4ata" path="res://ghosts/tuyul.tscn" id="5_tuyul"]
+[ext_resource type="Texture2D" uid="uid://denyyh8do4yi4" path="res://ghosts/pocong_icon.png" id="6_pocong_icon"]
+[ext_resource type="Texture2D" uid="uid://btbfpaku6c6ma" path="res://ghosts/kuntilanak_icon.png" id="7_kuntilanak_icon"]
+[ext_resource type="Texture2D" uid="uid://cxyggl56fsjcx" path="res://ghosts/tuyul_icon.png" id="8_tuyul_icon"]
+[ext_resource type="Script" uid="uid://d3a1m6bojn7s7" path="res://ui/ghost_button/ghost_button.gd" id="9_ghost_button"]
+[ext_resource type="PackedScene" path="res://ui/victory_ui/victoryui.tscn" id="10_dg77c"]
+[ext_resource type="PackedScene" path="res://ui/top_hud/top_hud.tscn" id="10_top_hud"]
+[ext_resource type="Script" path="res://ui/victory_ui/victoryui.gd" id="11_ycdy4"]
 
 [node name="Main" type="Node2D" unique_id=1858161533]
-script = ExtResource("1_0xm2m")
+script = ExtResource("1_main")
 
-[node name="TopHUD" parent="." unique_id=2028899001 instance=ExtResource("15_hud01")]
+[node name="TopHUD" parent="." unique_id=2028899001 instance=ExtResource("10_top_hud")]
 
-[node name="Areas" type="Node2D" parent="." unique_id=115886294]
+[node name="EnemyContainer" type="Node2D" parent="." unique_id=1911630442]
 
-[node name="Area2D" type="Area2D" parent="Areas" unique_id=2310073 groups=["placement_area"]]
-position = Vector2(264, 684)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D" unique_id=273443622]
-scale = Vector2(1.1423659, 0.7060907)
-shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Area2D2" type="Area2D" parent="Areas" unique_id=1570793791 groups=["placement_area"]]
-position = Vector2(266, 265)
-scale = Vector2(1, 1.44)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D2" unique_id=701969622]
-scale = Vector2(1.1423659, 0.7060907)
-shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Area2D3" type="Area2D" parent="Areas" unique_id=927582912 groups=["placement_area"]]
-position = Vector2(565, 387)
-scale = Vector2(1, 0.6000013)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D3" unique_id=525972999]
-scale = Vector2(1.1423659, 0.7060907)
-shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Area2D4" type="Area2D" parent="Areas" unique_id=921566229 groups=["placement_area"]]
-position = Vector2(562, 627)
-scale = Vector2(1, 0.6000013)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D4" unique_id=77503706]
-scale = Vector2(1.1423659, 0.7060907)
-shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Area2D5" type="Area2D" parent="Areas" unique_id=2019881832 groups=["placement_area"]]
-position = Vector2(806, 394)
-scale = Vector2(1, 0.6000013)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D5" unique_id=118846501]
-scale = Vector2(1.1423659, 0.7060907)
-shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Area2D6" type="Area2D" parent="Areas" unique_id=689162841 groups=["placement_area"]]
-position = Vector2(1111, 389)
-scale = Vector2(1, 0.6000013)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D6" unique_id=1794240597]
-scale = Vector2(1.1423659, 0.7060907)
-shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Area2D7" type="Area2D" parent="Areas" unique_id=1980432294 groups=["placement_area"]]
-position = Vector2(423, 116)
-scale = Vector2(2.8, 0.4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D7" unique_id=1618144634]
-scale = Vector2(1.1423659, 0.7060907)
-shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="Area2D8" type="Area2D" parent="Areas" unique_id=1259089525 groups=["placement_area"]]
-position = Vector2(960.00006, 118)
-scale = Vector2(2.9, 0.4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D8" unique_id=1867734609]
-scale = Vector2(1.1423659, 0.7060907)
-shape = SubResource("RectangleShape2D_h2yge")
+[node name="LevelContainer" type="Node2D" parent="." unique_id=197449280]
 
 [node name="Ghosts" type="Node2D" parent="." unique_id=2022774454]
 
 [node name="GhostSelectUI" type="CanvasLayer" parent="." unique_id=1929039526]
 layer = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GhostSelectUI" unique_id=198191497]
+[node name="MarginContainer" type="MarginContainer" parent="GhostSelectUI" unique_id=2081240262]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -659.0
-offset_top = -212.0
-offset_right = -275.0
-offset_bottom = -212.0
+offset_left = -604.0
+offset_top = -288.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
-theme_override_constants/separation = 192
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 36
 
-[node name="Control" type="Control" parent="GhostSelectUI/HBoxContainer" unique_id=1583596336]
+[node name="VBoxContainer" type="VBoxContainer" parent="GhostSelectUI/MarginContainer" unique_id=198191497]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 12
 
-[node name="PocongButon" type="TextureButton" parent="GhostSelectUI/HBoxContainer/Control" unique_id=390455861 node_paths=PackedStringArray("ghost_group")]
-layout_mode = 0
-offset_right = 1772.0
-offset_bottom = 1772.0
-scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("3_ycdy4")
-stretch_mode = 0
-script = ExtResource("9_w48qg")
-ghost_scene = ExtResource("3_h2yge")
-ghost_group = NodePath("../../../../Ghosts")
+[node name="AbilityButtons" type="HBoxContainer" parent="GhostSelectUI/MarginContainer/VBoxContainer" unique_id=863418211]
+layout_mode = 2
+theme_override_constants/separation = 110
+
+[node name="PocongAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=615291044]
+layout_mode = 2
+disabled = true
+text = "Haunted Stomp"
+
+[node name="KuntilanakAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=1467218559]
+layout_mode = 2
+disabled = true
+text = "Dreadful Scream"
+
+[node name="TuyulAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=473111613]
+layout_mode = 2
+disabled = true
+text = "Steal"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GhostSelectUI/MarginContainer/VBoxContainer" unique_id=1450945053]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 32
+
+[node name="PocongButon" type="TextureButton" parent="GhostSelectUI/MarginContainer/VBoxContainer/HBoxContainer" unique_id=390455861 node_paths=PackedStringArray("ghost_group")]
+layout_mode = 2
+texture_normal = ExtResource("6_pocong_icon")
+script = ExtResource("9_ghost_button")
+ghost_scene = ExtResource("3_pocong")
+ghost_group = NodePath("../../../../../Ghosts")
 ghost_type = "pocong"
 
-[node name="Control2" type="Control" parent="GhostSelectUI/HBoxContainer" unique_id=1592701238]
+[node name="KuntianakButton" type="TextureButton" parent="GhostSelectUI/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1090439914 node_paths=PackedStringArray("ghost_group")]
 layout_mode = 2
-
-[node name="KuntianakButton" type="TextureButton" parent="GhostSelectUI/HBoxContainer/Control2" unique_id=1090439914 node_paths=PackedStringArray("ghost_group")]
-layout_mode = 0
-offset_left = 32.0
-offset_right = 160.0
-offset_bottom = 128.0
-scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("6_w48qg")
-script = ExtResource("9_w48qg")
-ghost_scene = ExtResource("4_lquwl")
-ghost_group = NodePath("../../../../Ghosts")
+texture_normal = ExtResource("7_kuntilanak_icon")
+script = ExtResource("9_ghost_button")
+ghost_scene = ExtResource("4_kuntilanak")
+ghost_group = NodePath("../../../../../Ghosts")
 ghost_type = "kuntilanak"
 
-[node name="Control3" type="Control" parent="GhostSelectUI/HBoxContainer" unique_id=1427723978]
+[node name="TuyulButton" type="TextureButton" parent="GhostSelectUI/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1674326265 node_paths=PackedStringArray("ghost_group")]
 layout_mode = 2
-
-[node name="TuyulButton" type="TextureButton" parent="GhostSelectUI/HBoxContainer/Control3" unique_id=1674326265 node_paths=PackedStringArray("ghost_group")]
-layout_mode = 0
-offset_left = 64.0
-offset_right = 192.0
-offset_bottom = 128.0
-scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("8_w48qg")
-script = ExtResource("9_w48qg")
-ghost_scene = ExtResource("5_7mycd")
-ghost_group = NodePath("../../../../Ghosts")
+texture_normal = ExtResource("8_tuyul_icon")
+script = ExtResource("9_ghost_button")
+ghost_scene = ExtResource("5_tuyul")
+ghost_group = NodePath("../../../../../Ghosts")
 ghost_type = "tuyul"
 
-[node name="GameOverUI" parent="." unique_id=642820325 instance=ExtResource("4_1bvp3")]
+[node name="VictoryUI" parent="." unique_id=60483366 instance=ExtResource("10_dg77c")]
+script = ExtResource("11_ycdy4")
+
+[node name="GameOverUI" parent="." unique_id=2061512220 instance=ExtResource("2_gameover")]
 visible = false
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1722140780]
-z_index = -1
-texture = ExtResource("10_efxa6")
-centered = false
+[node name="SpawnTimer" type="Timer" parent="." unique_id=725130102]
 
-[node name="Background2" type="Sprite2D" parent="." unique_id=1053716023]
-z_index = -1
-texture = ExtResource("11_dg77c")
-centered = false
-
-[node name="Background3" type="Sprite2D" parent="." unique_id=1428046509]
-z_index = -1
-texture = ExtResource("12_dg77c")
-centered = false
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=197207079]
-tile_set = SubResource("TileSet_2cqfq")
-
+[connection signal="visibility_changed" from="VictoryUI" to="." method="_on_victory_ui_visibility_changed"]
 [connection signal="visibility_changed" from="GameOverUI" to="." method="_on_game_over_ui_visibility_changed"]

@@ -7,7 +7,6 @@ extends Control
 @export var is_back_button: bool = false
 var original_y: float
 var original_scale: Vector2
-const MAIN = preload("uid://bsnmbo85eivk8")
 
 func _ready() -> void:
 	original_y = texture_button.position.y

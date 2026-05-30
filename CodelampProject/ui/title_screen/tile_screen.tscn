@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ggcjn0g5djba" path="res://ui/title_screen/assets/bg.png" id="1_bylpc"]
 [ext_resource type="Texture2D" uid="uid://bisdsx8652xl8" path="res://ui/title_screen/assets/Kuntilanak_bekgron.png" id="1_gfb1y"]
+[ext_resource type="Script" uid="uid://c7fqdblspmmgp" path="res://ui/title_screen/tile_screen.gd" id="1_tht34"]
 [ext_resource type="Script" uid="uid://tpvfv6r1ldo4" path="res://ui/title_screen/hot_ghost.gd" id="3_vu3mf"]
 [ext_resource type="Script" uid="uid://bgmijky74ast4" path="res://ui/title_screen/diagonal_container.gd" id="3_xx1fv"]
 [ext_resource type="Texture2D" uid="uid://b4ix8i3k0lb3v" path="res://ui/title_screen/assets/level_select.png" id="4_xx1fv"]
@@ -11,7 +12,6 @@
 [ext_resource type="Script" uid="uid://dneiju2endwlt" path="res://ui/title_screen/title_button.gd" id="8_hb510"]
 [ext_resource type="PackedScene" uid="uid://dhppuy2u4xg6f" path="res://ui/settings/settings_ui.tscn" id="10_3u542"]
 [ext_resource type="PackedScene" uid="uid://dblnqy75pt2xk" path="res://ui/level_select/level_select.tscn" id="11_kqu42"]
-[ext_resource type="Script" uid="uid://bd22p3tibeiab" path="res://ui/level_select/level_select.gd" id="12_tht34"]
 
 [node name="TileScreen" type="Control" unique_id=559802658]
 layout_mode = 3
@@ -20,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tht34")
 
 [node name="ColorRect" type="TextureRect" parent="." unique_id=281068020]
 z_index = -2
@@ -198,4 +199,3 @@ layout_mode = 1
 [node name="LevelSelect" parent="." unique_id=1226826688 instance=ExtResource("11_kqu42")]
 visible = false
 layout_mode = 1
-script = ExtResource("12_tht34")
