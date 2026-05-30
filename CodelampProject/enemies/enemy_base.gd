@@ -8,6 +8,7 @@ signal defeated(terror_energy_amount: int)
 @export var terror_energy: int # Resource dropped upon defeat
 @export var waypoints_node: Node2D # Reference to the Waypoints parent node
 @export var core_damage: int = 10 # Damage dealt to the player's core upon reaching it
+@onready var sprite: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
 
 # Runtime state variables
 var waypoints: Array[Vector2] = []
@@ -65,6 +66,15 @@ func _physics_process(_delta: float) -> void:
 			current_waypoint_index -= 1
 		else:
 			current_waypoint_index += 1
+	
+	# --- Rotate System ---
+	rotation = 0.0
+	
+	if sprite and velocity.length() > 0.1:
+		# Reset offset vertikal agar gambar tidak melayang
+		sprite.position.y = 0.0
+		# Putar murni gambarnya saja mengikuti arah velocity
+		sprite.rotation = velocity.angle() - deg_to_rad(-90)
 
 func take_fear_damage(amount: int, damage_source: String = "ghost") -> void:
 	if is_fleeing:
@@ -83,6 +93,7 @@ func trigger_flee() -> void:
 	is_fleeing = true
 	current_fear_bar = 0
 	current_waypoint_index -= 1 # Turn around immediately
+	
 # Handles logic when the entity reaches the player's core
 func reach_core() -> void:
 	# Apply final velocity to ensure collision overlap with Core's Area2D
