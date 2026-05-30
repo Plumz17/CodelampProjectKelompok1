@@ -72,20 +72,26 @@ func _process(delta: float) -> void:
 		else:
 			modulate = Color.WHITE # Normal
 			
-		# --- ATTACK SYSTEM ---
+		# --- ATTACK & TRACKING SYSTEM ---
 		if attack_cooldown > 0.0:
 			attack_cooldown -= delta
-		if attack_cooldown <= 0.0:
-			var target := _find_target_in_range()
-			if target:
+			
+		var target := _find_target_in_range()
+		
+		if target:
+			#Rotate
+			look_at(target.global_position)
+			rotation_degrees -= 90 
+			#attack
+			if attack_cooldown <= 0.0:
 				target.take_fear_damage(fear_damage, id)
 				attack_cooldown = attack_rate
 				_play_attack_animation()
-			else:
-				# No target found, stop attack animation and return to idle
-				if anim_sprite.animation == "attack" and anim_sprite.is_playing():
-					anim_sprite.stop()
-					anim_sprite.play("idle")
+		else:
+			# No target found, stop attack animation and return to idley
+			if anim_sprite.animation == "attack" and anim_sprite.is_playing():
+				anim_sprite.stop()
+				anim_sprite.play("idle")
 
 
 # Allow ghost to be dragged again after placing

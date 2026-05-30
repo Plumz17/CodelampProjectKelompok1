@@ -1,23 +1,49 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://enu8y70b6r57"]
 
-[ext_resource type="Script" path="res://ui/top_hud/wave_button.gd" id="1_wave"]
-[ext_resource type="Script" path="res://ui/top_hud/energi_teror.gd" id="2_energy"]
+[ext_resource type="Texture2D" uid="uid://cuoati2yl2fcj" path="res://ui/top_hud/asset/Wave_Progression_Background.png" id="1_7i3ju"]
+[ext_resource type="Script" uid="uid://drb1dow2drdgx" path="res://ui/top_hud/wave_button.gd" id="1_wave"]
+[ext_resource type="Script" uid="uid://b3g5hfr6l542b" path="res://ui/top_hud/energi_teror.gd" id="2_energy"]
+[ext_resource type="FontFile" uid="uid://f7nd1djbpf8r" path="res://fonts/Cinzel-Black.ttf" id="3_fhhsp"]
+[ext_resource type="Texture2D" uid="uid://c0t7xieoxlh1d" path="res://ui/top_hud/asset/Energy_Terror.png" id="4_fhhsp"]
 
-[node name="TopHUD" type="CanvasLayer"]
-layer = 1
+[node name="TopHUD" type="CanvasLayer" unique_id=779360785]
 
-[node name="WaveButton" type="Button" parent="."]
+[node name="WaveButton" type="TextureButton" parent="." unique_id=1909349355]
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 258.0
+offset_bottom = 85.0
+texture_normal = ExtResource("1_7i3ju")
 script = ExtResource("1_wave")
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 168.0
-offset_bottom = 55.0
-text = "Start Wave 1"
 
-[node name="TerrorEnergyLabel" type="Label" parent="."]
-script = ExtResource("2_energy")
-offset_left = 186.0
-offset_top = 30.0
-offset_right = 353.0
-offset_bottom = 53.0
+[node name="Label" type="Label" parent="WaveButton" unique_id=212405054]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.386
+anchor_top = 0.404
+anchor_right = 0.386
+anchor_bottom = 0.404
+offset_left = -97.974
+offset_top = -32.532
+offset_right = 98.026
+offset_bottom = 32.468
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_fhhsp")
+theme_override_font_sizes/font_size = 23
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TerrorEnergyLabel" type="Label" parent="." unique_id=158865041]
+offset_left = 314.0
+offset_top = 37.0
+offset_right = 481.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("3_fhhsp")
 text = "Energi Teror: 0"
+script = ExtResource("2_energy")
+
+[node name="Sprite2D" type="Sprite2D" parent="TerrorEnergyLabel" unique_id=727355070]
+position = Vector2(-27, 6)
+scale = Vector2(0.50961536, 0.5096154)
+texture = ExtResource("4_fhhsp")

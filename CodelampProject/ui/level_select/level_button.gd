@@ -1,19 +1,24 @@
 extends Control
+
 @onready var texture_button: TextureButton = $TextureButton
-@onready var label: Label = $TextureButton/Label
+# CHANGED LINE: Use get_node_or_null to prevent errors if the node doesn't exist!
+@onready var label: Label = get_node_or_null("TextureButton/Label")
+
 @export var level_index: int
 @export var speed: float
 @export var height: float
 @export var is_back_button: bool = false
+
 var original_y: float
 var original_scale: Vector2
-const MAIN = preload("uid://bsnmbo85eivk8")
 
 func _ready() -> void:
 	original_y = texture_button.position.y
 	original_scale = texture_button.scale
 	setup_signals()
 	start_bob()
+	
+	# Since we use get_node_or_null, the BackButton will safely skip this
 	if label:
 		label.text = str(level_index + 1)
 
@@ -45,7 +50,7 @@ func _on_button_unhovered() -> void:
 	tween.tween_property(texture_button, "scale", original_scale, 0.2)
 
 func _on_button_pressed() -> void:
-	if is_back_button: # this code runs when back button is click
+	if is_back_button: # this code runs when back button is clicked
 		AudioManager.playsfx_cancel()
 		SignalHub.emit_hide_level_select()
 	else: # this code runs when level button is clicked

@@ -181,6 +181,6 @@ core_damage = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1" unique_id=1057608434]
 position = Vector2(1, -1)
-scale = Vector2(0.75, 0.711)
+scale = Vector2(0.7, 0.664)
 sprite_frames = SubResource("SpriteFrames_l8qf4")
 animation = &"walk"

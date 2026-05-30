@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var _game_over_ui = $GameOverUI
+@onready var _victory_ui = $VictoryUI
 
 # ── Level Loading ────
 #@export var level_scene: PackedScene (This will be handled in the game manager)
@@ -9,7 +10,7 @@ var _waypoints_node: Node2D
 var _spawn_point: Marker2D
 var _enemy_container: Node2D
 var _level_container: Node2D
-var _wave_button: Button
+var _wave_button: TextureButton
 var _terror_energy_label: Label
 var _terror_energy: int = 0
 var _ghost_container: Node2D
@@ -45,12 +46,12 @@ func _ready() -> void:
 	_enemy_container = get_node_or_null("EnemyContainer") as Node2D
 	_level_container = get_node_or_null("LevelContainer") as Node2D
 	_spawn_timer = get_node_or_null("SpawnTimer") as Timer
-	_wave_button = get_node_or_null("TopHUD/WaveButton") as Button
+	_wave_button = get_node_or_null("TopHUD/WaveButton") as TextureButton
 	_pocong_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/PocongAbilityButton") as Button
 	_kuntilanak_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/KuntilanakAbilityButton") as Button
 	_tuyul_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/TuyulAbilityButton") as Button
 	if not _wave_button:
-		_wave_button = find_child("WaveButton", true, false) as Button
+		_wave_button = find_child("WaveButton", true, false) as TextureButton
 	_terror_energy_label = get_node_or_null("TopHUD/TerrorEnergyLabel") as Label
 	if not _terror_energy_label:
 		_terror_energy_label = find_child("TerrorEnergyLabel", true, false) as Label
@@ -72,16 +73,18 @@ func _ready() -> void:
 
 	if not _wave_button:
 		_wave_button = load("res://ui/top_hud/wave_button.gd").new()
+
 		_wave_button.name = "WaveButton"
-		_wave_button.text = "Start Wave 1"
 		_wave_button.position = Vector2(24, 24)
+
 		var top_hud := get_node_or_null("TopHUD") as CanvasLayer
+
 		if not top_hud:
 			top_hud = CanvasLayer.new()
 			top_hud.name = "TopHUD"
 			add_child(top_hud)
-		top_hud.add_child(_wave_button)
 
+		top_hud.add_child(_wave_button)
 	# Load level scene
 	var level_scene = GameManager.get_current_level()
 	if level_scene:
@@ -334,16 +337,42 @@ func _update_terror_energy_label() -> void:
 # ── Called when an enemy is removed from the scene ────
 func _on_enemy_removed() -> void:
 	_active_enemies -= 1
+	
+	# Wave is cleared when all spawned enemies are gone and queue is empty
 	if _active_enemies <= 0 and _spawn_queue.is_empty() and _wave_in_progress:
 		_wave_in_progress = false
 		emit_signal("wave_cleared", _current_wave_index)
 		print("Wave %d cleared!" % (_current_wave_index + 1))
+		
 		_current_wave_index += 1
 		_is_preparing = true
-		_update_wave_button()
+		
+		# === LOGIKA CEK KEMENANGAN ===
+		if _current_wave_index >= waves.size():
+			trigger_victory()
+		else:
+			_update_wave_button()
 
 func _on_kuntianak_button_pressed() -> void:
 	pass # Replace with function body.
+
+# ── Victory Condition ─────────────────────────────────────────
+func trigger_victory() -> void:
+	print("LEVEL CLEARED! Kemenangan Diraih!")
+	
+	# Pastikan sinyal ini ada di deklarasi signal di atas ya, kalau belum ada tambahkan: signal all_waves_cleared
+	emit_signal("all_waves_cleared") 
+	
+	if _spawn_timer:
+		_spawn_timer.stop()
+		
+	# Panggil fungsi dari victoryui.gd
+	if _victory_ui and _victory_ui.has_method("show_victory"):
+		_victory_ui.show_victory()
+	else:
+		if _victory_ui:
+			_victory_ui.visible = true
+		get_tree().paused = true
 
 # ── GameOver ────
 func _on_player_core_destroyed() -> void:
@@ -358,3 +387,7 @@ func _on_player_core_destroyed() -> void:
 		if _game_over_ui:
 			_game_over_ui.visible = true
 		get_tree().paused = true
+
+
+func _on_victory_ui_visibility_changed() -> void:
+	pass # Replace with function body.
