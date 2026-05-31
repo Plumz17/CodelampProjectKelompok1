@@ -153,16 +153,16 @@ position = Vector2(420, 240)
 position = Vector2(1180, 240)
 
 [node name="Marker2D5" type="Marker2D" parent="Waypoints" unique_id=1141180153]
-position = Vector2(964, 779)
+position = Vector2(420, 779)
 
 [node name="Marker2D6" type="Marker2D" parent="Waypoints" unique_id=2022759272]
-position = Vector2(688, 780)
+position = Vector2(968, 786)
 
 [node name="Marker2D7" type="Marker2D" parent="Waypoints" unique_id=601793749]
-position = Vector2(970, 400)
+position = Vector2(961, 568)
 
 [node name="Marker2D8" type="Marker2D" parent="Waypoints" unique_id=1393382936]
-position = Vector2(964, 584)
+position = Vector2(964, 410)
 
 [node name="Marker2D9" type="Marker2D" parent="Waypoints" unique_id=814188385]
 position = Vector2(972, 240)
