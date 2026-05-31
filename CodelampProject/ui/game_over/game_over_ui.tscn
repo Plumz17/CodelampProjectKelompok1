@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6v8gf2l6mte4"]
 
 [ext_resource type="Script" uid="uid://06vjex45xyg3" path="res://ui/game_over/game_over_ui.gd" id="1_mh6r7"]
-[ext_resource type="FontFile" uid="uid://f7nd1djbpf8r" path="res://fonts/Cinzel-Black.ttf" id="2_5tblq"]
+[ext_resource type="FontFile" uid="uid://d2obqhlw3mqcj" path="res://fonts/Scream Again.ttf" id="2_5tblq"]
 [ext_resource type="Texture2D" uid="uid://c5so33pim5q44" path="res://ui/game_over/asset/return/Button_Return-base.png" id="2_42nyo"]
 [ext_resource type="Texture2D" uid="uid://duup6alp5rrpp" path="res://ui/game_over/asset/return/Button_Return-selected.png" id="3_5tblq"]
 [ext_resource type="Texture2D" uid="uid://cidn7iv60qbik" path="res://ui/game_over/asset/return/Button_Return-hovered.png" id="4_u8e61"]
@@ -23,14 +23,14 @@ color = Color(0, 0, 0, 0.5882353)
 
 [node name="Label" type="Label" parent="." unique_id=488390517]
 anchors_preset = -1
-anchor_left = 0.49
-anchor_top = 0.44200003
-anchor_right = 0.49
-anchor_bottom = 0.44200003
-offset_left = -251.80005
-offset_top = -79.36005
-offset_right = 291.19995
-offset_bottom = 83.63995
+anchor_left = 0.504
+anchor_top = 0.40500003
+anchor_right = 0.504
+anchor_bottom = 0.40500003
+offset_left = -438.68
+offset_top = -96.400024
+offset_right = 439.32
+offset_bottom = 96.599976
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_5tblq")

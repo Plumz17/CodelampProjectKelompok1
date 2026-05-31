@@ -6,8 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1nlul"]
 size = Vector2(67, 67)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tllp7"]
-bg_color = Color(0.87859607, 0, 0.24032074, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dmn1"]
+bg_color = Color(0.77, 0.030800017, 0.030800017, 1)
 
 [node name="EnemyBase" type="CharacterBody2D" unique_id=1748458864]
 z_index = 1
@@ -24,10 +24,10 @@ offset_right = 37.0
 offset_bottom = -38.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/fill = SubResource("StyleBoxFlat_tllp7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6dmn1")
 show_percentage = false
 
 [node name="Sprite2D" type="Sprite2D" parent="FearBar" unique_id=2125369425]
-position = Vector2(-9, -1.0000038)
-scale = Vector2(0.36057696, 0.34906918)
+position = Vector2(-11.999999, -3)
+scale = Vector2(0.46874997, 0.41560593)
 texture = ExtResource("2_6dmn1")
