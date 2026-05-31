@@ -54,12 +54,12 @@ func _ready() -> void:
 	_level_container = get_node_or_null("LevelContainer") as Node2D
 	_spawn_timer = get_node_or_null("SpawnTimer") as Timer
 	_wave_button = get_node_or_null("TopHUD/WaveButton") as TextureButton
-	_pocong_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/PocongAbilityButton") as Button
-	_kuntilanak_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/KuntilanakAbilityButton") as Button
-	_tuyul_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/TuyulAbilityButton") as Button
-	_pocong_cooldown_label = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/PocongCooldownLabel") as Label
-	_kuntilanak_cooldown_label = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/KuntilanakCooldownLabel") as Label
-	_tuyul_cooldown_label = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/TuyulCooldownLabel") as Label
+	_pocong_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/PocongAbilityGroup/PocongAbilityButton") as Button
+	_kuntilanak_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/KuntilanakAbilityGroup/KuntilanakAbilityButton") as Button
+	_tuyul_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/TuyulAbilityGroup/TuyulAbilityButton") as Button
+	_pocong_cooldown_label = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/PocongAbilityGroup/PocongCooldownLabel") as Label
+	_kuntilanak_cooldown_label = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/KuntilanakAbilityGroup/KuntilanakCooldownLabel") as Label
+	_tuyul_cooldown_label = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/TuyulAbilityGroup/TuyulCooldownLabel") as Label
 	if not _wave_button:
 		_wave_button = find_child("WaveButton", true, false) as TextureButton
 	_terror_energy_label = get_node_or_null("TopHUD/TerrorEnergyLabel") as Label

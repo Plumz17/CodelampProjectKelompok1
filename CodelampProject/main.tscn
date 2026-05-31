@@ -51,42 +51,54 @@ theme_override_constants/separation = 12
 
 [node name="AbilityButtons" type="HBoxContainer" parent="GhostSelectUI/MarginContainer/VBoxContainer" unique_id=863418211]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 24
 
-[node name="PocongAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=615291044]
+[node name="PocongAbilityGroup" type="VBoxContainer" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=489440109]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="PocongAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/PocongAbilityGroup" unique_id=615291044]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_dg77c")
 theme_override_font_sizes/font_size = 13
 disabled = true
 text = "Haunted Stomp"
 
-[node name="PocongCooldownLabel" type="Label" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=1894657201]
+[node name="PocongCooldownLabel" type="Label" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/PocongAbilityGroup" unique_id=1894657201]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_dg77c")
 theme_override_font_sizes/font_size = 13
 text = "--"
 
-[node name="KuntilanakAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=1467218559]
+[node name="KuntilanakAbilityGroup" type="VBoxContainer" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=421983544]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="KuntilanakAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/KuntilanakAbilityGroup" unique_id=1467218559]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_dg77c")
 theme_override_font_sizes/font_size = 13
 disabled = true
 text = "Dreadful Scream"
 
-[node name="KuntilanakCooldownLabel" type="Label" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=1463892745]
+[node name="KuntilanakCooldownLabel" type="Label" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/KuntilanakAbilityGroup" unique_id=1463892745]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_dg77c")
 theme_override_font_sizes/font_size = 13
 text = "--"
 
-[node name="TuyulAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=473111613]
+[node name="TuyulAbilityGroup" type="VBoxContainer" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=1509823411]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TuyulAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/TuyulAbilityGroup" unique_id=473111613]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_dg77c")
 theme_override_font_sizes/font_size = 13
 disabled = true
 text = "Steal"
 
-[node name="TuyulCooldownLabel" type="Label" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=1169273408]
+[node name="TuyulCooldownLabel" type="Label" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/TuyulAbilityGroup" unique_id=1169273408]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_dg77c")
 theme_override_font_sizes/font_size = 13
