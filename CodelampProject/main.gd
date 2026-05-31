@@ -17,6 +17,9 @@ var _ghost_container: Node2D
 var _pocong_ability_button: Button
 var _kuntilanak_ability_button: Button
 var _tuyul_ability_button: Button
+var _pocong_cooldown_label: Label
+var _kuntilanak_cooldown_label: Label
+var _tuyul_cooldown_label: Label
 var _tuyul_bonus_time_left: float = 0.0
 var _tuyul_bonus_amount: int = 0
 
@@ -54,6 +57,9 @@ func _ready() -> void:
 	_pocong_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/PocongAbilityButton") as Button
 	_kuntilanak_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/KuntilanakAbilityButton") as Button
 	_tuyul_ability_button = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/TuyulAbilityButton") as Button
+	_pocong_cooldown_label = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/PocongCooldownLabel") as Label
+	_kuntilanak_cooldown_label = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/KuntilanakCooldownLabel") as Label
+	_tuyul_cooldown_label = get_node_or_null("GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons/TuyulCooldownLabel") as Label
 	if not _wave_button:
 		_wave_button = find_child("WaveButton", true, false) as TextureButton
 	_terror_energy_label = get_node_or_null("TopHUD/TerrorEnergyLabel") as Label
@@ -319,15 +325,27 @@ func _get_best_ability_owner(ghost_id: String) -> GhostBase:
 	return selected
 
 func _update_ability_buttons() -> void:
-	_update_ability_button_state(_pocong_ability_button, "pocong")
-	_update_ability_button_state(_kuntilanak_ability_button, "kuntilanak")
-	_update_ability_button_state(_tuyul_ability_button, "tuyul")
+	_update_ability_button_state(_pocong_ability_button, _pocong_cooldown_label, "pocong")
+	_update_ability_button_state(_kuntilanak_ability_button, _kuntilanak_cooldown_label, "kuntilanak")
+	_update_ability_button_state(_tuyul_ability_button, _tuyul_cooldown_label, "tuyul")
 
-func _update_ability_button_state(button: Button, ghost_id: String) -> void:
+func _update_ability_button_state(button: Button, cooldown_label: Label, ghost_id: String) -> void:
 	if not button:
 		return
 	var owner := _get_best_ability_owner(ghost_id)
-	button.disabled = owner == null or not owner.can_activate_ability()
+	if owner == null:
+		button.disabled = true
+		if cooldown_label:
+			cooldown_label.text = "Not placed"
+		return
+	var cooldown_left := owner.get_ability_cooldown_left()
+	button.disabled = not owner.can_activate_ability()
+	if not cooldown_label:
+		return
+	if owner.can_activate_ability():
+		cooldown_label.text = "Ready"
+	else:
+		cooldown_label.text = "CD: %ds" % int(ceil(cooldown_left))
 
 func _on_pocong_ability_button_pressed() -> void:
 	_activate_ghost_ability("pocong")

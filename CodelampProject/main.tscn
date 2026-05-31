@@ -51,7 +51,7 @@ theme_override_constants/separation = 12
 
 [node name="AbilityButtons" type="HBoxContainer" parent="GhostSelectUI/MarginContainer/VBoxContainer" unique_id=863418211]
 layout_mode = 2
-theme_override_constants/separation = 110
+theme_override_constants/separation = 15
 
 [node name="PocongAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=615291044]
 layout_mode = 2
@@ -60,6 +60,12 @@ theme_override_font_sizes/font_size = 13
 disabled = true
 text = "Haunted Stomp"
 
+[node name="PocongCooldownLabel" type="Label" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=1894657201]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_dg77c")
+theme_override_font_sizes/font_size = 13
+text = "--"
+
 [node name="KuntilanakAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=1467218559]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_dg77c")
@@ -67,12 +73,24 @@ theme_override_font_sizes/font_size = 13
 disabled = true
 text = "Dreadful Scream"
 
+[node name="KuntilanakCooldownLabel" type="Label" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=1463892745]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_dg77c")
+theme_override_font_sizes/font_size = 13
+text = "--"
+
 [node name="TuyulAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=473111613]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_dg77c")
 theme_override_font_sizes/font_size = 13
 disabled = true
 text = "Steal"
+
+[node name="TuyulCooldownLabel" type="Label" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=1169273408]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_dg77c")
+theme_override_font_sizes/font_size = 13
+text = "--"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GhostSelectUI/MarginContainer/VBoxContainer" unique_id=1450945053]
 layout_mode = 2
@@ -108,7 +126,7 @@ ghost_type = "tuyul"
 layout_mode = 2
 
 [node name="PocongCost" type="Node2D" parent="GhostSelectUI/MarginContainer/VBoxContainer/Costs" unique_id=213135281]
-position = Vector2(120, 0)
+position = Vector2(60, 0)
 
 [node name="TextureRect" type="TextureRect" parent="GhostSelectUI/MarginContainer/VBoxContainer/Costs/PocongCost" unique_id=1571565733]
 custom_minimum_size = Vector2(30, 30)
@@ -125,7 +143,7 @@ offset_bottom = 23.0
 text = "40"
 
 [node name="KuntiCost" type="Node2D" parent="GhostSelectUI/MarginContainer/VBoxContainer/Costs" unique_id=481380287]
-position = Vector2(330, 0)
+position = Vector2(280, 0)
 
 [node name="TextureRect" type="TextureRect" parent="GhostSelectUI/MarginContainer/VBoxContainer/Costs/KuntiCost" unique_id=908076464]
 custom_minimum_size = Vector2(30, 30)
@@ -142,7 +160,7 @@ offset_bottom = 23.0
 text = "60"
 
 [node name="TuyulCost" type="Node2D" parent="GhostSelectUI/MarginContainer/VBoxContainer/Costs" unique_id=159928471]
-position = Vector2(540, 0)
+position = Vector2(480, 0)
 
 [node name="TextureRect" type="TextureRect" parent="GhostSelectUI/MarginContainer/VBoxContainer/Costs/TuyulCost" unique_id=1883510174]
 custom_minimum_size = Vector2(30, 30)
