@@ -28,6 +28,10 @@ var _active_enemies: int = 0
 var _wave_in_progress: bool = false
 var _is_preparing: bool = true
 var _last_spawn_time_in_wave: float = 0.0
+var _spawn_time_slot_counts: Dictionary = {}
+var _spawn_counter: int = 0
+const SPAWN_FORMATION_COLUMNS: int = 3
+const SPAWN_FORMATION_SPACING: float = 22.0
 
 # ── Spawn Timer ────
 var _spawn_timer: Timer
@@ -201,6 +205,8 @@ func start_next_wave() -> void:
 # ── Build flat spawn queue from wave enemy list ────
 func _build_spawn_queue(wave_data: WaveData) -> void:
 	_spawn_queue.clear()
+	_spawn_time_slot_counts.clear()
+	_spawn_counter = 0
 	_last_spawn_time_in_wave = 0.0
 	for entry: SpawnEntry in wave_data.spawn_schedule:
 		var spawn_time: float = max(entry.time_seconds, 0.0)
@@ -214,7 +220,9 @@ func _build_spawn_queue(wave_data: WaveData) -> void:
 		if not enemy_scene:
 			continue
 		for i in range(count):
-			_spawn_queue.append([spawn_time, enemy_scene])
+			var slot_index: int = int(_spawn_time_slot_counts.get(spawn_time, 0))
+			_spawn_queue.append([spawn_time, enemy_scene, slot_index])
+			_spawn_time_slot_counts[spawn_time] = slot_index + 1
 		if spawn_time > _last_spawn_time_in_wave:
 			_last_spawn_time_in_wave = spawn_time
 	_spawn_queue.sort_custom(func(a, b): return float(a[0]) < float(b[0]))
@@ -230,17 +238,25 @@ func _on_spawn_timer_timeout() -> void:
 		return
 	var spawn_time: float = float(spawn_entry[0])
 	var enemy_scene: PackedScene = spawn_entry[1]
+	var slot_index: int = 0
+	if spawn_entry.size() >= 3:
+		slot_index = int(spawn_entry[2])
 	if not enemy_scene:
 		return
 
 	var enemy = enemy_scene.instantiate()
-	enemy.position = _spawn_point.global_position
+	enemy.position = _spawn_point.global_position + _get_spawn_formation_offset(slot_index)
 
 	if enemy is EnemyBase:
+		var enemy_base := enemy as EnemyBase
 		if _waypoints_node:
-			enemy.waypoints_node = _waypoints_node
-		if not enemy.defeated.is_connected(_on_enemy_defeated):
-			enemy.defeated.connect(_on_enemy_defeated)
+			enemy_base.waypoints_node = _waypoints_node
+		var level := _level_container.get_child(0) as Level
+		if level and level.has_method("get_waypoint_positions_for_spawn"):
+			enemy_base.assigned_waypoints = level.get_waypoint_positions_for_spawn(_spawn_counter)
+		_spawn_counter += 1
+		if not enemy_base.defeated.is_connected(_on_enemy_defeated):
+			enemy_base.defeated.connect(_on_enemy_defeated)
 
 	_active_enemies += 1
 	enemy.tree_exited.connect(_on_enemy_removed)
@@ -253,6 +269,16 @@ func _on_spawn_timer_timeout() -> void:
 	var next_spawn_time: float = float(_spawn_queue[0][0])
 	var next_delay: float = max(next_spawn_time - spawn_time, 0.001)
 	_spawn_timer.wait_time = next_delay
+
+func _get_spawn_formation_offset(slot_index: int) -> Vector2:
+	if slot_index <= 0:
+		return Vector2.ZERO
+	var row := slot_index / SPAWN_FORMATION_COLUMNS
+	var col := slot_index % SPAWN_FORMATION_COLUMNS
+	var col_center := float(SPAWN_FORMATION_COLUMNS - 1) * 0.5
+	var x := (float(col) - col_center) * SPAWN_FORMATION_SPACING
+	var y := float(row) * SPAWN_FORMATION_SPACING
+	return Vector2(x, y)
 
 func _on_enemy_defeated(terror_energy_amount: int) -> void:
 	_terror_energy += max(terror_energy_amount, 0)

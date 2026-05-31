@@ -164,7 +164,7 @@ position = Vector2(1503, 239)
 
 [node name="Waypoints" type="Node2D" parent="." unique_id=330592518]
 
-[node name="Marker2D" type="Marker2D" parent="Waypoints" unique_id=1759117403]
+[node name="Marker2D1" type="Marker2D" parent="Waypoints" unique_id=1759117403]
 position = Vector2(90, 900)
 
 [node name="Marker2D2" type="Marker2D" parent="Waypoints" unique_id=832786131]
