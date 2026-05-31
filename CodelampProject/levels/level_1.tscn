@@ -142,19 +142,20 @@ centered = false
 [node name="Doors" type="Node2D" parent="." unique_id=2073128907]
 
 [node name="DoorA" type="Sprite2D" parent="Doors" unique_id=1697117824]
-position = Vector2(490, 777)
+position = Vector2(684, 777)
 texture = ExtResource("10_door")
 
 [node name="DoorB" type="Sprite2D" parent="Doors" unique_id=1083787950]
-position = Vector2(959, 317)
+position = Vector2(959, 513)
 rotation = 1.5707964
 texture = ExtResource("10_door")
 
 [node name="DoorC" type="Sprite2D" parent="Doors" unique_id=1967688216]
-position = Vector2(1036, 782)
+position = Vector2(1230, 782)
 texture = ExtResource("10_door")
 
 [node name="RoomInteraction" parent="." unique_id=520445906 instance=ExtResource("6_room")]
+visible = false
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=152212913]
 position = Vector2(10, 895)

@@ -295,7 +295,8 @@ shape = SubResource("CircleShape2D_tower")
 [node name="Doors" type="Node2D" parent="." unique_id=2030214516]
 
 [node name="DoorA" type="Sprite2D" parent="Doors" unique_id=1838017488]
-position = Vector2(1035, 777)
+position = Vector2(1226.25, 780.75)
+scale = Vector2(0.9585635, 0.9585635)
 texture = ExtResource("10_sd18g")
 
 [node name="PlayerCore" parent="." unique_id=871273602 instance=ExtResource("11_vm7no")]
