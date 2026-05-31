@@ -138,36 +138,36 @@ centered = false
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=166843335]
 position = Vector2(10, 895)
 
-[node name="Waypoints" type="Node2D" parent="." unique_id=396211865]
+[node name="Waypoints" type="Node2D" parent="." unique_id=1835389547]
 
-[node name="Marker2D" type="Marker2D" parent="Waypoints" unique_id=1057138625]
+[node name="Marker2D1" type="Marker2D" parent="Waypoints" unique_id=535017346]
 position = Vector2(90, 900)
 
-[node name="Marker2D2" type="Marker2D" parent="Waypoints" unique_id=54312101]
+[node name="Marker2D2" type="Marker2D" parent="Waypoints" unique_id=257694615]
 position = Vector2(420, 900)
 
-[node name="Marker2D3" type="Marker2D" parent="Waypoints" unique_id=1546699726]
+[node name="Marker2D3" type="Marker2D" parent="Waypoints" unique_id=726683570]
 position = Vector2(420, 240)
 
-[node name="Marker2D4" type="Marker2D" parent="Waypoints" unique_id=1324363684]
+[node name="Marker2D4" type="Marker2D" parent="Waypoints" unique_id=493913944]
 position = Vector2(1180, 240)
 
-[node name="Marker2D5" type="Marker2D" parent="Waypoints" unique_id=1041164559]
-position = Vector2(964, 779)
+[node name="Marker2D5" type="Marker2D" parent="Waypoints" unique_id=1259797212]
+position = Vector2(420, 779)
 
-[node name="Marker2D6" type="Marker2D" parent="Waypoints" unique_id=1820987398]
-position = Vector2(688, 780)
+[node name="Marker2D6" type="Marker2D" parent="Waypoints" unique_id=1541583199]
+position = Vector2(968, 786)
 
-[node name="Marker2D7" type="Marker2D" parent="Waypoints" unique_id=1732035084]
-position = Vector2(970, 400)
+[node name="Marker2D7" type="Marker2D" parent="Waypoints" unique_id=826422902]
+position = Vector2(961, 568)
 
-[node name="Marker2D8" type="Marker2D" parent="Waypoints" unique_id=112418297]
-position = Vector2(964, 584)
+[node name="Marker2D8" type="Marker2D" parent="Waypoints" unique_id=857586360]
+position = Vector2(964, 410)
 
-[node name="Marker2D9" type="Marker2D" parent="Waypoints" unique_id=1930086442]
+[node name="Marker2D9" type="Marker2D" parent="Waypoints" unique_id=676261530]
 position = Vector2(972, 240)
 
-[node name="Marker2D10" type="Marker2D" parent="Waypoints" unique_id=1127946033]
+[node name="Marker2D10" type="Marker2D" parent="Waypoints" unique_id=159880929]
 position = Vector2(1500, 240)
 
 [node name="Areas" type="Node2D" parent="." unique_id=645157749]
@@ -295,7 +295,8 @@ shape = SubResource("CircleShape2D_q42ux")
 [node name="Doors" type="Node2D" parent="." unique_id=618747239]
 
 [node name="DoorA" type="Sprite2D" parent="Doors" unique_id=1453900057]
-position = Vector2(1035, 777)
+position = Vector2(1233.25, 779.75)
+scale = Vector2(0.96961325, 0.96961325)
 texture = ExtResource("10_wj73x")
 
 [node name="PlayerCore" parent="." unique_id=871273602 instance=ExtResource("11_wj73x")]

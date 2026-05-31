@@ -7,6 +7,7 @@ signal defeated(terror_energy_amount: int)
 @export var speed: float # Movement speed modifier
 @export var terror_energy: int # Resource dropped upon defeat
 @export var waypoints_node: Node2D # Reference to the Waypoints parent node
+var assigned_waypoints: Array[Vector2] = []
 @export var core_damage: int = 10 # Damage dealt to the player's core upon reaching it
 @onready var sprite: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
 
@@ -32,7 +33,11 @@ func _ready() -> void:
 		fear_bar_ui.value = current_fear_bar
 	
 	# Populate waypoints array with global coordinates
-	if waypoints_node:
+	waypoints.clear()
+	if not assigned_waypoints.is_empty():
+		for waypoint_pos in assigned_waypoints:
+			waypoints.append(waypoint_pos)
+	elif waypoints_node:
 		for waypoint: Node2D in waypoints_node.get_children():
 			waypoints.append(waypoint.global_position)
 
