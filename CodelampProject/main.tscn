@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtojvdkhpdgfy" path="res://main.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://b6v8gf2l6mte4" path="res://ui/game_over/game_over_ui.tscn" id="2_gameover"]
-[ext_resource type="FontFile" uid="uid://dyx3nj2m80r3k" path="res://fonts/Cinzel-Medium.ttf" id="3_dg77c"]
+[ext_resource type="FontFile" uid="uid://d2obqhlw3mqcj" path="res://fonts/Scream Again.ttf" id="3_dg77c"]
 [ext_resource type="PackedScene" uid="uid://d4bpo58y615ua" path="res://ghosts/pocong.tscn" id="3_pocong"]
 [ext_resource type="PackedScene" uid="uid://c5g0up3st3y88" path="res://ghosts/kunilanak.tscn" id="4_kuntilanak"]
 [ext_resource type="PackedScene" uid="uid://bcepqgjgi4ata" path="res://ghosts/tuyul.tscn" id="5_tuyul"]
@@ -55,18 +55,21 @@ theme_override_constants/separation = 110
 [node name="PocongAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=615291044]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_dg77c")
+theme_override_font_sizes/font_size = 13
 disabled = true
 text = "Haunted Stomp"
 
 [node name="KuntilanakAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=1467218559]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_dg77c")
+theme_override_font_sizes/font_size = 13
 disabled = true
 text = "Dreadful Scream"
 
 [node name="TuyulAbilityButton" type="Button" parent="GhostSelectUI/MarginContainer/VBoxContainer/AbilityButtons" unique_id=473111613]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_dg77c")
+theme_override_font_sizes/font_size = 13
 disabled = true
 text = "Steal"
 
